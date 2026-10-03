@@ -2,73 +2,168 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Leadership & Team</title>
- <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111827'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sri City Support Hub | Leadership & Governance Desk</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
-      --bg: #ffffff;
-      --charcoal: #111827;
-      --charcoal-hover: #1f2937;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --charcoal: #0f172a;
+      --charcoal-hover: #1e293b;
       --slate-muted: #64748b;
-      --slate-light: #f8fafc;
-      --border: #e5e7eb;
-      --card-shadow: 0 4px 12px -2px rgba(17, 24, 39, 0.05);
-      --card-shadow-hover: 0 10px 20px -3px rgba(17, 24, 39, 0.08);
+      --slate-light: #f1f5f9;
+      --border: #e2e8f0;
+      --card-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
+      --accent-green: #059669;
+      --accent-green-bg: #ecfdf5;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+      --danger-border: #fecaca;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      -webkit-tap-highlight-color: transparent; 
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
     body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
-    
-    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 960px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.2rem; }
-    .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 0.5rem; }
+    header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
+    .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .brand-mark { width: 10px; height: 10px; background: var(--charcoal); border-radius: 2px; }
-    .nav-menu { display: flex; gap: 0.6rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-weight: 600; font-size: 0.9rem; padding: 0.4rem 0.75rem; border-radius: 6px; }
+    .nav-menu { display: flex; gap: 1rem; list-style: none; }
+    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
     .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--slate-light); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
 
-    .page-head { max-width: 960px; margin: 2.5rem auto 1.8rem; padding: 0 1.2rem; }
-    .page-head h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
-    .page-head p { color: var(--slate-muted); font-size: 0.95rem; margin-top: 0.3rem; }
+    .main-container { max-width: 980px; margin: auto; padding: 2rem 1.2rem; }
+    .page-title { font-size: 1.65rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .page-subtitle { color: var(--slate-muted); font-size: 0.95rem; margin-bottom: 2rem; }
 
-    .container { max-width: 960px; margin: 0 auto 4rem; padding: 0 1.2rem; }
-
-    /* Founder Card */
-    .founder-card { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 2rem; box-shadow: var(--card-shadow); display: flex; gap: 1.8rem; align-items: center; margin-bottom: 3rem; }
-    .founder-avatar { width: 90px; height: 90px; border-radius: 12px; background: var(--charcoal); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .founder-avatar svg { width: 44px; height: 44px; stroke: #ffffff; }
-    .founder-info h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem; }
-    .role-badge { display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--slate-light); border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--charcoal); margin-bottom: 0.8rem; }
-    .founder-desc { font-size: 0.92rem; color: #4b5563; line-height: 1.6; margin-bottom: 1.2rem; }
-    .btn-connect { display: inline-block; background: var(--charcoal); color: #ffffff; text-decoration: none; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; }
-    .btn-connect:hover { background: var(--charcoal-hover); }
+    /* Founder Card with Dynamic Photo / Avatar Slot */
+    .founder-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      margin-bottom: 2.2rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+    .photo-container {
+      width: 84px;
+      height: 84px;
+      min-width: 84px;
+      border-radius: 50%;
+      background: #0f172a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      overflow: hidden;
+      border: 2px solid var(--border);
+    }
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none; /* Image add karne par display:block ho jayegi */
+    }
+    .founder-info h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .founder-role { font-size: 0.76rem; font-weight: 700; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.6rem; }
+    .founder-desc { font-size: 0.88rem; color: #475569; line-height: 1.55; margin-bottom: 1rem; }
+    .btn-team-connect {
+      display: inline-block;
+      background: var(--charcoal);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
 
     /* Team Grid */
-    .team-heading { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 0.3rem; }
-    .team-sub { font-size: 0.9rem; color: var(--slate-muted); margin-bottom: 1.5rem; }
-    
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 3.5rem; }
-    .team-card { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; text-align: left; box-shadow: var(--card-shadow); transition: all 0.2s ease; }
-    .team-card:hover { border-color: var(--charcoal); transform: translateY(-3px); }
-    .team-icon-box { width: 38px; height: 38px; border-radius: 6px; background: var(--slate-light); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
-    .team-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.2rem; }
-    .team-role { font-size: 0.78rem; font-weight: 700; color: var(--slate-muted); text-transform: uppercase; letter-spacing: 0.3px; display: block; margin-bottom: 0.6rem; }
-    .team-desc { font-size: 0.85rem; color: #4b5563; line-height: 1.45; }
+    .section-heading { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .section-sub { font-size: 0.88rem; color: var(--slate-muted); margin-bottom: 1.4rem; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-bottom: 2.5rem; }
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .role-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+    .team-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .team-card p { font-size: 0.86rem; color: var(--slate-muted); margin-bottom: 1rem; line-height: 1.45; }
+    .team-link { font-size: 0.82rem; font-weight: 700; color: var(--charcoal); text-decoration: none; }
 
-    /* Mission Box */
-    .mission-box { background: var(--slate-light); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; }
-    .mission-box h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.4rem; }
-    .mission-box p { font-size: 0.9rem; color: #4b5563; line-height: 1.6; }
+    /* Escalation Desk - Tier 2 Grievance Desk */
+    .escalation-box {
+      background: #ffffff;
+      border: 1px solid var(--danger-border);
+      border-left: 4px solid var(--danger);
+      border-radius: 10px;
+      padding: 1.6rem;
+      margin-top: 1rem;
+      box-shadow: var(--card-shadow);
+    }
+    .escalation-badge {
+      display: inline-block;
+      background: var(--danger-bg);
+      color: var(--danger);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      margin-bottom: 0.7rem;
+    }
+    .escalation-box h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--charcoal); }
+    .escalation-box p { font-size: 0.88rem; color: #475569; line-height: 1.55; margin-bottom: 1.2rem; }
+    .btn-escalation {
+      display: inline-block;
+      background: var(--danger);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.55rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
 
-    footer { border-top: 1px solid var(--border); color: var(--slate-muted); text-align: center; padding: 2.5rem 1.2rem; font-size: 0.85rem; }
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3rem; background: #fff; }
+    footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #ffffff; padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); }
+      .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
-      .founder-card { flex-direction: column; align-items: flex-start; text-align: left; }
-      .btn-connect { width: 100%; text-align: center; }
+      .founder-card { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -76,106 +171,91 @@
 
   <header>
     <div class="nav-container">
-      <a href="index.html" class="brand">
-        <span class="brand-mark"></span>
-        SRI CITY SUPPORT HUB
-      </a>
-      <button class="menu-toggle" id="menuBtn">☰</button>
+      <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
-        <li><a href="jobs.html">Jobs</a></li>
-        <li><a href="sricityhub.html">Sri City Hub</a></li>
-        <li><a href="about.html" class="active">About & Leadership</a></li>
+        <li><a href="jobs.html">Openings</a></li>
+        <li><a href="sricityhub.html">Directory</a></li>
+        <li><a href="about.html" class="active">About & Team</a></li>
       </ul>
     </div>
   </header>
 
-  <div class="page-head">
-    <h1>Platform Leadership</h1>
-    <p>The ground coordination team and vision powering Sri City Support Hub.</p>
-  </div>
-
-  <main class="container">
+  <main class="main-container">
     
-    <!-- Founder Card -->
+    <h1 class="page-title">Platform Leadership & Team Governance</h1>
+    <p class="page-subtitle">Ground operational desk ensuring verified, zero-brokerage support across Sri City & Tada.</p>
+
+    <!-- Founder Card: Photo Slot -->
     <div class="founder-card">
-      <div class="founder-avatar">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <div class="photo-container">
+        <!-- Photo lagane ke liye: niche wali img line se comment hatakar apni photo ka filename/link daal dena:
+        <img src="profile.jpg" alt="Vishnu Yadav" style="display:block;"> -->
+        <span id="initialAvatar">VY</span>
       </div>
       <div class="founder-info">
         <h2>Vishnu Yadav</h2>
-        <span class="role-badge">Founder & Lead Coordinator</span>
-        <p class="founder-desc">
-          Committed to building a verified, community-first digital ecosystem for Sri City and Tada. Overseeing ground verification of plant vacancies, resident accommodation records, and worker assistance initiatives.
-        </p>
-        <a href="https://wa.me/" target="_blank" class="btn-connect">Connect with Desk</a>
+        <div class="founder-role">Founder & Operations Lead</div>
+        <p class="founder-desc">Leading regional ground verification, transit coordination mapping, and transparent industry routing for workforce empowerment across the Tada - Sri City industrial belt.</p>
+        <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%20for%20Operations%20Lead" class="btn-team-connect">Contact Team Desk</a>
       </div>
     </div>
 
-    <!-- Core Support Team / Friends Representation -->
-    <div class="team-heading">Core Support Team</div>
-    <div class="team-sub">Regional representatives managing ground desks and community verifications.</div>
+    <!-- Core Operational Support Desks -->
+    <div class="section-heading">Operational Support Desks</div>
+    <div class="section-sub">Please contact these direct operational desks first for all daily queries, interview assistance, and transit routing.</div>
 
     <div class="team-grid">
-      <!-- Member 1 -->
+      
       <div class="team-card">
-        <div class="team-icon-box">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <div>
+          <span class="role-tag">Interviews & Plant Profiles</span>
+          <h3>Candidate Screening Desk</h3>
+          <p>Coordination for technical resumes, HVAC brazing, assembly operator tests, and plant interview schedules.</p>
         </div>
-        <h3>Team Member 1</h3>
-        <span class="team-role">Industry Vacancy Desk</span>
-        <p class="team-desc">Supervising plant hiring circulars, ITI requirements, and preliminary document checks.</p>
+        <a href="mailto:sricitysupporthub@gmail.com?subject=Candidate%20Screening%20Desk" class="team-link">📩 contact desk →</a>
       </div>
 
-      <!-- Member 2 -->
       <div class="team-card">
-        <div class="team-icon-box">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div>
+          <span class="role-tag">Transit & Logistics</span>
+          <h3>Corridor Transit Desk</h3>
+          <p>Worker bus routes, stop coordinates (Tada, Gummidipoondi, Naidupeta), and shift transit timings.</p>
         </div>
-        <h3>Team Member 2</h3>
-        <span class="team-role">Housing & PG Relations</span>
-        <p class="team-desc">Maintaining verified room directories and rent verification across Tada residential sectors.</p>
+        <a href="mailto:sricitysupporthub@gmail.com?subject=Transit%20Desk%20Inquiry" class="team-link">📩 transit guidance →</a>
       </div>
 
-      <!-- Member 3 -->
       <div class="team-card">
-        <div class="team-icon-box">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17l5-5 5 5"/></svg>
+        <div>
+          <span class="role-tag">Accommodation</span>
+          <h3>Housing & Living Desk</h3>
+          <p>Directory of verified rental rooms, bachelor PG clusters, and transparent rent listings across Tada.</p>
         </div>
-        <h3>Team Member 3</h3>
-        <span class="team-role">Transit & Commute Desk</span>
-        <p class="team-desc">Coordinating shift transit guidance and Tada Railway Station connectivity routes.</p>
+        <a href="mailto:sricitysupporthub@gmail.com?subject=Housing%20Desk%20Inquiry" class="team-link">📩 housing desk →</a>
       </div>
 
-      <!-- Member 4 -->
-      <div class="team-card">
-        <div class="team-icon-box">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>
-        </div>
-        <h3>Team Member 4</h3>
-        <span class="team-role">Public Helpdesk Desk</span>
-        <p class="team-desc">Addressing ground worker queries, reporting discrepancies, and new resident onboarding.</p>
-      </div>
     </div>
 
-    <!-- Platform Mission -->
-    <div class="mission-box">
-      <h3>Ground Governance & Charter</h3>
-      <p>Sri City Support Hub operates as an independent, worker-first platform. Every single job circular and local record listed is verified to uphold transparency and eliminate unauthorized commission charges.</p>
+    <!-- Tier 2: Founder Escalation Grievance Desk -->
+    <div class="escalation-box">
+      <span class="escalation-badge">Strict Tier-2 Escalation</span>
+      <h2>Founder Grievance & Brand Escalation Desk</h2>
+      <p><strong>Note:</strong> This desk is strictly reserved for critical issues. Please reach out here only if your query was unresolved by our team desks, or if you encounter brand misconduct, fraudulent brokers demanding fees under our name, or critical plant disputes.</p>
+      <a href="mailto:vishnuyadav712000@gmail.com?subject=[CRITICAL%20ESCALATION]%20Sri%20City%20Hub%20Founder%20Desk" class="btn-escalation">Email Founder Directly</a>
     </div>
 
   </main>
 
-    <footer>
-    <p><strong>Sri City Support Hub</strong> — Official Leadership & Community Operations</p>
+  <footer>
+    <p><strong>Sri City Support Hub</strong> — Official Regional Information Desk</p>
     <div style="margin-top: 0.6rem; font-size: 0.85rem;">
-      Official Desk: <a href="mailto:contact.sricityhub@gmail.com" style="color: #111827; font-weight: 600; text-decoration: underline;">contact.sricityhub@gmail.com</a>
+      Official Desk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
     </div>
-    </footer>
-  
+  </footer>
 
   <script>
-    const menuBtn = document.getElementById('menuBtn');
+    const menuBtn = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
