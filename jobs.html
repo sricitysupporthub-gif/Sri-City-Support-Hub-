@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sri City Support Hub | Verified Industrial Openings</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111827'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23065f46'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
       --bg: #ffffff;
@@ -19,12 +19,18 @@
       --badge-blue: #2563eb;
       --badge-blue-bg: #eff6ff;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
     body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
     .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
     .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: var(--charcoal); border-radius: 2px; }
+    .brand-mark { width: 10px; height: 10px; background: #065f46; border-radius: 2px; }
     .nav-menu { display: flex; gap: 1rem; list-style: none; }
     .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
     .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--slate-light); }
@@ -48,9 +54,20 @@
     .job-meta { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin: 0.8rem 0; font-size: 0.85rem; color: #334155; font-weight: 500; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); padding: 0.6rem 0; }
     .job-desc { font-size: 0.88rem; color: #475569; margin-bottom: 1rem; }
     .job-highlights { font-size: 0.82rem; color: var(--slate-muted); margin-bottom: 1.2rem; line-height: 1.5; }
-    .card-action { display: flex; justify-content: flex-start; }
-    .btn-action { background: var(--charcoal); color: #fff; text-decoration: none; padding: 0.55rem 1.2rem; font-size: 0.85rem; font-weight: 600; border-radius: 5px; }
-    .btn-action:hover { background: var(--charcoal-hover); }
+    
+    .card-action { display: flex; justify-content: flex-start; align-items: center; }
+    .btn-action { 
+      background: var(--charcoal); 
+      color: #fff; 
+      text-decoration: none; 
+      padding: 0.45rem 1.15rem; 
+      font-size: 0.82rem; 
+      font-weight: 700; 
+      border-radius: 6px; 
+      display: inline-block;
+      transition: background 0.15s ease;
+    }
+    .btn-action:hover, .btn-action:active { background: var(--charcoal-hover); }
 
     footer { border-top: 1px solid var(--border); padding: 2.5rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3rem; background: #fff; }
     footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
@@ -83,12 +100,12 @@
     <p class="page-subtitle">Zero-commission manufacturing, technical, logistics & facility profiles across Sri City SEZ & Tada corridor.</p>
 
     <div class="filter-notice">
-      ℹ️ <strong>Direct Desk Policy:</strong> Sri City Support Hub operates independently. No middleman charges or security deposits apply for any listing.
+      ℹ️ <strong>Zero-Brokerage Desk:</strong> Direct onboarding facilitation. No charges or fees at any stage.
     </div>
 
     <div class="job-list">
 
-      <!-- Job 1: AC Manufacturing / Blue Star Tech -->
+      <!-- Job 1 -->
       <div class="job-card">
         <div class="job-header">
           <div>
@@ -107,14 +124,14 @@
           Assembly line operations for Indoor (IDU) & Outdoor (ODU) air conditioning units, wiring harness, testing, and carton packaging.
         </div>
         <div class="job-highlights">
-          <strong>Perks & Transport:</strong> Basic ₹16,418 + Attendance Bonus + ESI/PF included. Subsidized canteen meals & free bus routes across Naidupeta, BN Kandiga, Poola Thota, Sathyavedu, Ponneri, Srikalahasti, and Mallam.
+          <strong>Perks & Transport:</strong> Basic ₹16,418 + Attendance Bonus + ESI/PF. Free bus routes: Naidupeta, BN Kandiga, Poola Thota, Sathyavedu, Ponneri, Srikalahasti, and Mallam.
         </div>
         <div class="card-action">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Application%3A%20AC%20Production%20Operator" class="btn-action">Apply via Official Desk</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20AC%20Production%20Operator" class="btn-action">Apply Now</a>
         </div>
       </div>
 
-      <!-- Job 2: Technical Brazing & Copper Piping -->
+      <!-- Job 2 -->
       <div class="job-card">
         <div class="job-header">
           <div>
@@ -125,22 +142,22 @@
         </div>
         <div class="job-meta">
           <span>📍 Tada - Sri City Corridor</span>
-          <span>💼 ₹19,000 - ₹24,000/mo (Based on Skill)</span>
+          <span>💼 ₹19,000 - ₹24,000/mo</span>
           <span>🎓 ITI (Welder / Fitter / RAC)</span>
           <span>🕒 Rotational Shifts + OT</span>
         </div>
         <div class="job-desc">
-          Copper-to-copper brazing, tube bending joints, suction line welding, and nitrogen leak pressure verification for AC manufacturing lines.
+          Copper brazing, tube bending joints, suction line welding, and nitrogen leak pressure verification for AC lines.
         </div>
         <div class="job-highlights">
-          <strong>Required:</strong> Minimum 6 months brazing experience in AC/refrigeration plants (Amber, Blue Star, Daikin, Voltas, or similar).
+          <strong>Required:</strong> Minimum 6 months brazing experience in AC/refrigeration manufacturing.
         </div>
         <div class="card-action">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Application%3A%20Copper%20Brazing%20Specialist" class="btn-action">Apply via Official Desk</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Copper%20Brazing%20Specialist" class="btn-action">Apply Now</a>
         </div>
       </div>
 
-      <!-- Job 3: Quality & Lab Testing -->
+      <!-- Job 3 -->
       <div class="job-card">
         <div class="job-header">
           <div>
@@ -156,17 +173,17 @@
           <span>🕒 8-Hour General/Rotational Shift</span>
         </div>
         <div class="job-desc">
-          Online quality inspection, helium leak testing checks, aesthetic defect verification, and maintaining daily production rejection logs.
+          Online quality inspection, helium leak testing checks, and maintaining daily production logs.
         </div>
         <div class="job-highlights">
-          <strong>Documentation:</strong> Basic knowledge of quality check sheets, vernier calipers, and standard measurement instruments required.
+          <strong>Required:</strong> Vernier calipers, standard gauges, and basic quality documentation knowledge.
         </div>
         <div class="card-action">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Application%3A%20Quality%20Inspector%20QC" class="btn-action">Apply via Official Desk</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Quality%20Inspector%20QC" class="btn-action">Apply Now</a>
         </div>
       </div>
 
-      <!-- Job 4: Moulding & Maintenance -->
+      <!-- Job 4 -->
       <div class="job-card">
         <div class="job-header">
           <div>
@@ -182,17 +199,17 @@
           <span>🕒 Rotational Shifts</span>
         </div>
         <div class="job-desc">
-          Plastic panel moulding machine operations, hopper raw material monitoring, flash trimming, and utility equipment monitoring (compressors/chillers).
+          Plastic panel moulding machine operations, hopper raw material monitoring, and utility plant maintenance.
         </div>
         <div class="job-highlights">
-          <strong>Experience:</strong> Freshers with ITI / CIPET or 1+ year plant experience welcome. ESI, PF, and shift allowance covered.
+          <strong>Experience:</strong> Freshers with CIPET / ITI or 1+ year plant experience welcome.
         </div>
         <div class="card-action">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Application%3A%20Moulding%20Utility%20Operator" class="btn-action">Apply via Official Desk</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Moulding%20Utility%20Operator" class="btn-action">Apply Now</a>
         </div>
       </div>
 
-      <!-- Job 5: Supply Chain, Logistics & Drivers -->
+      <!-- Job 5 -->
       <div class="job-card">
         <div class="job-header">
           <div>
@@ -208,17 +225,17 @@
           <span>🕒 Day / Night Shifts</span>
         </div>
         <div class="job-desc">
-          Finished goods dispatching, loading/unloading supervisory roles, plant transport drivers (Bus/Van/Truck with valid commercial batch), and inventory loading teams.
+          Finished goods dispatching, plant bus/van drivers (commercial batch), and warehouse inventory loading teams.
         </div>
         <div class="job-highlights">
-          <strong>Roles:</strong> Dispatch Assistants, Internal Tow-Motor/Forklift drivers, and corridor logistics staff.
+          <strong>Roles:</strong> Material dispatchers, internal tow-motor drivers, and loading staff.
         </div>
         <div class="card-action">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Application%3A%20Logistics%20and%20Drivers" class="btn-action">Apply via Official Desk</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Logistics%20and%20Drivers" class="btn-action">Apply Now</a>
         </div>
       </div>
 
-      <!-- Job 6: Plant Admin, Computer Operator & Facility Support -->
+      <!-- Job 6 -->
       <div class="job-card">
         <div class="job-header">
           <div>
@@ -234,13 +251,13 @@
           <span>🕒 General Office Hours</span>
         </div>
         <div class="job-desc">
-          Daily attendance punch record maintenance, gate pass generation, Excel data entry, canteen management supervision, and general facility housekeeping coordination.
+          Daily attendance punch records, gate pass generation, Excel data entry, and plant housekeeping coordination.
         </div>
         <div class="job-highlights">
-          <strong>Key Skills:</strong> Basic MS Excel knowledge for Computer Operators. Zero commission processing via Sri City Support Hub desk.
+          <strong>Key Skills:</strong> Basic MS Excel knowledge for Computer Operators.
         </div>
         <div class="card-action">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Application%3A%20Plant%20Support%20Admin" class="btn-action">Apply via Official Desk</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Plant%20Support%20Admin" class="btn-action">Apply Now</a>
         </div>
       </div>
 
@@ -250,7 +267,7 @@
   <footer>
     <p><strong>Sri City Support Hub</strong> — Official Regional Information Desk</p>
     <div style="margin-top: 0.6rem; font-size: 0.85rem;">
-      Official Desk: <a href="mailto:contact.sricityhub@gmail.com">contact.sricityhub@gmail.com</a>
+      Official Desk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
     </div>
   </footer>
 
