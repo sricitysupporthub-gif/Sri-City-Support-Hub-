@@ -112,10 +112,25 @@
     </div>
   </footer>
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
-  </script>
+ <script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => { 
+    navLinks.classList.toggle('active'); 
+  });
+
+  const buttons = document.querySelectorAll('.filter-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+    });
+  });
+ </script>
+  
+  
+  
 </body>
 </html>
