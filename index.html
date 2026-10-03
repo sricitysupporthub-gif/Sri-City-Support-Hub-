@@ -7,18 +7,16 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23065f46'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
-      --bg-ambient: #081a14;
-      --surface-glass: rgba(255, 255, 255, 0.94);
-      --surface-card: #ffffff;
+      --bg-overlay: rgba(6, 28, 20, 0.82);
+      --surface-glass: rgba(255, 255, 255, 0.92);
       --charcoal: #0f172a;
       --charcoal-hover: #1e293b;
       --emerald: #065f46;
       --emerald-accent: #10b981;
       --emerald-tint: #ecfdf5;
-      --emerald-border: #a7f3d0;
       --slate-muted: #64748b;
-      --border: #e2e8f0;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.06);
+      --border: rgba(226, 232, 240, 0.85);
+      --card-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.25);
     }
     * { 
       box-sizing: border-box; 
@@ -27,21 +25,27 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
     
-    /* Sri City Expressway Tree Avenue & Night Horizon Ambient */
+    /* Real Nature, Climate & Sri City Green Avenue Background */
     body { 
-      background: radial-gradient(circle at 50% 10%, #0d3829 0%, #081f17 40%, #04100c 100%);
+      background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                  url("https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1920&q=80");
+      background-size: cover;
+      background-position: center;
       background-attachment: fixed;
+      background-repeat: no-repeat;
       color: var(--charcoal); 
       line-height: 1.6; 
       min-height: 100vh;
     }
 
     header { 
-      background: rgba(255, 255, 255, 0.92); 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.94); 
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(226, 232, 240, 0.8); 
       position: sticky; 
       top: 0; 
@@ -53,23 +57,25 @@
     .nav-menu { display: flex; gap: 1rem; list-style: none; }
     .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
     .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: var(--emerald-tint); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
 
     .main-container { max-width: 980px; margin: auto; padding: 1.8rem 1.2rem; }
 
-    /* Digital Dashboard Board (Zero Point Live Metric Bar) */
+    /* Digital Dashboard Board (Zero Point Live Glow) */
     .zero-point-ticker {
-      background: rgba(10, 30, 22, 0.85);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      border-radius: 8px;
-      padding: 0.7rem 1.1rem;
-      margin-bottom: 1.5rem;
+      background: rgba(5, 30, 20, 0.88);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      border-radius: 10px;
+      padding: 0.75rem 1.2rem;
+      margin-bottom: 1.6rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 0.8rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .ticker-live {
       display: flex;
@@ -86,7 +92,7 @@
       height: 8px;
       background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
+      box-shadow: 0 0 10px #10b981;
     }
     .ticker-items {
       display: flex;
@@ -98,23 +104,22 @@
     }
     .ticker-item span { color: #a7f3d0; font-weight: 700; }
 
-    /* Hero Banner: Sri City Green Boulevard Theme */
+    /* Hero Banner: Glassmorphism over Real Nature */
     .hero-banner {
-      background: linear-gradient(135deg, rgba(6, 78, 59, 0.92) 0%, rgba(6, 95, 70, 0.85) 60%, rgba(15, 23, 42, 0.95) 100%), 
-                  url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, rgba(6, 78, 59, 0.88) 0%, rgba(6, 95, 70, 0.80) 55%, rgba(15, 23, 42, 0.90) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: #fff;
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       padding: 2.4rem 1.6rem;
       margin-bottom: 1.8rem;
-      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.4);
+      box-shadow: var(--card-shadow);
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(16, 185, 129, 0.22);
-      border: 1px solid rgba(110, 231, 183, 0.4);
+      background: rgba(16, 185, 129, 0.25);
+      border: 1px solid rgba(110, 231, 183, 0.45);
       color: #a7f3d0;
       font-size: 0.74rem;
       font-weight: 700;
@@ -135,48 +140,48 @@
       padding: 0.65rem 1.3rem;
       border-radius: 6px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
       transition: transform 0.15s ease;
     }
     .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.16);
       color: #ffffff;
       font-weight: 600;
       font-size: 0.85rem;
       padding: 0.65rem 1.3rem;
       border-radius: 6px;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
-    /* Key Corridor Stats Bar */
+    /* Ground-Level Practical Metrics */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0.8rem;
       background: var(--surface-glass);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.1rem;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
       text-align: center;
     }
     .stat-box h4 { font-size: 1.35rem; font-weight: 800; color: var(--emerald); }
-    .stat-box span { font-size: 0.72rem; font-weight: 700; color: #475569; text-transform: uppercase; }
+    .stat-box span { font-size: 0.72rem; font-weight: 700; color: #334155; text-transform: uppercase; }
 
-    /* Trust Box: Clean Emerald Accent */
+    /* Trust Policy Strip */
     .trust-box {
       background: var(--surface-glass);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-left: 4px solid var(--emerald);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-left: 5px solid var(--emerald);
       border-top: 1px solid var(--border);
       border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.4rem;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
@@ -184,18 +189,18 @@
     .trust-box h3 { font-size: 1.05rem; font-weight: 800; color: var(--emerald); margin-bottom: 0.3rem; }
     .trust-box p { font-size: 0.88rem; color: #334155; line-height: 1.55; }
 
-    /* Section Typography */
-    .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; color: #f8fafc; }
-    .section-desc { font-size: 0.88rem; color: #cbd5e1; margin-bottom: 1.4rem; }
+    /* Section Headings */
+    .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+    .section-desc { font-size: 0.88rem; color: #d1fae5; margin-bottom: 1.4rem; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
 
     /* Industrial Pillars Grid */
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
     .feature-card {
       background: var(--surface-glass);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      border-radius: 10px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 1.4rem;
       box-shadow: var(--card-shadow);
       display: flex;
@@ -215,8 +220,8 @@
     }
 
     footer { 
-      background: rgba(10, 25, 20, 0.95); 
-      border-top: 1px solid rgba(16, 185, 129, 0.2); 
+      background: rgba(5, 25, 18, 0.96); 
+      border-top: 1px solid rgba(16, 185, 129, 0.25); 
       padding: 2.5rem 1.2rem; 
       text-align: center; 
       font-size: 0.85rem; 
@@ -241,7 +246,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="jobs.html">Openings</a></li>
@@ -260,9 +265,9 @@
         Zero Point Junction Live Status
       </div>
       <div class="ticker-items">
-        <div>Corridor Climate: <span>Lush Green Eco-SEZ</span></div>
-        <div>Transit Highway: <span>NH16 Tada Flow Active</span></div>
-        <div>Support Desk: <span>100% Zero-Brokerage</span></div>
+        <div class="ticker-item">Corridor Climate: <span>Lush Green Eco-SEZ</span></div>
+        <div class="ticker-item">Transit Highway: <span>NH16 Tada Flow Active</span></div>
+        <div class="ticker-item">Support Desk: <span>100% Zero-Brokerage</span></div>
       </div>
     </div>
 
