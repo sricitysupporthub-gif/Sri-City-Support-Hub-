@@ -3,176 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Connect • Support • Grow</title>
+  <title>Sri City Support Hub | Home</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary: #15803d; --primary-dark: #166534; --primary-light: #f0fdf4;
-      --secondary: #0f172a; --text-main: #334155; --text-muted: #64748b;
-      --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0;
-      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --primary: #0077b6;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-muted: #64748b;
     }
-    body { font-family: var(--font-family); line-height: 1.6; color: var(--text-main); background-color: var(--bg-light); }
-    a { text-decoration: none; color: inherit; }
-    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 1.25rem; }
-    header { background-color: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; }
-    .brand-title { font-size: 1.25rem; font-weight: 700; color: var(--secondary); }
-    .brand-tagline { font-size: 0.75rem; font-weight: 600; color: var(--primary); text-transform: uppercase; }
-    .nav-links { display: flex; gap: 1.25rem; list-style: none; }
-    .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--secondary); }
-    .nav-links a.active { color: var(--primary); font-weight: 700; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+    header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
+    .brand { font-size: 1.2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+    .brand span { color: var(--secondary); }
+    .nav-menu { display: flex; gap: 1rem; list-style: none; }
+    .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; padding: 0.4rem 0.6rem; border-radius: 6px; }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--primary); background: #e0f2fe; }
     .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
-    .hero { background: linear-gradient(135deg, var(--white) 0%, #f1f5f9 100%); padding: 3.5rem 0 3rem; border-bottom: 1px solid var(--border); text-align: center; }
-    .badge { display: inline-block; padding: 0.35rem 0.75rem; background-color: var(--primary-light); color: var(--primary-dark); border: 1px solid #bbf7d0; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
-    .hero h1 { font-size: 2.1rem; font-weight: 800; color: var(--secondary); line-height: 1.25; margin-bottom: 1rem; }
-    .hero p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 750px; margin-left: auto; margin-right: auto; }
-    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; font-weight: 600; font-size: 0.95rem; border-radius: 6px; }
-    .btn-primary { background-color: var(--primary); color: var(--white); }
-    .btn-secondary { background-color: var(--white); color: var(--secondary); border: 1px solid var(--border); }
-    .btn-accent { background-color: #25d366; color: var(--white); }
-    section { padding: 3rem 0; }
-    .section-title { font-size: 1.5rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.35rem; }
-    .section-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-    .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
-    .job-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; }
-    .job-badge-demo { font-size: 0.7rem; font-weight: 700; background: #fef3c7; color: #92400e; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem; }
-    .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
-    .hub-card { background: var(--white); border: 1px solid var(--border); padding: 1.25rem 1rem; border-radius: 8px; text-align: center; }
-    .hub-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
-    .founder-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; }
-    @media (min-width: 768px) { .founder-card { flex-direction: row; align-items: center; } }
-    .founder-avatar { width: 75px; height: 75px; border-radius: 50%; background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--secondary); flex-shrink: 0; }
-    footer { background-color: var(--white); border-top: 1px solid var(--border); padding: 2.5rem 0 1.5rem; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
-    .copyright { border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+    
+    .hero { max-width: 1100px; margin: 2rem auto; padding: 2rem 1.2rem; text-align: center; }
+    .hero h1 { font-size: 2.2rem; color: var(--dark); margin-bottom: 0.8rem; }
+    .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; }
+    
+    .grid { max-width: 1100px; margin: 1rem auto 3rem; padding: 0 1.2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card-bg); padding: 1.8rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; }
+    .card:hover { border-color: var(--primary); }
+    .card h3 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1.3rem; }
+    .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; }
+    .card-btn { font-weight: 700; color: var(--secondary); font-size: 0.95rem; }
+
+    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 2rem 1.2rem; margin-top: auto; }
+    footer strong { color: #ffffff; }
+
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      .nav-links { display: none; flex-direction: column; width: 100%; padding-top: 1rem; }
-      .nav-links.show { display: flex; }
-      .nav-wrapper { flex-wrap: wrap; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 1.75rem; }
+      .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #ffffff; padding: 1rem 1.2rem; border-bottom: 1px solid #e2e8f0; }
+      .nav-menu.active { display: flex; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="container nav-wrapper">
-      <div>
-        <a href="index.html" class="brand-title">Sri City Support Hub</a><br>
-        <span class="brand-tagline">Connect • Support • Grow</span>
-      </div>
+    <div class="nav-container">
+      <a href="index.html" class="brand">SRI CITY <span>SUPPORT HUB</span></a>
       <button class="menu-toggle" id="menuBtn">☰</button>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-menu" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="jobs.html">Jobs & Career</a></li>
-        <li><a href="sricity-hub.html">Sri City Hub</a></li>
-        <li><a href="support.html">Support</a></li>
-        <li><a href="about.html">About Founder</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="sricityhub.html">Sri City Hub</a></li>
+        <li><a href="about.html">About & Founder</a></li>
       </ul>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <span class="badge">Sri City, Tada & Satyavedu Industrial Belt</span>
-      <h1>A Reliable Community Platform for Jobs, Living & Guidance</h1>
-      <p>Sri City Support Hub connects workers, job seekers, and residents with verified information, honest guidance, and essential local amenities—with zero fake claims.</p>
-      <div class="hero-buttons">
-        <a href="jobs.html" class="btn btn-primary">Find Jobs</a>
-        <a href="sricity-hub.html" class="btn btn-secondary">Sri City Hub</a>
-        <a href="https://wa.me/?text=Hello%20Sri%20City%20Support%20Hub" target="_blank" class="btn btn-accent">WhatsApp Support</a>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Connecting Talent & Local Support</h1>
+      <p>Sri City's dedicated community platform for industrial jobs, rooms, daily services, and local help.</p>
+    </section>
 
-  <section>
-    <div class="container">
-      <h2 class="section-title">Latest Verified Openings</h2>
-      <p class="section-desc">Sample openings format. We verify basic vacancy details before publishing.</p>
-      <div class="jobs-grid">
-        <div class="job-card">
-          <div>
-            <span class="job-badge-demo">Demo Listing</span>
-            <h3 style="font-size:1.1rem; color:var(--secondary); margin-bottom:0.35rem;">Assembly Line Associate</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Manufacturing • Sri City Sector 1 • 10th / 12th / ITI</p>
-          </div>
-          <a href="jobs.html" class="btn btn-secondary" style="font-size:0.85rem;">View Details</a>
-        </div>
-        <div class="job-card">
-          <div>
-            <span class="job-badge-demo">Demo Listing</span>
-            <h3 style="font-size:1.1rem; color:var(--secondary); margin-bottom:0.35rem;">Junior Electrical Technician</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Electronics Unit • Tada Rural • Diploma Electrical</p>
-          </div>
-          <a href="jobs.html" class="btn btn-secondary" style="font-size:0.85rem;">View Details</a>
-        </div>
-        <div class="job-card">
-          <div>
-            <span class="job-badge-demo">Demo Listing</span>
-            <h3 style="font-size:1.1rem; color:var(--secondary); margin-bottom:0.35rem;">Warehouse Inventory Assistant</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Logistics Hub • Satyavedu Area • Any Graduate</p>
-          </div>
-          <a href="jobs.html" class="btn btn-secondary" style="font-size:0.85rem;">View Details</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="background:var(--white); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-    <div class="container">
-      <h2 class="section-title">Sri City Essential Directory</h2>
-      <p class="section-desc">Practical local resources for individuals and families relocating to Tada and Sri City.</p>
-      <div class="hub-grid">
-        <a href="sricity-hub.html#transport" class="hub-card"><span class="hub-icon">🚌</span><strong>Transport</strong></a>
-        <a href="sricity-hub.html#food" class="hub-card"><span class="hub-icon">🍛</span><strong>Food & Mess</strong></a>
-        <a href="sricity-hub.html#rooms" class="hub-card"><span class="hub-icon">🏠</span><strong>Rooms & PG</strong></a>
-        <a href="sricity-hub.html" class="hub-card"><span class="hub-icon">📮</span><strong>Post Office</strong></a>
-        <a href="sricity-hub.html" class="hub-card"><span class="hub-icon">📍</span><strong>Nearby Places</strong></a>
-        <a href="sricity-hub.html" class="hub-card"><span class="hub-icon">🛠️</span><strong>Useful Services</strong></a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="founder-card">
-        <div class="founder-avatar">VY</div>
+    <section class="grid">
+      <a href="jobs.html" class="card">
         <div>
-          <h3 style="color:var(--secondary); font-size:1.2rem;">Vishnu Yadav</h3>
-          <span style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:0.5rem; display:block;">Founder, Sri City Support Hub</span>
-          <p style="font-size:0.95rem;">“Sri City aane wale har yuva aur worker ko sachhi jankari, bina kisi fees ke izzat ke sath milni chahiye. Ye platform usi bharose ke liye bana hai.”</p>
+          <h3>Job Vacancies</h3>
+          <p>Find technician, operator, ITI, and staff openings inside Sri City industrial zone.</p>
         </div>
-      </div>
-    </div>
-  </section>
+        <span class="card-btn">Explore Openings →</span>
+      </a>
+
+      <a href="sricityhub.html" class="card">
+        <div>
+          <h3>Sri City Local Hub</h3>
+          <p>Verified information on PG, room rentals, transport, helplines, and daily local services.</p>
+        </div>
+        <span class="card-btn">Check Local Info →</span>
+      </a>
+
+      <a href="about.html" class="card">
+        <div>
+          <h3>About & Founder</h3>
+          <p>Learn about Sri City Support Hub's mission and reach out directly to the founder.</p>
+        </div>
+        <span class="card-btn">Read Story →</span>
+      </a>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4 style="color:var(--secondary); margin-bottom:0.5rem;">Sri City Support Hub</h4>
-          <p style="font-size:0.85rem; color:var(--text-muted);">Connect • Support • Grow. A trusted grassroots community platform.</p>
-        </div>
-        <div>
-          <h5 style="color:var(--secondary); margin-bottom:0.5rem;">Navigation</h5>
-          <p style="font-size:0.85rem;"><a href="jobs.html">Jobs</a><br><a href="sricity-hub.html">Sri City Hub</a><br><a href="support.html">Support</a></p>
-        </div>
-        <div>
-          <h5 style="color:var(--secondary); margin-bottom:0.5rem;">Platform</h5>
-          <p style="font-size:0.85rem;"><a href="about.html">About Founder</a><br><a href="support.html">Report Fake Job</a></p>
-        </div>
-      </div>
-      <div class="copyright">&copy; Sri City Support Hub. All rights reserved.</div>
-    </div>
+    <p><strong>Sri City Support Hub</strong></p>
+    <p style="margin-top: 0.35rem; font-size: 0.85rem;">Together for a Better Tomorrow</p>
   </footer>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
   </script>
+
 </body>
 </html>
