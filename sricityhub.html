@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Industrial Corridor Directory</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23065f46'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sri City Support Hub | Industrial Directory & Maps</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
       --bg: #f8fafc;
       --surface: #ffffff;
       --charcoal: #0f172a;
       --charcoal-hover: #1e293b;
-      --forest-green: #065f46;
-      --forest-accent: #10b981;
-      --forest-tint: #ecfdf5;
       --slate-muted: #64748b;
+      --slate-light: #f1f5f9;
       --border: #e2e8f0;
-      --card-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+      --card-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
+      --accent-green: #059669;
+      --accent-green-bg: #ecfdf5;
+      --accent-green-border: #a7f3d0;
     }
     * { 
       box-sizing: border-box; 
@@ -24,90 +25,94 @@
       padding: 0; 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
       -webkit-tap-highlight-color: transparent; 
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
     body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
     .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
     .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: var(--forest-accent); border-radius: 2px; }
+    .brand-mark { width: 10px; height: 10px; background: var(--charcoal); border-radius: 2px; }
     .nav-menu { display: flex; gap: 1rem; list-style: none; }
     .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--bg); }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--slate-light); }
     .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
 
-    .main-container { max-width: 980px; margin: auto; padding: 1.6rem 1.2rem; }
+    .main-container { max-width: 980px; margin: auto; padding: 1.8rem 1.2rem; }
     
-    .eco-hero {
-      background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
-      color: #ffffff;
+    .light-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 2rem 1.4rem;
-      margin-bottom: 1.6rem;
-      box-shadow: 0 10px 25px -5px rgba(6, 95, 70, 0.25);
+      padding: 2rem 1.5rem;
+      margin-bottom: 1.8rem;
+      box-shadow: var(--card-shadow);
     }
-    .eco-badge {
+    .hero-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.18);
-      color: #a7f3d0;
-      font-size: 0.72rem;
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       padding: 0.25rem 0.65rem;
-      border-radius: 20px;
+      border-radius: 4px;
       margin-bottom: 0.8rem;
     }
-    .eco-hero h1 { font-size: 1.65rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.5rem; }
-    .eco-hero p { font-size: 0.92rem; color: #d1fae5; line-height: 1.5; max-width: 680px; }
+    .light-hero h1 { font-size: 1.65rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.5rem; color: var(--charcoal); }
+    .light-hero p { font-size: 0.92rem; color: var(--slate-muted); line-height: 1.55; max-width: 720px; }
 
-    /* Key Corridor Stats Bar - Ground Focus */
+    /* Clean Metrics Strip */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0.8rem;
       background: #fff;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 1rem;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
       text-align: center;
     }
-    .stat-box h4 { font-size: 1.25rem; font-weight: 800; color: var(--forest-green); }
+    .stat-box h4 { font-size: 1.3rem; font-weight: 800; color: var(--charcoal); }
     .stat-box span { font-size: 0.72rem; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; }
 
     .directory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.3rem; margin-bottom: 2rem; }
-    .hub-box { border: 1px solid var(--border); border-radius: 10px; padding: 1.3rem; background: var(--surface); box-shadow: var(--card-shadow); }
+    .hub-box { border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; background: var(--surface); box-shadow: var(--card-shadow); }
     .hub-box h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 6px; }
-    .hub-box p { font-size: 0.86rem; color: #475569; margin-bottom: 0.9rem; line-height: 1.45; }
+    .hub-box p { font-size: 0.86rem; color: var(--slate-muted); margin-bottom: 1rem; line-height: 1.45; }
     
-    .hub-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .hub-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; }
     .hub-tag {
-      display: inline-block;
-      font-size: 0.76rem;
-      background: #f1f5f9;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      background: var(--slate-light);
       color: #1e293b;
       border: 1px solid #cbd5e1;
-      padding: 0.35rem 0.75rem;
+      padding: 0.45rem 0.8rem;
       border-radius: 6px;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      user-select: none;
-      -webkit-user-select: none;
+      touch-action: manipulation;
     }
     .hub-tag:hover, .hub-tag:active {
       background: var(--charcoal);
       color: #ffffff;
       border-color: var(--charcoal);
     }
-    .transit-tag { background: var(--forest-tint); border-color: #a7f3d0; color: var(--forest-green); }
-    .transit-tag:hover, .transit-tag:active { background: var(--forest-green); color: #fff; border-color: var(--forest-green); }
+    .transit-tag { background: var(--accent-green-bg); border-color: var(--accent-green-border); color: var(--accent-green); }
+    .transit-tag:hover, .transit-tag:active { background: var(--accent-green); color: #fff; border-color: var(--accent-green); }
 
-    .support-banner { background: #0f172a; color: #fff; border-radius: 10px; padding: 1.8rem 1.4rem; margin-top: 2rem; }
+    .support-banner { background: var(--charcoal); color: #fff; border-radius: 10px; padding: 1.8rem 1.4rem; margin-top: 2rem; }
     .support-banner h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
     .support-banner p { font-size: 0.88rem; color: #94a3b8; margin-bottom: 1.2rem; }
-    .support-banner a { display: inline-block; background: #fff; color: #0f172a; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.3rem; border-radius: 6px; text-decoration: none; }
+    .support-banner a { display: inline-block; background: #fff; color: var(--charcoal); font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.3rem; border-radius: 6px; text-decoration: none; }
 
     footer { border-top: 1px solid var(--border); padding: 2.5rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3rem; background: #fff; }
     footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
@@ -117,7 +122,6 @@
       .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
       .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .eco-hero h1 { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -138,13 +142,13 @@
 
   <main class="main-container">
     
-    <div class="eco-hero">
-      <span class="eco-badge">🌿 8,500+ Acre Eco-Smart Industrial Hub</span>
+    <div class="light-hero">
+      <span class="hero-badge">Verified Regional Logistics & Plant Directory</span>
       <h1>Sri City Industrial Corridor Directory</h1>
-      <p>A planned green manufacturing destination connecting global technology plants, worker transit logistics, and direct industrial welfare across Andhra Pradesh & Chennai gateway.</p>
+      <p>Direct Google Maps navigation for manufacturing plants, Tada-Gummidipoondi worker transit junctions, and verified support amenities across Tada and Sri City SEZ.</p>
     </div>
 
-    <!-- Official Live Metrics: Ground Practical -->
+    <!-- Official Ground Stats -->
     <div class="stats-strip">
       <div class="stat-box">
         <h4>250+</h4>
@@ -156,7 +160,7 @@
       </div>
       <div class="stat-box">
         <h4>15+</h4>
-        <span>Worker Transit Routes</span>
+        <span>Daily Bus Routes</span>
       </div>
       <div class="stat-box">
         <h4>₹0</h4>
@@ -165,93 +169,82 @@
     </div>
 
     <div class="directory-grid">
-      <!-- HVAC & Consumer Electronics -->
+      <!-- HVAC & Consumer Electronics (Working Map Links) -->
       <div class="hub-box">
         <h3>❄️ HVAC & Electronics Manufacturing</h3>
-        <p>India's leading air conditioning & cooling tech cluster with end-to-end assembly, brazing, and testing facilities.</p>
+        <p>Direct plant navigation and cluster desks for air conditioning and component manufacturing units.</p>
         <div class="hub-tags">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Blue%20Star%20Cluster" class="hub-tag">Blue Star Tech</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Daikin%20Cluster" class="hub-tag">Daikin</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Panasonic%20Cluster" class="hub-tag">Panasonic</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Amber%20Group%20Cluster" class="hub-tag">Amber Group</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Havells%20Lloyd" class="hub-tag">Havells Lloyd</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20EPACK%20Cluster" class="hub-tag">EPACK Durable</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Carrier%20Cluster" class="hub-tag">Carrier</a>
+          <a href="https://maps.google.com/?q=Blue+Star+Climatech+Sri+City" target="_blank" class="hub-tag">📍 Blue Star Tech</a>
+          <a href="https://maps.google.com/?q=Daikin+Airconditioning+Sri+City" target="_blank" class="hub-tag">📍 Daikin</a>
+          <a href="https://maps.google.com/?q=Panasonic+Life+Solutions+Sri+City" target="_blank" class="hub-tag">📍 Panasonic</a>
+          <a href="https://maps.google.com/?q=Havells+India+Sri+City" target="_blank" class="hub-tag">📍 Havells Lloyd</a>
+          <a href="https://maps.google.com/?q=EPACK+Durable+Sri+City" target="_blank" class="hub-tag">📍 EPACK Durable</a>
         </div>
       </div>
 
-      <!-- Automotive & Rail Transport -->
+      <!-- Automotive & Mobility (Working Map Links) -->
       <div class="hub-box">
-        <h3>⚙️ Automotive, Rail & Precision Units</h3>
-        <p>Global heavy automotive assembly lines, metro coach manufacturing, hydraulics, and robotic toolings.</p>
+        <h3>⚙️ Automotive & Precision Units</h3>
+        <p>Heavy mobility assembly lines, coach manufacturing, and engineering plants.</p>
         <div class="hub-tags">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Isuzu%20Motors" class="hub-tag">Isuzu Motors</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Alstom%20Metro%20Train" class="hub-tag">Alstom Metro Coaches</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Kobelco%20Machinery" class="hub-tag">Kobelco Cranes</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20NS%20Instruments" class="hub-tag">NS Instruments</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20NHK%20Springs" class="hub-tag">NHK Springs</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Tata%20Toyo" class="hub-tag">Tata Toyo</a>
+          <a href="https://maps.google.com/?q=Isuzu+Motors+India+Sri+City" target="_blank" class="hub-tag">📍 Isuzu Motors</a>
+          <a href="https://maps.google.com/?q=Alstom+Transport+India+Sri+City" target="_blank" class="hub-tag">📍 Alstom Metro Coach</a>
+          <a href="https://maps.google.com/?q=Kobelco+Cranes+India+Sri+City" target="_blank" class="hub-tag">📍 Kobelco Machinery</a>
+          <a href="https://maps.google.com/?q=NHK+Spring+India+Sri+City" target="_blank" class="hub-tag">📍 NHK Springs</a>
         </div>
       </div>
 
-      <!-- Food, Confectionery & Pharma -->
+      <!-- FMCG & Confectionery (Working Map Links) -->
       <div class="hub-box">
-        <h3>🍫 FMCG, Food & Health Science</h3>
-        <p>Asia's largest clean confectionery, cereal manufacturing, and medical packaging facilities.</p>
+        <h3>🍫 FMCG & Health Science</h3>
+        <p>Food processing, confectionery, and hygiene product plants.</p>
         <div class="hub-tags">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Mondelez%20Cadbury" class="hub-tag">Mondelez (Cadbury)</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Kelloggs" class="hub-tag">Kellogg's</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Unicharm" class="hub-tag">Unicharm</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Colgate" class="hub-tag">Colgate-Palmolive</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20West%20Pharma" class="hub-tag">West Pharma</a>
+          <a href="https://maps.google.com/?q=Mondelez+India+Foods+Sri+City" target="_blank" class="hub-tag">📍 Mondelez (Cadbury)</a>
+          <a href="https://maps.google.com/?q=Kellogg+India+Sri+City" target="_blank" class="hub-tag">📍 Kellogg's</a>
+          <a href="https://maps.google.com/?q=Colgate+Palmolive+Sri+City" target="_blank" class="hub-tag">📍 Colgate-Palmolive</a>
         </div>
       </div>
 
-      <!-- Transit Corridors & Chennai Border -->
+      <!-- Transit Routes & Google Maps Links (Active Map Coordinates) -->
       <div class="hub-box">
-        <h3>🚌 Transit Routes & Chennai Connections</h3>
-        <p>Plant transport routes, shift buses, suburban rail link points, and logistics boarding zones.</p>
+        <h3>🚌 Transit Routes & Chennai Border (Maps)</h3>
+        <p>Tap any transit point to open instant bus stop and junction navigation in Google Maps.</p>
         <div class="hub-tags">
-          <span class="hub-tag transit-tag">Tada Checkpost</span>
-          <span class="hub-tag transit-tag">Chennai (Gummidipoondi)</span>
-          <span class="hub-tag transit-tag">Chennai (Red Hills / Koyambedu)</span>
-          <span class="hub-tag transit-tag">Naidupeta Junction</span>
-          <span class="hub-tag transit-tag">Ponneri Connect</span>
-          <span class="hub-tag transit-tag">Srikalahasti Route</span>
-          <span class="hub-tag transit-tag">Sullurpeta Station</span>
-          <span class="hub-tag transit-tag">Mallam / Satyavedu</span>
+          <a href="https://maps.google.com/?q=Tada+Bus+Stop+Andhra+Pradesh" target="_blank" class="hub-tag transit-tag">🗺️ Tada Checkpost / Bus Stand</a>
+          <a href="https://maps.google.com/?q=Gummidipoondi+Railway+Station+Tamil+Nadu" target="_blank" class="hub-tag transit-tag">🗺️ Chennai (Gummidipoondi)</a>
+          <a href="https://maps.google.com/?q=Red+Hills+Bus+Terminus+Chennai" target="_blank" class="hub-tag transit-tag">🗺️ Chennai (Red Hills Route)</a>
+          <a href="https://maps.google.com/?q=Naidupeta+RTC+Bus+Stand" target="_blank" class="hub-tag transit-tag">🗺️ Naidupeta Junction</a>
+          <a href="https://maps.google.com/?q=Sullurpeta+Railway+Station" target="_blank" class="hub-tag transit-tag">🗺️ Sullurpeta Station</a>
+          <a href="https://maps.google.com/?q=Srikalahasti+Bus+Stand" target="_blank" class="hub-tag transit-tag">🗺️ Srikalahasti Corridor</a>
         </div>
       </div>
 
-      <!-- Accommodation & Industrial Living -->
+      <!-- Residential & Accommodation (Working Map Links) -->
       <div class="hub-box">
         <h3>🏠 Residential & Industrial Housing</h3>
-        <p>Verified rental PG clusters, bachelor hostels, and accommodation areas for technical workforce.</p>
+        <p>Worker accommodation zones and rental PG clusters across Tada and border regions.</p>
         <div class="hub-tags">
-          <span class="hub-tag">Tada Residential Cluster</span>
-          <span class="hub-tag">Arambakkam Fringe</span>
-          <span class="hub-tag">Gummidipoondi Border Zone</span>
-          <span class="hub-tag">Mambattu Sector</span>
-          <span class="hub-tag">Satyavedu Corridor</span>
+          <a href="https://maps.google.com/?q=Tada+Andhra+Pradesh" target="_blank" class="hub-tag">📍 Tada Town Cluster</a>
+          <a href="https://maps.google.com/?q=Arambakkam+Tamil+Nadu" target="_blank" class="hub-tag">📍 Arambakkam Border</a>
+          <a href="https://maps.google.com/?q=Satyavedu+Andhra+Pradesh" target="_blank" class="hub-tag">📍 Satyavedu Sector</a>
         </div>
       </div>
 
-      <!-- Emergency, Medical & ESIC Desk -->
+      <!-- Emergency Medical Links (Working Map Links) -->
       <div class="hub-box">
         <h3>🏥 Emergency, Clinic & Safety</h3>
-        <p>Round-the-clock emergency medical links, ESIC utility desks, and industrial safety points.</p>
+        <p>Immediate medical clinic, ESIC coordinator desk, and emergency support links.</p>
         <div class="hub-tags">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Emergency%20Medical%20Help" class="hub-tag" style="background:#fef2f2; border-color:#fecaca; color:#b91c1c;">Sri City Care Clinic</a>
-          <span class="hub-tag">ESIC Corridor Desk</span>
-          <span class="hub-tag">24x7 Ambulance Coordination</span>
-          <span class="hub-tag">SEZ Fire Safety Station</span>
+          <a href="https://maps.google.com/?q=Sri+City+Care+Hospital" target="_blank" class="hub-tag" style="background:#fef2f2; border-color:#fecaca; color:#b91c1c;">📍 Sri City Clinic & Emergency</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Emergency%20ESIC%20Assistance" class="hub-tag">📩 ESIC Corridor Desk</a>
         </div>
       </div>
     </div>
 
+    <!-- Direct Official Desk -->
     <div class="support-banner">
       <h2>Need Ground Verification or Direct Plant Routing?</h2>
-      <p>Sri City Support Hub operates a zero-brokerage helpdesk for workers, technicians, and transit assistance.</p>
+      <p>Sri City Support Hub operates a 100% zero-brokerage desk for technical workforce and transit coordination.</p>
       <a href="mailto:sricitysupporthub@gmail.com?subject=Ground%20Support%20Enquiry">Connect with Official Desk</a>
     </div>
   </main>
