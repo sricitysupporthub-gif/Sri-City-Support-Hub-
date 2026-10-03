@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Sri City Support Hub | Industrial Ecosystem & Career Desk</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23065f46'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
-      --bg-overlay: rgba(6, 28, 20, 0.82);
-      --surface-glass: rgba(255, 255, 255, 0.92);
+      --bg: #f8fafc;
+      --surface: #ffffff;
       --charcoal: #0f172a;
       --charcoal-hover: #1e293b;
       --emerald: #065f46;
       --emerald-accent: #10b981;
       --emerald-tint: #ecfdf5;
       --slate-muted: #64748b;
-      --border: rgba(226, 232, 240, 0.85);
-      --card-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.25);
+      --border: #e2e8f0;
+      --card-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
     }
     * { 
       box-sizing: border-box; 
@@ -28,44 +28,24 @@
       -webkit-user-select: none;
       user-select: none;
     }
-    
-    /* Real Nature, Climate & Sri City Green Avenue Background */
-    body { 
-      background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
-                  url("https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1920&q=80");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: var(--charcoal); 
-      line-height: 1.6; 
-      min-height: 100vh;
-    }
-
-    header { 
-      background: rgba(255, 255, 255, 0.94); 
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8); 
-      position: sticky; 
-      top: 0; 
-      z-index: 100; 
-    }
+    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
+    header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
     .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
     .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: var(--emerald-accent); border-radius: 2px; }
+    .brand-mark { width: 10px; height: 10px; background: var(--emerald); border-radius: 2px; }
     .nav-menu { display: flex; gap: 1rem; list-style: none; }
     .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
     .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: var(--emerald-tint); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
 
     .main-container { max-width: 980px; margin: auto; padding: 1.8rem 1.2rem; }
 
-    /* Digital Dashboard Board (Zero Point Live Glow) */
+    /* Light Clean Zero Point Ticker */
     .zero-point-ticker {
-      background: rgba(5, 30, 20, 0.88);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--emerald);
+      border-radius: 8px;
       padding: 0.75rem 1.2rem;
       margin-bottom: 1.6rem;
       display: flex;
@@ -73,9 +53,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.8rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--card-shadow);
     }
     .ticker-live {
       display: flex;
@@ -83,45 +61,40 @@
       gap: 8px;
       font-size: 0.78rem;
       font-weight: 800;
-      color: #6ee7b7;
+      color: var(--emerald);
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
     .pulse-dot {
       width: 8px;
       height: 8px;
-      background: #10b981;
+      background: var(--emerald-accent);
       border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
     }
     .ticker-items {
       display: flex;
       gap: 1.2rem;
       flex-wrap: wrap;
       font-size: 0.78rem;
-      color: #e2e8f0;
+      color: var(--slate-muted);
       font-weight: 600;
     }
-    .ticker-item span { color: #a7f3d0; font-weight: 700; }
+    .ticker-item span { color: var(--charcoal); font-weight: 700; }
 
-    /* Hero Banner: Glassmorphism over Real Nature */
+    /* Standard Hero Banner */
     .hero-banner {
-      background: linear-gradient(135deg, rgba(6, 78, 59, 0.88) 0%, rgba(6, 95, 70, 0.80) 55%, rgba(15, 23, 42, 0.90) 100%);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 55%, #0f172a 100%);
       color: #fff;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 12px;
       padding: 2.4rem 1.6rem;
-      margin-bottom: 1.8rem;
-      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 28px -6px rgba(6, 78, 59, 0.25);
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(16, 185, 129, 0.25);
-      border: 1px solid rgba(110, 231, 183, 0.45);
+      background: rgba(255, 255, 255, 0.16);
       color: #a7f3d0;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.8px;
       text-transform: uppercase;
@@ -130,85 +103,75 @@
       margin-bottom: 1rem;
     }
     .hero-banner h1 { font-size: 1.85rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.8rem; }
-    .hero-banner p { font-size: 0.95rem; color: #d1fae5; line-height: 1.6; max-width: 680px; margin-bottom: 1.6rem; }
+    .hero-banner p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.55; max-width: 680px; margin-bottom: 1.6rem; }
     .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
     .btn-hero-primary {
       background: #ffffff;
       color: var(--emerald);
       font-weight: 700;
       font-size: 0.85rem;
-      padding: 0.65rem 1.3rem;
+      padding: 0.6rem 1.3rem;
       border-radius: 6px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-      transition: transform 0.15s ease;
     }
     .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.12);
       color: #ffffff;
       font-weight: 600;
       font-size: 0.85rem;
-      padding: 0.65rem 1.3rem;
+      padding: 0.6rem 1.3rem;
       border-radius: 6px;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* Ground-Level Practical Metrics */
+    /* Key Corridor Stats Bar */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0.8rem;
-      background: var(--surface-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: #fff;
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 1.1rem;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
       text-align: center;
     }
     .stat-box h4 { font-size: 1.35rem; font-weight: 800; color: var(--emerald); }
-    .stat-box span { font-size: 0.72rem; font-weight: 700; color: #334155; text-transform: uppercase; }
+    .stat-box span { font-size: 0.72rem; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; }
 
-    /* Trust Policy Strip */
+    /* Trust Box */
     .trust-box {
-      background: var(--surface-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-left: 5px solid var(--emerald);
+      background: var(--surface);
+      border-left: 4px solid var(--emerald);
       border-top: 1px solid var(--border);
       border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.4rem;
+      border-radius: 8px;
+      padding: 1.3rem;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
     }
     .trust-box h3 { font-size: 1.05rem; font-weight: 800; color: var(--emerald); margin-bottom: 0.3rem; }
     .trust-box p { font-size: 0.88rem; color: #334155; line-height: 1.55; }
 
-    /* Section Headings */
-    .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
-    .section-desc { font-size: 0.88rem; color: #d1fae5; margin-bottom: 1.4rem; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+    .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; color: var(--charcoal); }
+    .section-desc { font-size: 0.88rem; color: var(--slate-muted); margin-bottom: 1.4rem; }
 
-    /* Industrial Pillars Grid */
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
     .feature-card {
-      background: var(--surface-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 1.4rem;
       box-shadow: var(--card-shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; color: var(--charcoal); }
-    .feature-card p { font-size: 0.86rem; color: #475569; margin-bottom: 1.1rem; line-height: 1.5; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+    .feature-card p { font-size: 0.86rem; color: #475569; margin-bottom: 1rem; line-height: 1.5; }
     .feature-card a {
       font-size: 0.82rem;
       font-weight: 700;
@@ -219,16 +182,8 @@
       gap: 4px;
     }
 
-    footer { 
-      background: rgba(5, 25, 18, 0.96); 
-      border-top: 1px solid rgba(16, 185, 129, 0.25); 
-      padding: 2.5rem 1.2rem; 
-      text-align: center; 
-      font-size: 0.85rem; 
-      color: #94a3b8; 
-      margin-top: 3.5rem; 
-    }
-    footer a { color: #6ee7b7; font-weight: 600; text-decoration: none; }
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3.5rem; background: #fff; }
+    footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
@@ -246,7 +201,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+      <button class="menu-toggle" id="menuToggle">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="jobs.html">Openings</a></li>
@@ -271,7 +226,6 @@
       </div>
     </div>
 
-    <!-- Hero Banner with Tree Boulevard & Clean Expressway Theme -->
     <div class="hero-banner">
       <span class="hero-badge">🌿 8,500+ Acre Eco-Smart Industrial Hub</span>
       <h1>Empowering Workers & Industry in Tada – Sri City Corridor</h1>
@@ -282,7 +236,7 @@
       </div>
     </div>
 
-    <!-- Ground Level Live Metrics -->
+    <!-- Official Live Metrics -->
     <div class="stats-strip">
       <div class="stat-box">
         <h4>250+</h4>
@@ -302,13 +256,11 @@
       </div>
     </div>
 
-    <!-- Zero Brokerage Policy Strip -->
     <div class="trust-box">
-      <h3>🛡️ 100% Zero-Brokerage Policy</h3>
+      <h3>🛡️️ 100% Zero-Brokerage Policy</h3>
       <p>Sri City Support Hub operates independently for regional welfare and industrial growth. Candidates are never charged registration or placement fees. All interview facilitation is strictly direct with authorized plant personnel.</p>
     </div>
 
-    <!-- Core Industrial Pillars -->
     <div class="section-title">Industrial Infrastructure & Services</div>
     <div class="section-desc">Connecting manufacturing talent with verified industrial clusters.</div>
 
