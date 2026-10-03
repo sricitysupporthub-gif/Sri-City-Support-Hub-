@@ -3,78 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Leadership & Community Team</title>
+  <title>Sri City Support Hub | Leadership & Team</title>
   <style>
     :root {
-      --primary: #0077b6;
-      --primary-dark: #023e8a;
-      --secondary: #10b981;
-      --accent: #059669;
-      --dark: #0f172a;
-      --slate: #334155;
-      --light-bg: #f8fafc;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      --bg: #ffffff;
+      --charcoal: #111827;
+      --charcoal-hover: #1f2937;
+      --slate-muted: #64748b;
+      --slate-light: #f8fafc;
+      --border: #e5e7eb;
+      --card-shadow: 0 4px 12px -2px rgba(17, 24, 39, 0.05);
+      --card-shadow-hover: 0 10px 20px -3px rgba(17, 24, 39, 0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--light-bg); color: var(--dark); line-height: 1.6; }
+    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
     
-    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
-    .brand { font-size: 1.2rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
-    .brand span { color: var(--secondary); }
-    .nav-menu { display: flex; gap: 1rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; padding: 0.45rem 0.8rem; border-radius: 6px; transition: all 0.2s; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--primary); background: #e0f2fe; }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 960px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.2rem; }
+    .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 0.5rem; }
+    .brand-mark { width: 10px; height: 10px; background: var(--charcoal); border-radius: 2px; }
+    .nav-menu { display: flex; gap: 0.6rem; list-style: none; }
+    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-weight: 600; font-size: 0.9rem; padding: 0.4rem 0.75rem; border-radius: 6px; }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--slate-light); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
 
-    .hero-banner { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 3rem 1.2rem; text-align: center; border-bottom: 4px solid var(--secondary); }
-    .hero-banner h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.6rem; }
-    .hero-banner p { color: #94a3b8; font-size: 1.05rem; max-width: 650px; margin: auto; }
+    .page-head { max-width: 960px; margin: 2.5rem auto 1.8rem; padding: 0 1.2rem; }
+    .page-head h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+    .page-head p { color: var(--slate-muted); font-size: 0.95rem; margin-top: 0.3rem; }
 
-    .container { max-width: 1100px; margin: -2rem auto 4rem; padding: 0 1.2rem; }
+    .container { max-width: 960px; margin: 0 auto 4rem; padding: 0 1.2rem; }
 
     /* Founder Card */
-    .founder-card { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-md); padding: 2.2rem; display: flex; gap: 2rem; align-items: center; margin-bottom: 3rem; }
-    .founder-avatar { width: 110px; height: 110px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: #fff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
-    .founder-info h2 { font-size: 1.6rem; color: var(--dark); margin-bottom: 0.2rem; }
-    .founder-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: #ecfdf5; color: var(--accent); font-weight: 700; font-size: 0.82rem; padding: 0.25rem 0.7rem; border-radius: 20px; border: 1px solid #a7f3d0; margin-bottom: 0.8rem; }
-    .founder-desc { color: var(--slate); font-size: 0.98rem; margin-bottom: 1.2rem; line-height: 1.6; }
-    .contact-action-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: #25d366; color: #ffffff; text-decoration: none; padding: 0.55rem 1.3rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(37, 211, 102, 0.25); }
+    .founder-card { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 2rem; box-shadow: var(--card-shadow); display: flex; gap: 1.8rem; align-items: center; margin-bottom: 3rem; }
+    .founder-avatar { width: 90px; height: 90px; border-radius: 12px; background: var(--charcoal); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .founder-avatar svg { width: 44px; height: 44px; stroke: #ffffff; }
+    .founder-info h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .role-badge { display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--slate-light); border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--charcoal); margin-bottom: 0.8rem; }
+    .founder-desc { font-size: 0.92rem; color: #4b5563; line-height: 1.6; margin-bottom: 1.2rem; }
+    .btn-connect { display: inline-block; background: var(--charcoal); color: #ffffff; text-decoration: none; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; }
+    .btn-connect:hover { background: var(--charcoal-hover); }
 
-    /* Team Section */
-    .section-title { text-align: center; margin-bottom: 2rem; }
-    .section-title h2 { font-size: 1.8rem; color: var(--dark); margin-bottom: 0.4rem; }
-    .section-title p { color: #64748b; font-size: 0.95rem; }
-
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-    .team-card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); padding: 1.6rem; text-align: center; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
-    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary); }
-    .team-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
-    .member-icon { width: 65px; height: 65px; border-radius: 50%; background: #e0f2fe; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.7rem; margin: 0 auto 1rem; }
-    .team-card h3 { font-size: 1.15rem; color: var(--dark); margin-bottom: 0.2rem; }
-    .member-role { color: var(--accent); font-weight: 600; font-size: 0.85rem; margin-bottom: 0.8rem; display: block; }
-    .member-dept { font-size: 0.82rem; color: #64748b; line-height: 1.4; margin-bottom: 1rem; }
-    .member-btn { display: inline-block; width: 100%; border: 1px solid #cbd5e1; color: var(--slate); padding: 0.4rem 0; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
-    .member-btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+    /* Team Grid */
+    .team-heading { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 0.3rem; }
+    .team-sub { font-size: 0.9rem; color: var(--slate-muted); margin-bottom: 1.5rem; }
+    
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 3.5rem; }
+    .team-card { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; text-align: left; box-shadow: var(--card-shadow); transition: all 0.2s ease; }
+    .team-card:hover { border-color: var(--charcoal); transform: translateY(-3px); }
+    .team-icon-box { width: 38px; height: 38px; border-radius: 6px; background: var(--slate-light); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
+    .team-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.2rem; }
+    .team-role { font-size: 0.78rem; font-weight: 700; color: var(--slate-muted); text-transform: uppercase; letter-spacing: 0.3px; display: block; margin-bottom: 0.6rem; }
+    .team-desc { font-size: 0.85rem; color: #4b5563; line-height: 1.45; }
 
     /* Mission Box */
-    .mission-card { background: #ffffff; border-radius: 12px; border: 1px solid var(--border); padding: 2rem; margin-top: 3rem; }
-    .mission-card h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 0.6rem; }
-    .mission-card p { color: var(--slate); font-size: 0.95rem; }
+    .mission-box { background: var(--slate-light); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; }
+    .mission-box h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .mission-box p { font-size: 0.9rem; color: #4b5563; line-height: 1.6; }
 
-    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 2.2rem 1.2rem; margin-top: 4rem; }
-    footer strong { color: #ffffff; }
+    footer { border-top: 1px solid var(--border); color: var(--slate-muted); text-align: center; padding: 2.5rem 1.2rem; font-size: 0.85rem; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #ffffff; padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
-      .founder-card { flex-direction: column; text-align: center; }
-      .founder-badge { margin: 0.5rem auto 1rem; }
-      .contact-action-btn { justify-content: center; }
+      .founder-card { flex-direction: column; align-items: flex-start; text-align: left; }
+      .btn-connect { width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -82,94 +75,98 @@
 
   <header>
     <div class="nav-container">
-      <a href="index.html" class="brand">SRI CITY <span>SUPPORT HUB</span></a>
+      <a href="index.html" class="brand">
+        <span class="brand-mark"></span>
+        SRI CITY SUPPORT HUB
+      </a>
       <button class="menu-toggle" id="menuBtn">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="jobs.html">Jobs</a></li>
         <li><a href="sricityhub.html">Sri City Hub</a></li>
-        <li><a href="about.html" class="active">Leadership & Team</a></li>
+        <li><a href="about.html" class="active">About & Leadership</a></li>
       </ul>
     </div>
   </header>
 
-  <div class="hero-banner">
-    <h1>Our Leadership & Community Pillars</h1>
-    <p>The dedicated team working behind Sri City Support Hub to empower local residents, job seekers, and industrial staff.</p>
+  <div class="page-head">
+    <h1>Platform Leadership</h1>
+    <p>The ground coordination team and vision powering Sri City Support Hub.</p>
   </div>
 
   <main class="container">
     
-    <!-- Founder Profile Section -->
+    <!-- Founder Card -->
     <div class="founder-card">
-      <div class="founder-avatar">👤</div>
+      <div class="founder-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </div>
       <div class="founder-info">
         <h2>Vishnu Yadav</h2>
-        <div class="founder-badge">✔ Founder & Chief Community Lead</div>
+        <span class="role-badge">Founder & Lead Coordinator</span>
         <p class="founder-desc">
-          Building a trusted, verified ecosystem for Sri City and Tada. Dedicated to bridging local talent with industrial opportunities, transparent accommodation assistance, and 24/7 worker support.
+          Committed to building a verified, community-first digital ecosystem for Sri City and Tada. Overseeing ground verification of plant vacancies, resident accommodation records, and worker assistance initiatives.
         </p>
-        <a href="https://wa.me/" target="_blank" class="contact-action-btn">
-          💬 Connect on WhatsApp Desk
-        </a>
+        <a href="https://wa.me/" target="_blank" class="btn-connect">Connect with Desk</a>
       </div>
     </div>
 
-    <!-- Core Team / Friends Support Grid -->
-    <div class="section-title">
-      <h2>Core Support Team</h2>
-      <p>Our ground-level partners helping coordinate operations, job alerts, and community services.</p>
-    </div>
+    <!-- Core Support Team / Friends Representation -->
+    <div class="team-heading">Core Support Team</div>
+    <div class="team-sub">Regional representatives managing ground desks and community verifications.</div>
 
     <div class="team-grid">
       <!-- Member 1 -->
       <div class="team-card">
-        <div class="member-icon">👷</div>
+        <div class="team-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
         <h3>Team Member 1</h3>
-        <span class="member-role">Job Verification Lead</span>
-        <p class="member-dept">Coordinating industrial openings, ITI verification & HR vacancy updates.</p>
-        <a href="sricityhub.html" class="member-btn">Sri City Desk</a>
+        <span class="team-role">Industry Vacancy Desk</span>
+        <p class="team-desc">Supervising plant hiring circulars, ITI requirements, and preliminary document checks.</p>
       </div>
 
       <!-- Member 2 -->
       <div class="team-card">
-        <div class="member-icon">🏠</div>
+        <div class="team-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
         <h3>Team Member 2</h3>
-        <span class="member-role">Accommodation & PG Lead</span>
-        <p class="member-dept">Verified room rentals, PG checks, and mess connections in Tada & Sri City.</p>
-        <a href="sricityhub.html" class="member-btn">Sri City Desk</a>
+        <span class="team-role">Housing & PG Relations</span>
+        <p class="team-desc">Maintaining verified room directories and rent verification across Tada residential sectors.</p>
       </div>
 
       <!-- Member 3 -->
       <div class="team-card">
-        <div class="member-icon">🚍</div>
+        <div class="team-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17l5-5 5 5"/></svg>
+        </div>
         <h3>Team Member 3</h3>
-        <span class="member-role">Transit & Helpdesk Lead</span>
-        <p class="member-dept">Shift commute routes, local guidance, and emergency response assistance.</p>
-        <a href="sricityhub.html" class="member-btn">Sri City Desk</a>
+        <span class="team-role">Transit & Commute Desk</span>
+        <p class="team-desc">Coordinating shift transit guidance and Tada Railway Station connectivity routes.</p>
       </div>
 
       <!-- Member 4 -->
       <div class="team-card">
-        <div class="member-icon">🤝</div>
+        <div class="team-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>
+        </div>
         <h3>Team Member 4</h3>
-        <span class="member-role">Community Relations</span>
-        <p class="member-dept">Worker queries, onboarding support, and public outreach across sectors.</p>
-        <a href="sricityhub.html" class="member-btn">Sri City Desk</a>
+        <span class="team-role">Public Helpdesk Desk</span>
+        <p class="team-desc">Addressing ground worker queries, reporting discrepancies, and new resident onboarding.</p>
       </div>
     </div>
 
-    <!-- Mission statement -->
-    <div class="mission-card">
-      <h3>The Sri City Support Mission</h3>
-      <p>Sri City Support Hub is built by people who understand the daily ground realities of working in this industrial region. Our core team guarantees that every job vacancy and accommodation lead shared across our platform is genuine, direct, and completely free of agent traps.</p>
+    <!-- Platform Mission -->
+    <div class="mission-box">
+      <h3>Ground Governance & Charter</h3>
+      <p>Sri City Support Hub operates as an independent, worker-first platform. Every single job circular and local record listed is verified to uphold transparency and eliminate unauthorized commission charges.</p>
     </div>
 
   </main>
 
   <footer>
-    <p><strong>Sri City Support Hub</strong></p>
-    <p style="margin-top: 0.35rem; font-size: 0.85rem;">Together for a Better Tomorrow</p>
+    <p><strong>Sri City Support Hub</strong> — Official Leadership & Community Operations</p>
   </footer>
 
   <script>
