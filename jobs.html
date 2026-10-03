@@ -3,82 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Verified Job Openings</title>
+  <title>Sri City Support Hub | Verified Industrial Opportunities</title>
   <style>
     :root {
-      --primary: #0077b6;
-      --primary-dark: #023e8a;
-      --secondary: #10b981;
-      --dark: #0f172a;
-      --slate: #334155;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --navy: #0f172a;
+      --steel: #334155;
+      --emerald: #059669;
+      --emerald-dark: #047857;
       --light-bg: #f8fafc;
       --card-bg: #ffffff;
       --border: #e2e8f0;
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      --border-subtle: #cbd5e1;
+      --shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--light-bg); color: var(--dark); line-height: 1.6; }
+    body { background-color: var(--light-bg); color: var(--navy); line-height: 1.6; }
     
-    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
     .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
-    .brand { font-size: 1.2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
-    .brand span { color: var(--secondary); }
-    .nav-menu { display: flex; gap: 1rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; padding: 0.45rem 0.8rem; border-radius: 6px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--primary); background: #e0f2fe; }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+    .brand { font-size: 1.15rem; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: 0.3px; }
+    .brand span { color: var(--primary); }
+    .nav-menu { display: flex; gap: 0.8rem; list-style: none; }
+    .nav-menu a { text-decoration: none; color: var(--steel); font-weight: 600; font-size: 0.92rem; padding: 0.45rem 0.75rem; border-radius: 6px; }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--primary); background: #f0f9ff; }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--navy); }
 
-    .hero-banner { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 2.8rem 1.2rem; text-align: center; border-bottom: 4px solid var(--secondary); }
-    .hero-banner h1 { font-size: 2.1rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .hero-banner p { color: #94a3b8; font-size: 1rem; max-width: 620px; margin: auto; }
+    .hero-banner { background: #0b1329; color: #ffffff; padding: 2.6rem 1.2rem 3rem; text-align: center; border-bottom: 3px solid var(--primary); }
+    .hero-banner h1 { font-size: 1.95rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.3px; }
+    .hero-banner p { color: #94a3b8; font-size: 0.95rem; max-width: 600px; margin: auto; }
 
-    .container { max-width: 1100px; margin: -1.5rem auto 4rem; padding: 0 1.2rem; }
+    .container { max-width: 900px; margin: -1.6rem auto 4rem; padding: 0 1.2rem; }
 
-    .filter-bar { background: #ffffff; padding: 0.8rem 1rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; justify-content: center; }
-    .filter-btn { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 0.5rem 1.1rem; border-radius: 20px; font-size: 0.88rem; font-weight: 600; cursor: pointer; color: var(--slate); transition: all 0.2s; }
-    .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+    /* Safety & Fraud Notice Banner */
+    .safety-notice { background: #ffffff; border: 1px solid #fed7aa; border-left: 4px solid #f97316; border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .safety-text { font-size: 0.85rem; color: #7c2d12; line-height: 1.4; }
+    .safety-text strong { color: #431407; display: block; margin-bottom: 0.15rem; }
+    .report-desk-btn { background: #fff7ed; border: 1px solid #fdba74; color: #c2410c; text-decoration: none; font-weight: 700; font-size: 0.8rem; padding: 0.4rem 0.8rem; border-radius: 6px; white-space: nowrap; transition: all 0.2s; }
+    .report-desk-btn:hover { background: #ffedd5; }
 
-    .jobs-list { display: flex; flex-direction: column; gap: 1.4rem; }
-    .job-card { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); padding: 1.6rem; transition: transform 0.2s, box-shadow 0.2s; }
-    .job-card:hover { border-color: var(--primary); }
+    /* Filters */
+    .filter-bar { background: #ffffff; padding: 0.6rem 0.8rem; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow); display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .filter-btn { background: #f8fafc; border: 1px solid var(--border-subtle); padding: 0.45rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--steel); transition: all 0.2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--navy); color: #ffffff; border-color: var(--navy); }
+
+    /* Cards */
+    .jobs-list { display: flex; flex-direction: column; gap: 1.3rem; }
+    .job-card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow); padding: 1.6rem; border-top: 3px solid transparent; transition: border-color 0.2s; }
+    .job-card:hover { border-top-color: var(--primary); }
     
-    .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
-    .job-header h3 { font-size: 1.25rem; color: var(--dark); }
-    .verified-pill { background: #ecfdf5; color: #059669; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 15px; border: 1px solid #a7f3d0; }
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
+    .job-header h3 { font-size: 1.25rem; color: var(--navy); font-weight: 700; }
+    .verified-pill { background: #f0fdf4; color: var(--emerald-dark); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid #bbf7d0; }
 
-    .job-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; font-size: 0.85rem; margin-bottom: 0.8rem; }
-    .job-meta span { background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; color: var(--slate); font-weight: 500; }
-    .job-desc { font-size: 0.92rem; color: #475569; margin-bottom: 0.8rem; line-height: 1.5; }
+    .job-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; font-size: 0.82rem; margin-bottom: 0.9rem; }
+    .job-meta span { background: #f1f5f9; padding: 0.25rem 0.6rem; border-radius: 5px; color: var(--steel); font-weight: 500; }
+    .job-desc { font-size: 0.92rem; color: #475569; margin-bottom: 0.9rem; line-height: 1.55; }
 
-    /* Expandable Details Section */
-    .more-details { display: none; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.2rem; margin: 1rem 0; font-size: 0.88rem; color: #334155; }
-    .more-details.open { display: block; animation: fadeIn 0.3s ease; }
-    .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 0.8rem; }
-    .detail-item strong { display: block; color: var(--dark); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
-    .detail-item span { color: var(--primary-dark); font-weight: 600; font-size: 0.92rem; }
-    .req-list { list-style: square; padding-left: 1.2rem; margin-top: 0.5rem; }
-    .req-list li { padding: 0.2rem 0; }
+    /* Clean Expandable Details */
+    .more-details { display: none; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem; margin: 0.8rem 0 1.2rem; font-size: 0.88rem; color: var(--steel); }
+    .more-details.open { display: block; }
+    .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin-bottom: 0.8rem; }
+    .detail-item strong { display: block; color: var(--navy); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
+    .detail-item span { color: var(--primary-dark); font-weight: 700; font-size: 0.92rem; }
+    .req-list { list-style: square; padding-left: 1.2rem; margin-top: 0.4rem; }
+    .req-list li { padding: 0.15rem 0; font-size: 0.85rem; }
 
-    .see-more-btn { background: none; border: none; color: var(--primary); font-weight: 700; font-size: 0.88rem; cursor: pointer; padding: 0; margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.3rem; }
-    .see-more-btn:hover { text-decoration: underline; color: var(--primary-dark); }
+    .see-more-btn { background: none; border: none; color: var(--primary-dark); font-weight: 700; font-size: 0.85rem; cursor: pointer; padding: 0; margin-bottom: 0.8rem; display: inline-flex; align-items: center; gap: 0.2rem; }
+    .see-more-btn:hover { text-decoration: underline; }
 
-    .card-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; border-top: 1px dashed var(--border); padding-top: 1rem; }
-    .free-badge { font-size: 0.82rem; color: #16a34a; font-weight: 700; }
-    .apply-btn { background: #25d366; color: #ffffff; text-decoration: none; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.4rem; }
-    .apply-btn:hover { background: #1eb956; }
+    .card-footer { display: flex; justify-content: flex-end; align-items: center; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.5rem; }
+    .apply-btn { background: var(--emerald-dark); color: #ffffff; text-decoration: none; padding: 0.55rem 1.4rem; border-radius: 7px; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.2px; transition: background 0.2s; }
+    .apply-btn:hover { background: #065f46; }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-
-    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 2.2rem 1.2rem; margin-top: 4rem; }
+    footer { background: var(--navy); color: #94a3b8; text-align: center; padding: 2.2rem 1.2rem; margin-top: 4rem; }
     footer strong { color: #ffffff; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #ffffff; padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
-      .card-footer { flex-direction: column; align-items: stretch; text-align: center; }
-      .apply-btn { justify-content: center; }
+      .card-footer { justify-content: stretch; }
+      .apply-btn { width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -98,126 +105,126 @@
   </header>
 
   <div class="hero-banner">
-    <h1>Verified Sri City Job Openings</h1>
-    <p>100% Direct & Verified vacancies. Click "View Full Details" to check salary, shifts & criteria.</p>
+    <h1>Verified Sri City Opportunities</h1>
+    <p>Direct plant and industrial openings verified by the community support desk.</p>
   </div>
 
   <main class="container">
-    <div class="filter-bar">
-      <button class="filter-btn active" data-category="all">All Roles</button>
-      <button class="filter-btn" data-category="operator">Production & Operator</button>
-      <button class="filter-btn" data-category="iti">ITI & Technical</button>
-      <button class="filter-btn" data-category="staff">Logistics & Staff</button>
+    
+    <!-- Community Safety & Vigilance Desk -->
+    <div class="safety-notice">
+      <div class="safety-text">
+        <strong>Community Safety Desk:</strong>
+        Sri City Support Hub does not authorize any agent fees. If anyone asks for money for any opening, notify us immediately.
+      </div>
+      <a href="https://wa.me/" target="_blank" class="report-desk-btn">Report Suspicious Activity →</a>
     </div>
 
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-category="all">All Vacancies</button>
+      <button class="filter-btn" data-category="operator">Production & Assembly</button>
+      <button class="filter-btn" data-category="iti">Technical & ITI</button>
+      <button class="filter-btn" data-category="staff">Logistics & Support</button>
+    </div>
+
+    <!-- Jobs Listing -->
     <div class="jobs-list">
       
-      <!-- Job 1 -->
+      <!-- Card 1 -->
       <div class="job-card" data-category="operator">
         <div class="job-header">
-          <h3>Production Line Operator (Electronics / Auto Assembly)</h3>
-          <span class="verified-pill">✔ Direct Company Opening</span>
+          <h3>Production Line Operator (Electronics Assembly)</h3>
+          <span class="verified-pill">Verified Opening</span>
         </div>
         <div class="job-meta">
-          <span>📍 Sri City SEZ Area</span>
-          <span>🎓 10th / 12th / Freshers</span>
-          <span>⏱ Rotational Shift (8 Hours)</span>
+          <span>Sri City SEZ Area</span>
+          <span>10th / 12th / Freshers</span>
+          <span>8 Hrs Rotational Shift</span>
         </div>
-        <p class="job-desc">Assembly line manufacturing, visual inspection, machine handling and basic packaging work. Freshers and local candidates preferred.</p>
+        <p class="job-desc">Assembly line manufacturing, visual quality checks, and component packing inside Sri City manufacturing facilities.</p>
         
-        <button class="see-more-btn" onclick="toggleDetails(this)">🔍 View Full Details & Salary ▼</button>
+        <button class="see-more-btn" onclick="toggleDetails(this)">View Specifications & Eligibility ▼</button>
 
         <div class="more-details">
           <div class="details-grid">
-            <div class="detail-item"><strong>Expected Salary:</strong> <span>₹12,500 - ₹16,500 / Month + OT</span></div>
-            <div class="detail-item"><strong>Duty Hours:</strong> <span>8 Hrs (Rotational Shift A, B, C)</span></div>
-            <div class="detail-item"><strong>Age Eligibility:</strong> <span>18 - 28 Years</span></div>
-            <div class="detail-item"><strong>Benefits:</strong> <span>Canteen Facility + Subsidized Bus</span></div>
+            <div class="detail-item"><strong>Compensation:</strong> <span>₹12,500 - ₹16,500 / Month + OT</span></div>
+            <div class="detail-item"><strong>Shift Schedule:</strong> <span>A, B & C Rotational</span></div>
+            <div class="detail-item"><strong>Eligibility:</strong> <span>Age 18 - 28 Years</span></div>
+            <div class="detail-item"><strong>On-site Facilities:</strong> <span>Subsidized Canteen & Shift Transport</span></div>
           </div>
-          <strong style="color:var(--dark);">Mandatory Documents Required:</strong>
+          <strong style="color:var(--navy); font-size:0.8rem;">Required Documentation:</strong>
           <ul class="req-list">
-            <li>Aadhar Card & PAN Card (Original + 2 Xerox)</li>
-            <li>10th / 12th Marksheet Copy</li>
-            <li>Bank Passbook / Cancelled Cheque</li>
-            <li>4 Passport Size Photos</li>
+            <li>Original Aadhar Card & PAN Card with xerox copies</li>
+            <li>Educational Certificates (10th/12th marksheets)</li>
+            <li>Bank Passbook / Cancelled Cheque for payroll</li>
           </ul>
         </div>
 
         <div class="card-footer">
-          <span class="free-badge">✓ 100% Free - No Middlemen</span>
-          <a href="https://wa.me/" target="_blank" class="apply-btn">💬 Apply on WhatsApp Desk</a>
+          <a href="https://wa.me/" target="_blank" class="apply-btn">Apply via Support Desk</a>
         </div>
       </div>
 
-      <!-- Job 2 -->
+      <!-- Card 2 -->
       <div class="job-card" data-category="iti">
         <div class="job-header">
-          <h3>Maintenance Technician (Electrical & Mechanical)</h3>
-          <span class="verified-pill">✔ Technical Plant Role</span>
+          <h3>Plant Maintenance Technician</h3>
+          <span class="verified-pill">Verified Opening</span>
         </div>
         <div class="job-meta">
-          <span>📍 Sri City Industrial Sector</span>
-          <span>🎓 ITI Fitter / Electrician / Diploma</span>
-          <span>💼 1-3 Years Experience</span>
+          <span>Sri City Sector 3</span>
+          <span>ITI Fitter / Electrician / Diploma</span>
+          <span>1-3 Years Experience</span>
         </div>
-        <p class="job-desc">Preventive maintenance, hydraulic/pneumatic troubleshooting, motor breakdown rectification, and general electrical servicing.</p>
+        <p class="job-desc">Preventive machine maintenance, hydraulic circuit troubleshooting, and basic industrial electrical installations.</p>
         
-        <button class="see-more-btn" onclick="toggleDetails(this)">🔍 View Full Details & Salary ▼</button>
+        <button class="see-more-btn" onclick="toggleDetails(this)">View Specifications & Eligibility ▼</button>
 
         <div class="more-details">
           <div class="details-grid">
-            <div class="detail-item"><strong>Expected Salary:</strong> <span>₹16,000 - ₹22,000 / Month (Based on Exp)</span></div>
-            <div class="detail-item"><strong>Shift Type:</strong> <span>General & Shift Basis</span></div>
-            <div class="detail-item"><strong>Required Trade:</strong> <span>ITI Fitter / Electrician / Diploma Mech</span></div>
-            <div class="detail-item"><strong>Benefits:</strong> <span>PF, ESI, Safety Gear & Overtime</span></div>
+            <div class="detail-item"><strong>Compensation:</strong> <span>₹16,000 - ₹22,000 / Month</span></div>
+            <div class="detail-item"><strong>Working Pattern:</strong> <span>General Shift / Shift Roster</span></div>
+            <div class="detail-item"><strong>Trade:</strong> <span>Fitter, Electrician, Mechanical</span></div>
+            <div class="detail-item"><strong>Statutory:</strong> <span>PF, ESI Coverage Provided</span></div>
           </div>
-          <strong style="color:var(--dark);">Key Responsibilities & Documents:</strong>
+          <strong style="color:var(--navy); font-size:0.8rem;">Profile Criteria:</strong>
           <ul class="req-list">
-            <li>Machine troubleshooting and line uptime maintenance</li>
-            <li>Previous company experience certificate/relieving letter</li>
-            <li>Updated Bio-data / Resume</li>
+            <li>Previous service proof / relieving letters</li>
+            <li>Understanding of preventive machine checklists</li>
           </ul>
         </div>
 
         <div class="card-footer">
-          <span class="free-badge">✓ 100% Free - Direct Verification</span>
-          <a href="https://wa.me/" target="_blank" class="apply-btn">💬 Apply on WhatsApp Desk</a>
+          <a href="https://wa.me/" target="_blank" class="apply-btn">Apply via Support Desk</a>
         </div>
       </div>
 
-      <!-- Job 3 -->
+      <!-- Card 3 -->
       <div class="job-card" data-category="staff">
         <div class="job-header">
-          <h3>Store & Warehouse Assistant (Inventory Support)</h3>
-          <span class="verified-pill">✔ Office & Logistics</span>
+          <h3>Warehouse & Inventory Assistant</h3>
+          <span class="verified-pill">Verified Opening</span>
         </div>
         <div class="job-meta">
-          <span>📍 Sri City Central Logistics Park</span>
-          <span>🎓 Any Graduate / B.Com / B.Sc</span>
-          <span>💻 Basic Computer / MS Excel</span>
+          <span>Central Logistics Zone</span>
+          <span>Graduate / Any Degree</span>
+          <span>Basic Spreadsheet Knowledge</span>
         </div>
-        <p class="job-desc">Managing inward/outward delivery challans, stock verification, warehouse goods coordination, and basic computer entry.</p>
+        <p class="job-desc">Daily dispatch supervision, stock count tracking, inward gate pass verification, and coordination with transport teams.</p>
         
-        <button class="see-more-btn" onclick="toggleDetails(this)">🔍 View Full Details & Salary ▼</button>
+        <button class="see-more-btn" onclick="toggleDetails(this)">View Specifications & Eligibility ▼</button>
 
         <div class="more-details">
           <div class="details-grid">
-            <div class="detail-item"><strong>Expected Salary:</strong> <span>₹14,000 - ₹18,500 / Month</span></div>
-            <div class="detail-item"><strong>Work Timings:</strong> <span>Day Shift (9:00 AM - 6:00 PM)</span></div>
-            <div class="detail-item"><strong>Key Skills:</strong> <span>Basic Excel, Good Communication</span></div>
-            <div class="detail-item"><strong>Benefits:</strong> <span>PF, ESI & Weekly Off</span></div>
+            <div class="detail-item"><strong>Compensation:</strong> <span>₹14,000 - ₹18,500 / Month</span></div>
+            <div class="detail-item"><strong>Work Hours:</strong> <span>Regular Day Shift (9 AM - 6 PM)</span></div>
+            <div class="detail-item"><strong>Requisite:</strong> <span>Basic MS Excel & Register work</span></div>
           </div>
-          <strong style="color:var(--dark);">Requirements:</strong>
-          <ul class="req-list">
-            <li>Degree Certificate / Provisional Copy</li>
-            <li>Basic knowledge of Stock and Inward/Outward registers</li>
-            <li>Ready to join immediately</li>
-          </ul>
         </div>
 
         <div class="card-footer">
-          <span class="free-badge">✓ 100% Free - Verified Openings</span>
-          <a href="https://wa.me/" target="_blank" class="apply-btn">💬 Apply on WhatsApp Desk</a>
+          <a href="https://wa.me/" target="_blank" class="apply-btn">Apply via Support Desk</a>
         </div>
       </div>
 
@@ -230,14 +237,12 @@
   </footer>
 
   <script>
-    // Mobile Menu Toggle
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
 
-    // Category Filter Function
     const filterBtns = document.querySelectorAll('.filter-btn');
     const jobCards = document.querySelectorAll('.job-card');
 
@@ -257,14 +262,13 @@
       });
     });
 
-    // Toggle Details Function
     function toggleDetails(btn) {
       const detailsBox = btn.nextElementSibling;
       detailsBox.classList.toggle('open');
       if (detailsBox.classList.contains('open')) {
-        btn.innerHTML = '▲ Hide Vacancy Details';
+        btn.innerHTML = 'Hide Specifications ▲';
       } else {
-        btn.innerHTML = '🔍 View Full Details & Salary ▼';
+        btn.innerHTML = 'View Specifications & Eligibility ▼';
       }
     }
   </script>
