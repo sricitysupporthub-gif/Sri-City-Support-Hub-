@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Founder & Mission | Sri City Support Hub</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #15803d; --primary-light: #f0fdf4; --secondary: #0f172a;
+      --text-main: #334155; --text-muted: #64748b; --bg-light: #f8fafc;
+      --white: #ffffff; --border: #e2e8f0;
+      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body { font-family: var(--font-family); line-height: 1.6; color: var(--text-main); background-color: var(--bg-light); }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 1.25rem; }
+    header { background-color: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; }
+    .brand-title { font-size: 1.25rem; font-weight: 700; color: var(--secondary); }
+    .brand-tagline { font-size: 0.75rem; font-weight: 600; color: var(--primary); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 1.25rem; list-style: none; }
+    .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--secondary); }
+    .nav-links a.active { color: var(--primary); font-weight: 700; }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+    .page-hero { background-color: var(--white); border-bottom: 1px solid var(--border); padding: 3rem 0 2rem; }
+    .profile-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem; }
+    @media (min-width: 768px) { .profile-card { flex-direction: row; align-items: flex-start; } }
+    .profile-avatar { width: 90px; height: 90px; border-radius: 50%; background: #e2e8f0; color: var(--secondary); font-size: 1.75rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .vision-card { background: var(--secondary); color: var(--white); border-radius: 12px; padding: 2rem; margin-bottom: 3rem; }
+    footer { background-color: var(--white); border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links { display: none; flex-direction: column; width: 100%; padding-top: 1rem; }
+      .nav-links.show { display: flex; }
+      .nav-wrapper { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrapper">
+      <div>
+        <a href="index.html" class="brand-title">Sri City Support Hub</a><br>
+        <span class="brand-tagline">Connect • Support • Grow</span>
+      </div>
+      <button class="menu-toggle" id="menuBtn">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Jobs & Career</a></li>
+        <li><a href="sricity-hub.html">Sri City Hub</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="about.html" class="active">About Founder</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1 style="font-size:2rem; font-weight:800; color:var(--secondary); margin-bottom:0.5rem;">About Founder & Mission</h1>
+      <p style="color:var(--text-muted);">Empowering workers, job seekers, and residents with dignity and verified guidance.</p>
+    </div>
+  </section>
+
+  <main class="container" style="padding-top: 2rem;">
+    <div class="profile-card">
+      <div class="profile-avatar">VY</div>
+      <div>
+        <h2 style="font-size:1.4rem; color:var(--secondary);">Vishnu Yadav</h2>
+        <span style="font-size:0.9rem; font-weight:600; color:var(--primary); margin-bottom:0.75rem; display:block;">Founder, Sri City Support Hub</span>
+        <p style="font-size:0.95rem; margin-bottom:0.75rem;">
+          "Sri City aane wale har worker aur youth ke samne authentic jobs aur rehne-khane ki sabse badi samasya hoti hai. Aksar log middle-men ke chakkar me padkar apna paisa gawa dete hain. Maine **Sri City Support Hub** ki shuruat isi gap ko bharne ke liye ki hai—ek aisa community platform jo bina kisi fees ke samman ke sath real help provide kare."
+        </p>
+      </div>
+    </div>
+
+    <div class="vision-card">
+      <h2 style="font-size:1.4rem; margin-bottom:0.75rem;">Our Long-Term Vision</h2>
+      <p style="color:#94a3b8; font-size:0.95rem; margin-bottom:1rem;">We are building Sri City Support Hub step-by-step to become an indispensable regional community utility, scaling towards nationwide industrial corridors.</p>
+      <ul style="padding-left:1.25rem; font-size:0.95rem; color:#e2e8f0; display:flex; flex-direction:column; gap:0.5rem;">
+        <li>100% Genuine, verified vacancies without middle-man fees.</li>
+        <li>Comprehensive directory for budget PG, mess, and daily transport in Tada and Sri City.</li>
+        <li>Multilingual expansion supporting Telugu, Tamil, Hindi, and English candidates.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Sri City Support Hub</strong> — Connect • Support • Grow</p>
+      <p style="margin-top:0.35rem;">Founded by Vishnu Yadav • Real local community platform.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
+  </script>
+</body>
+</html>
