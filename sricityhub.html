@@ -3,112 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Hub | Local Guide & Services</title>
+  <title>Sri City Support Hub | Local Hub</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary: #15803d; --primary-dark: #166534; --secondary: #0f172a;
-      --text-main: #334155; --text-muted: #64748b; --bg-light: #f8fafc;
-      --white: #ffffff; --border: #e2e8f0;
-      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --primary: #0077b6;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-muted: #64748b;
     }
-    body { font-family: var(--font-family); line-height: 1.6; color: var(--text-main); background-color: var(--bg-light); }
-    a { text-decoration: none; color: inherit; }
-    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 1.25rem; }
-    header { background-color: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; }
-    .brand-title { font-size: 1.25rem; font-weight: 700; color: var(--secondary); }
-    .brand-tagline { font-size: 0.75rem; font-weight: 600; color: var(--primary); text-transform: uppercase; }
-    .nav-links { display: flex; gap: 1.25rem; list-style: none; }
-    .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--secondary); }
-    .nav-links a.active { color: var(--primary); font-weight: 700; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+    header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
+    .brand { font-size: 1.2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+    .brand span { color: var(--secondary); }
+    .nav-menu { display: flex; gap: 1rem; list-style: none; }
+    .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; padding: 0.4rem 0.6rem; border-radius: 6px; }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--primary); background: #e0f2fe; }
     .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
-    .page-hero { background-color: var(--white); border-bottom: 1px solid var(--border); padding: 2.5rem 0 2rem; }
-    .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
-    .card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
-    .demo-tag { font-size: 0.7rem; background: #fef3c7; color: #92400e; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; display: inline-block; margin-bottom: 0.5rem; }
-    .btn-contact { display: block; text-align: center; background-color: var(--bg-light); border: 1px solid var(--border); padding: 0.6rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; margin-top: 1rem; }
-    .btn-contact:hover { background-color: var(--primary); color: var(--white); }
-    footer { background-color: var(--white); border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+
+    .page-header { max-width: 1100px; margin: 1.5rem auto 1rem; padding: 0 1.2rem; }
+    .page-header h1 { font-size: 1.8rem; color: var(--dark); margin-bottom: 0.3rem; }
+    .page-header p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .hub-grid { max-width: 1100px; margin: 1.5rem auto 3rem; padding: 0 1.2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .hub-card { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.04); }
+    .hub-card h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .hub-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .hub-list { list-style: none; margin-bottom: 1.2rem; }
+    .hub-list li { font-size: 0.88rem; color: #334155; padding: 0.3rem 0; border-bottom: 1px dashed #e2e8f0; }
+    .contact-badge { display: inline-block; background: #e0f2fe; color: var(--primary); font-weight: 600; font-size: 0.85rem; padding: 0.3rem 0.8rem; border-radius: 6px; }
+
+    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 2rem 1.2rem; }
+    footer strong { color: #ffffff; }
+
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      .nav-links { display: none; flex-direction: column; width: 100%; padding-top: 1rem; }
-      .nav-links.show { display: flex; }
-      .nav-wrapper { flex-wrap: wrap; }
+      .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #ffffff; padding: 1rem 1.2rem; border-bottom: 1px solid #e2e8f0; }
+      .nav-menu.active { display: flex; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="container nav-wrapper">
-      <div>
-        <a href="index.html" class="brand-title">Sri City Support Hub</a><br>
-        <span class="brand-tagline">Connect • Support • Grow</span>
-      </div>
+    <div class="nav-container">
+      <a href="index.html" class="brand">SRI CITY <span>SUPPORT HUB</span></a>
       <button class="menu-toggle" id="menuBtn">☰</button>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
-        <li><a href="jobs.html">Jobs & Career</a></li>
-        <li><a href="sricity-hub.html" class="active">Sri City Hub</a></li>
-        <li><a href="support.html">Support</a></li>
-        <li><a href="about.html">About Founder</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="sricityhub.html" class="active">Sri City Hub</a></li>
+        <li><a href="about.html">About & Founder</a></li>
       </ul>
     </div>
   </header>
 
-  <section class="page-hero">
-    <div class="container">
-      <h1 style="font-size:1.85rem; font-weight:800; color:var(--secondary); margin-bottom:0.5rem;">Sri City Local Directory</h1>
-      <p style="color:var(--text-muted);">Verified information on accommodation, daily meals, and transport.</p>
+  <main>
+    <div class="page-header">
+      <h1>Sri City Local Resources & Hub</h1>
+      <p>Essential daily guidance, accommodation, and verified community support.</p>
     </div>
-  </section>
 
-  <main class="container" style="padding-top: 2rem;">
-    <h2 style="font-size:1.3rem; margin-bottom:1rem; color:var(--secondary);" id="rooms">🏠 Rooms & PG (Stay Options)</h2>
     <div class="hub-grid">
-      <div class="card">
-        <span class="demo-tag">Sample Listing</span>
-        <h3 style="color:var(--secondary);">Boys Sharing PG & Rooms</h3>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">📍 Tada Town (Station Road)</p>
-        <p style="font-size:0.85rem;">Includes RO Water, Bed, Electricity, 10 min to Sri City industrial gate.</p>
-        <a href="https://wa.me/?text=PG%20Details%20Request" target="_blank" class="btn-contact">Request Details</a>
+      <div class="hub-card">
+        <h3>🏠 Rooms & PG Finder</h3>
+        <p>Verified living spaces for workers and professionals around Sri City and Tada.</p>
+        <ul class="hub-list">
+          <li>Single / Shared Rooms in Tada</li>
+          <li>PG Accommodations near Industrial Zone</li>
+          <li>Affordable Mess & Food Facilities</li>
+        </ul>
+        <span class="contact-badge">Available via Support Desk</span>
       </div>
-    </div>
 
-    <h2 style="font-size:1.3rem; margin-bottom:1rem; color:var(--secondary);" id="food">🍛 Food & Mess</h2>
-    <div class="hub-grid">
-      <div class="card">
-        <span class="demo-tag">Sample Listing</span>
-        <h3 style="color:var(--secondary);">North & South Indian Tiffin Service</h3>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">📍 Tada Main Road</p>
-        <p style="font-size:0.85rem;">Monthly mess and daily lunch box delivery available for industrial workers.</p>
-        <a href="https://wa.me/?text=Mess%20Details%20Request" target="_blank" class="btn-contact">Request Details</a>
+      <div class="hub-card">
+        <h3>🚌 Daily Commute & Transit</h3>
+        <p>Important connectivity routes and transport support inside Sri City.</p>
+        <ul class="hub-list">
+          <li>Tada Railway Station Connectivity</li>
+          <li>Auto & Cab Stand Locations</li>
+          <li>Company Shift Bus Points</li>
+        </ul>
+        <span class="contact-badge">Regular Schedule Updates</span>
       </div>
-    </div>
 
-    <h2 style="font-size:1.3rem; margin-bottom:1rem; color:var(--secondary);" id="transport">🚌 Transport & Commute</h2>
-    <div class="hub-grid">
-      <div class="card">
-        <span class="demo-tag">Info Guide</span>
-        <h3 style="color:var(--secondary);">Tada to Sri City Shared Transport</h3>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">📍 Railway Station & Bus Stand</p>
-        <p style="font-size:0.85rem;">Auto routes and shared cab timing available from 6:00 AM shift onwards.</p>
-        <a href="https://wa.me/?text=Transport%20Guide%20Request" target="_blank" class="btn-contact">Route Guide</a>
+      <div class="hub-card">
+        <h3>📞 Emergency & Helpdesk</h3>
+        <p>Direct assistance for job seekers, workers, and community members.</p>
+        <ul class="hub-list">
+          <li>Sri City Industrial Security</li>
+          <li>Medical Emergency & Nearby Clinics</li>
+          <li>Official Support Desk Query Redressal</li>
+        </ul>
+        <span class="contact-badge">Community Support Desk</span>
       </div>
     </div>
   </main>
 
   <footer>
-    <div class="container">
-      <p><strong>Sri City Support Hub</strong> — Connect • Support • Grow</p>
-      <p style="margin-top:0.35rem;">Founder: Vishnu Yadav | Honest local information.</p>
-    </div>
+    <p><strong>Sri City Support Hub</strong></p>
+    <p style="margin-top: 0.35rem; font-size: 0.85rem;">Together for a Better Tomorrow</p>
   </footer>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
   </script>
+
 </body>
 </html>
