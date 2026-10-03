@@ -12,7 +12,6 @@
       --charcoal-hover: #1f2937;
       --text-muted: #64748b;
       --border: #e5e7eb;
-      --border-dark: #111827;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
@@ -63,15 +62,19 @@
     .toggle-btn { background: none; border: none; color: var(--charcoal); font-weight: 700; font-size: 0.85rem; cursor: pointer; padding: 0; text-decoration: underline; margin-bottom: 0.8rem; }
 
     .card-footer { display: flex; justify-content: flex-end; align-items: center; border-top: 1px solid #f3f4f6; padding-top: 1rem; margin-top: 0.5rem; }
-    .btn-apply { background: var(--charcoal); color: #ffffff; text-decoration: none; padding: 0.6rem 1.4rem; border-radius: 6px; font-weight: 600; font-size: 0.88rem; text-align: center; }
+    .btn-apply { background: var(--charcoal); color: #ffffff; text-decoration: none; padding: 0.6rem 1.6rem; border-radius: 6px; font-weight: 600; font-size: 0.88rem; text-align: center; }
     .btn-apply:hover { background: var(--charcoal-hover); }
 
-    footer { border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; padding: 2.5rem 1.2rem; font-size: 0.85rem; }
+    /* Footer with Official Email */
+    footer { border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; padding: 2.8rem 1.2rem; font-size: 0.88rem; background: #ffffff; margin-top: 4rem; }
+    .footer-email { margin-top: 0.6rem; font-weight: 500; font-size: 0.85rem; }
+    .footer-email a { color: var(--charcoal); font-weight: 600; text-decoration: underline; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #ffffff; padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
+      .card-footer { justify-content: stretch; }
       .btn-apply { width: 100%; }
     }
   </style>
@@ -100,7 +103,7 @@
     
     <div class="safety-bar">
       <p><strong>Support Verification:</strong> All listings are direct company roles. Zero commission policy.</p>
-      <a href="https://wa.me/" target="_blank" class="report-link">Report Listing</a>
+      <a href="mailto:contact.sricityhub@gmail.com?subject=Reporting%20Suspicious%20Listing" class="report-link">Report Listing</a>
     </div>
 
     <div class="filter-bar">
@@ -112,6 +115,7 @@
 
     <div class="jobs-list">
       
+      <!-- Card 1 -->
       <div class="job-card" data-category="operator">
         <div class="job-top">
           <h2>Production Line Operator</h2>
@@ -133,10 +137,11 @@
         </div>
 
         <div class="card-footer">
-          <a href="https://wa.me/" target="_blank" class="btn-apply">Apply Now</a>
+          <a href="https://wa.me/" target="_blank" class="btn-apply">Apply</a>
         </div>
       </div>
 
+      <!-- Card 2 -->
       <div class="job-card" data-category="technical">
         <div class="job-top">
           <h2>Maintenance Technician</h2>
@@ -158,10 +163,11 @@
         </div>
 
         <div class="card-footer">
-          <a href="https://wa.me/" target="_blank" class="btn-apply">Apply Now</a>
+          <a href="https://wa.me/" target="_blank" class="btn-apply">Apply</a>
         </div>
       </div>
 
+      <!-- Card 3 -->
       <div class="job-card" data-category="operations">
         <div class="job-top">
           <h2>Inventory Assistant</h2>
@@ -183,7 +189,7 @@
         </div>
 
         <div class="card-footer">
-          <a href="https://wa.me/" target="_blank" class="btn-apply">Apply Now</a>
+          <a href="https://wa.me/" target="_blank" class="btn-apply">Apply</a>
         </div>
       </div>
 
@@ -191,7 +197,10 @@
   </main>
 
   <footer>
-    <p><strong>Sri City Support Hub</strong> — Community Employment Desk</p>
+    <p><strong>Sri City Support Hub</strong> — Official Regional Coordination Desk</p>
+    <div class="footer-email">
+      Official Desk: <a href="mailto:contact.sricityhub@gmail.com">contact.sricityhub@gmail.com</a>
+    </div>
   </footer>
 
   <script>
