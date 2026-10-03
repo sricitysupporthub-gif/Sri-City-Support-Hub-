@@ -3,58 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Local Hub</title>
+  <title>Sri City Support Hub | Regional Hub</title>
   <style>
     :root {
-      --primary: #0077b6;
-      --primary-dark: #023e8a;
-      --secondary: #10b981;
-      --dark: #0f172a;
-      --slate: #334155;
-      --light-bg: #f8fafc;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      --bg: #ffffff;
+      --charcoal: #111827;
+      --charcoal-hover: #1f2937;
+      --slate-muted: #64748b;
+      --slate-light: #f8fafc;
+      --border: #e5e7eb;
+      --card-shadow: 0 4px 12px -2px rgba(17, 24, 39, 0.05);
+      --card-shadow-hover: 0 10px 20px -3px rgba(17, 24, 39, 0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--light-bg); color: var(--dark); line-height: 1.6; }
+    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
     
-    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
-    .brand { font-size: 1.2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
-    .brand span { color: var(--secondary); }
-    .nav-menu { display: flex; gap: 1rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; padding: 0.45rem 0.8rem; border-radius: 6px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--primary); background: #e0f2fe; }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 960px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.2rem; }
+    .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 0.5rem; }
+    .brand-mark { width: 10px; height: 10px; background: var(--charcoal); border-radius: 2px; }
+    .nav-menu { display: flex; gap: 0.6rem; list-style: none; }
+    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-weight: 600; font-size: 0.9rem; padding: 0.4rem 0.75rem; border-radius: 6px; }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--slate-light); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
 
-    .hero-banner { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 2.8rem 1.2rem; text-align: center; border-bottom: 4px solid var(--secondary); }
-    .hero-banner h1 { font-size: 2.1rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .hero-banner p { color: #94a3b8; font-size: 1rem; max-width: 620px; margin: auto; }
+    .page-head { max-width: 960px; margin: 2.5rem auto 1.5rem; padding: 0 1.2rem; }
+    .page-head h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+    .page-head p { color: var(--slate-muted); font-size: 0.95rem; margin-top: 0.3rem; }
 
-    .hub-grid { max-width: 1100px; margin: -1.5rem auto 4rem; padding: 0 1.2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .hub-card { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); padding: 1.8rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s; }
-    .hub-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+    .container { max-width: 960px; margin: 0 auto 4rem; padding: 0 1.2rem; }
+
+    /* 2-Column Clean Grid */
+    .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .app-card { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem 1.2rem; text-align: center; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--card-shadow); }
+    .app-card:hover, .app-card:active { border-color: var(--charcoal); transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
     
-    .hub-card h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-    .hub-card p { font-size: 0.92rem; color: #64748b; margin-bottom: 1rem; }
-    .hub-list { list-style: none; margin-bottom: 1.5rem; }
-    .hub-list li { font-size: 0.9rem; color: var(--slate); padding: 0.45rem 0; border-bottom: 1px dashed var(--border); }
-    .hub-list li::before { content: "✓ "; color: var(--secondary); font-weight: bold; }
+    .icon-wrapper { width: 48px; height: 48px; border-radius: 10px; background: var(--slate-light); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 0.9rem; }
+    .app-title { font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.2rem; }
+    .app-subtext { font-size: 0.78rem; font-weight: 600; color: var(--slate-muted); }
 
-    .action-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: var(--primary); color: #ffffff; text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: background 0.2s; text-align: center; }
-    .action-btn:hover { background: var(--primary-dark); }
-    .action-btn.green-btn { background: #25d366; }
-    .action-btn.green-btn:hover { background: #1eb956; }
+    /* Modal / Pop-up */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 24, 39, 0.6); z-index: 1000; align-items: center; justify-content: center; padding: 1.2rem; }
+    .modal-overlay.active { display: flex; animation: fadeIn 0.15s ease; }
+    .modal-box { background: #ffffff; border-radius: 14px; width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto; padding: 1.8rem; position: relative; box-shadow: 0 20px 25px -5px rgba(17,24,39,0.15); border: 1px solid var(--border); }
+    .modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--slate-light); border: 1px solid var(--border); width: 32px; height: 32px; border-radius: 6px; font-size: 1rem; cursor: pointer; color: var(--charcoal); display: flex; align-items: center; justify-content: center; }
+    
+    .modal-header { margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+    .modal-header h3 { font-size: 1.25rem; font-weight: 800; color: var(--charcoal); }
+    
+    .modal-list { list-style: none; margin-bottom: 1.6rem; }
+    .modal-list li { font-size: 0.9rem; color: #4b5563; padding: 0.55rem 0; border-bottom: 1px solid #f3f4f6; }
+    .modal-list li strong { color: var(--charcoal); }
 
-    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 2.2rem 1.2rem; margin-top: 4rem; }
-    footer strong { color: #ffffff; }
+    .btn-modal { display: block; width: 100%; background: var(--charcoal); color: #ffffff; text-decoration: none; padding: 0.7rem 1.2rem; border-radius: 7px; font-weight: 600; font-size: 0.88rem; text-align: center; }
+    .btn-modal:hover { background: var(--charcoal-hover); }
+
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+    footer { border-top: 1px solid var(--border); color: var(--slate-muted); text-align: center; padding: 2.5rem 1.2rem; font-size: 0.85rem; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #ffffff; padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
+      .app-grid { gap: 0.8rem; }
+      .app-card { padding: 1.4rem 0.8rem; }
     }
   </style>
 </head>
@@ -62,69 +75,99 @@
 
   <header>
     <div class="nav-container">
-      <a href="index.html" class="brand">SRI CITY <span>SUPPORT HUB</span></a>
+      <a href="index.html" class="brand">
+        <span class="brand-mark"></span>
+        SRI CITY SUPPORT HUB
+      </a>
       <button class="menu-toggle" id="menuBtn">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="jobs.html">Jobs</a></li>
         <li><a href="sricityhub.html" class="active">Sri City Hub</a></li>
-        <li><a href="about.html">Leadership & Team</a></li>
+        <li><a href="about.html">About & Leadership</a></li>
       </ul>
     </div>
   </header>
 
-  <div class="hero-banner">
-    <h1>Sri City Ground Support & Resources</h1>
-    <p>Direct assistance for accommodation, transit routes, and industrial emergency desk.</p>
+  <div class="page-head">
+    <h1>Sri City Regional Hub</h1>
+    <p>Central directory for industrial staff, local housing, transit lines, and community helpdesk.</p>
   </div>
 
-  <main class="hub-grid">
-    <!-- Card 1 -->
-    <div class="hub-card">
-      <div>
-        <h3>🏠 Rooms & PG Finder</h3>
-        <p>Verified living spaces for workers and professionals around Tada & Sri City.</p>
-        <ul class="hub-list">
-          <li>Single / Shared rooms in Tada town</li>
-          <li>Affordable PG setups near industrial SEZ</li>
-          <li>Verified landlords & clean food mess</li>
-        </ul>
+  <main class="container">
+    <div class="app-grid">
+      
+      <!-- Rooms & PG -->
+      <div class="app-card" onclick="openModal('housing')">
+        <div class="icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="app-title">Rooms & PG</div>
+        <div class="app-subtext">Verified rent & hostels</div>
       </div>
-      <a href="https://wa.me/" target="_blank" class="action-btn green-btn">💬 Enquire for Rooms on WhatsApp</a>
-    </div>
 
-    <!-- Card 2 -->
-    <div class="hub-card">
-      <div>
-        <h3>🚍 Daily Commute & Transit</h3>
-        <p>Essential local transport guidance for shifts and daily commute.</p>
-        <ul class="hub-list">
-          <li>Tada Railway Station local auto stands</li>
-          <li>Key industrial drop points & shift times</li>
-          <li>Daily sharing autos and cab contacts</li>
-        </ul>
+      <!-- Transit Routes -->
+      <div class="app-card" onclick="openModal('transit')">
+        <div class="icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17l5-5 5 5"/><path d="M12 12V3"/></svg>
+        </div>
+        <div class="app-title">Transit Routes</div>
+        <div class="app-subtext">Plant shift connections</div>
       </div>
-      <a href="https://wa.me/" target="_blank" class="action-btn">📍 Get Route & Travel Help</a>
-    </div>
 
-    <!-- Card 3 -->
-    <div class="hub-card">
-      <div>
-        <h3>📞 Emergency & Helpdesk</h3>
-        <p>Instant support for workers facing workplace, medical, or local issues.</p>
-        <ul class="hub-list">
-          <li>Sri City Industrial Security info</li>
-          <li>Nearby clinics, pharmacies & 24/7 care</li>
-          <li>Community escalation & direct founder guidance</li>
-        </ul>
+      <!-- Food & Mess -->
+      <div class="app-card" onclick="openModal('food')">
+        <div class="icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="app-title">Mess & Food</div>
+        <div class="app-subtext">Worker dining facilities</div>
       </div>
-      <a href="https://wa.me/" target="_blank" class="action-btn green-btn">🚨 Contact Support Desk</a>
+
+      <!-- Healthcare & Medical -->
+      <div class="app-card" onclick="openModal('medical')">
+        <div class="icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div class="app-title">Healthcare</div>
+        <div class="app-subtext">Clinics & emergency care</div>
+      </div>
+
+      <!-- Postal & Pincode -->
+      <div class="app-card" onclick="openModal('postal')">
+        <div class="icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="app-title">Postal Codes</div>
+        <div class="app-subtext">Sri City & Tada offices</div>
+      </div>
+
+      <!-- Community Helpdesk -->
+      <div class="app-card" onclick="openModal('helpdesk')">
+        <div class="icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="app-title">Support Desk</div>
+        <div class="app-subtext">Worker redressal & query</div>
+      </div>
+
     </div>
   </main>
 
+  <!-- Modal Component -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h3 id="modalTitle">Directory Record</h3>
+      </div>
+      <ul class="modal-list" id="modalList"></ul>
+      <a href="https://wa.me/" target="_blank" class="btn-modal">Contact Helpdesk</a>
+    </div>
+  </div>
+
   <footer>
-    <p><strong>Sri City Support Hub</strong></p>
-    <p style="margin-top: 0.35rem; font-size: 0.85rem;">Together for a Better Tomorrow</p>
+    <p><strong>Sri City Support Hub</strong> — Official Regional Directory</p>
   </footer>
 
   <script>
@@ -133,6 +176,76 @@
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
+
+    const directoryData = {
+      housing: {
+        title: 'Accommodation Guidance',
+        points: [
+          '<strong>Tada Town Residential:</strong> 1RK & 1BHK rental units suited for plant workers and small families.',
+          '<strong>Industrial Zone PG:</strong> Shared rooms with power and water facilities near central SEZ gates.',
+          '<strong>Tenancy Safety:</strong> Always inspect living premises directly before paying any advance deposit.'
+        ]
+      },
+      transit: {
+        title: 'Transit & Route Connectivity',
+        points: [
+          '<strong>Tada Railway Junction:</strong> Primary rail gateway connecting to all Sri City industrial zones.',
+          '<strong>Shift Bus Stoppages:</strong> Major company shift buses pick up along Tada Highway and Mambattu Junction.',
+          '<strong>Intercity Buses:</strong> Regular express buses available towards Chennai and Nellore along NH-16.'
+        ]
+      },
+      food: {
+        title: 'Mess & Food Facilities',
+        points: [
+          '<strong>Worker Dining Mess:</strong> Monthly subscription mess options (North & South style) operating in Tada.',
+          '<strong>Plant Cafeterias:</strong> Subsidized breakfast and lunch facilities provided inside key manufacturing units.'
+        ]
+      },
+      medical: {
+        title: 'Healthcare & Medical Access',
+        points: [
+          '<strong>Emergency Hospital:</strong> Kauvery Hospital Sri City for occupational and emergency medical care.',
+          '<strong>Public Clinic:</strong> Government Primary Health Centre operating in Tada town.',
+          '<strong>Pharmacies:</strong> Retail medicine shops operating along the highway stretch.'
+        ]
+      },
+      postal: {
+        title: 'Postal & Delivery Pincodes',
+        points: [
+          '<strong>Sri City Sub Post Office:</strong> Pincode 517646.',
+          '<strong>Tada Main Post Office:</strong> Pincode 517634.',
+          '<strong>Parcel Services:</strong> Courier dispatch points available near the Tada NH-16 junction.'
+        ]
+      },
+      helpdesk: {
+        title: 'Community Support Desk',
+        points: [
+          '<strong>Worker Guidance:</strong> Support regarding onboarding, shift queries, and local community assistance.',
+          '<strong>Verification Action:</strong> Core team directly reviews any reported unauthorized fees or fraudulent leads.'
+        ]
+      }
+    };
+
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalList = document.getElementById('modalList');
+
+    function openModal(key) {
+      const data = directoryData[key];
+      if (!data) return;
+      modalTitle.textContent = data.title;
+      modalList.innerHTML = data.points.map(p => `<li>${p}</li>`).join('');
+      modalOverlay.classList.add('active');
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+    }
+
+    function closeModalOutside(e) {
+      if (e.target === modalOverlay) closeModal();
+    }
   </script>
 
 </body>
