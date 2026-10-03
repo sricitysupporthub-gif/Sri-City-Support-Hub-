@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sri City Support Hub | Industrial Corridor Directory</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111827'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23065f46'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
       --bg: #f8fafc;
@@ -18,7 +18,13 @@
       --border: #e2e8f0;
       --card-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      -webkit-tap-highlight-color: transparent; 
+    }
     body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
     .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
@@ -31,7 +37,6 @@
 
     .main-container { max-width: 980px; margin: auto; padding: 1.6rem 1.2rem; }
     
-    /* Green Ecosystem Hero */
     .eco-hero {
       background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
       color: #ffffff;
@@ -55,7 +60,7 @@
     .eco-hero h1 { font-size: 1.65rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.5rem; }
     .eco-hero p { font-size: 0.92rem; color: #d1fae5; line-height: 1.5; max-width: 680px; }
 
-    /* Key Corridor Stats Bar */
+    /* Key Corridor Stats Bar - Ground Focus */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -76,7 +81,6 @@
     .hub-box h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 6px; }
     .hub-box p { font-size: 0.86rem; color: #475569; margin-bottom: 0.9rem; line-height: 1.45; }
     
-    /* Interactive Company Pills */
     .hub-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .hub-tag {
       display: inline-block;
@@ -89,14 +93,13 @@
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.15s ease-in-out;
       user-select: none;
+      -webkit-user-select: none;
     }
     .hub-tag:hover, .hub-tag:active {
       background: var(--charcoal);
       color: #ffffff;
       border-color: var(--charcoal);
-      transform: translateY(-1px);
     }
     .transit-tag { background: var(--forest-tint); border-color: #a7f3d0; color: var(--forest-green); }
     .transit-tag:hover, .transit-tag:active { background: var(--forest-green); color: #fff; border-color: var(--forest-green); }
@@ -135,30 +138,29 @@
 
   <main class="main-container">
     
-    <!-- Clean Nature & Eco Corridor Hero -->
     <div class="eco-hero">
       <span class="eco-badge">🌿 8,500+ Acre Eco-Smart Industrial Hub</span>
       <h1>Sri City Industrial Corridor Directory</h1>
       <p>A planned green manufacturing destination connecting global technology plants, worker transit logistics, and direct industrial welfare across Andhra Pradesh & Chennai gateway.</p>
     </div>
 
-    <!-- Official Ground Stats Strip -->
+    <!-- Official Live Metrics: Ground Practical -->
     <div class="stats-strip">
       <div class="stat-box">
         <h4>250+</h4>
         <span>Global Plants</span>
       </div>
       <div class="stat-box">
-        <h4>31+</h4>
-        <span>Nations Invested</span>
-      </div>
-      <div class="stat-box">
         <h4>70K+</h4>
         <span>Corridor Jobs</span>
       </div>
       <div class="stat-box">
-        <h4>₹45K Cr+</h4>
-        <span>Industrial Flow</span>
+        <h4>15+</h4>
+        <span>Worker Transit Routes</span>
+      </div>
+      <div class="stat-box">
+        <h4>₹0</h4>
+        <span>Direct Free Desk</span>
       </div>
     </div>
 
@@ -168,13 +170,13 @@
         <h3>❄️ HVAC & Electronics Manufacturing</h3>
         <p>India's leading air conditioning & cooling tech cluster with end-to-end assembly, brazing, and testing facilities.</p>
         <div class="hub-tags">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Blue%20Star%20Cluster" class="hub-tag">Blue Star Tech</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Daikin%20Cluster" class="hub-tag">Daikin</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Panasonic%20Cluster" class="hub-tag">Panasonic</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Amber%20Group%20Cluster" class="hub-tag">Amber Group</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Havells%20Lloyd" class="hub-tag">Havells Lloyd</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20EPACK%20Cluster" class="hub-tag">EPACK Durable</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Carrier%20Cluster" class="hub-tag">Carrier</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Blue%20Star%20Cluster" class="hub-tag">Blue Star Tech</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Daikin%20Cluster" class="hub-tag">Daikin</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Panasonic%20Cluster" class="hub-tag">Panasonic</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Amber%20Group%20Cluster" class="hub-tag">Amber Group</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Havells%20Lloyd" class="hub-tag">Havells Lloyd</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20EPACK%20Cluster" class="hub-tag">EPACK Durable</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Carrier%20Cluster" class="hub-tag">Carrier</a>
         </div>
       </div>
 
@@ -183,12 +185,12 @@
         <h3>⚙️ Automotive, Rail & Precision Units</h3>
         <p>Global heavy automotive assembly lines, metro coach manufacturing, hydraulics, and robotic toolings.</p>
         <div class="hub-tags">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Isuzu%20Motors" class="hub-tag">Isuzu Motors</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Alstom%20Metro%20Train" class="hub-tag">Alstom Metro Coaches</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Kobelco%20Machinery" class="hub-tag">Kobelco Cranes</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20NS%20Instruments" class="hub-tag">NS Instruments</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20NHK%20Springs" class="hub-tag">NHK Springs</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Tata%20Toyo" class="hub-tag">Tata Toyo</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Isuzu%20Motors" class="hub-tag">Isuzu Motors</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Alstom%20Metro%20Train" class="hub-tag">Alstom Metro Coaches</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Kobelco%20Machinery" class="hub-tag">Kobelco Cranes</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20NS%20Instruments" class="hub-tag">NS Instruments</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20NHK%20Springs" class="hub-tag">NHK Springs</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Tata%20Toyo" class="hub-tag">Tata Toyo</a>
         </div>
       </div>
 
@@ -197,11 +199,11 @@
         <h3>🍫 FMCG, Food & Health Science</h3>
         <p>Asia's largest clean confectionery, cereal manufacturing, and medical packaging facilities.</p>
         <div class="hub-tags">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Mondelez%20Cadbury" class="hub-tag">Mondelez (Cadbury)</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Kelloggs" class="hub-tag">Kellogg's</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Unicharm" class="hub-tag">Unicharm</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20Colgate" class="hub-tag">Colgate-Palmolive</a>
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Inquiry%3A%20West%20Pharma" class="hub-tag">West Pharma</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Mondelez%20Cadbury" class="hub-tag">Mondelez (Cadbury)</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Kelloggs" class="hub-tag">Kellogg's</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Unicharm" class="hub-tag">Unicharm</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20Colgate" class="hub-tag">Colgate-Palmolive</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Inquiry%3A%20West%20Pharma" class="hub-tag">West Pharma</a>
         </div>
       </div>
 
@@ -239,7 +241,7 @@
         <h3>🏥 Emergency, Clinic & Safety</h3>
         <p>Round-the-clock emergency medical links, ESIC utility desks, and industrial safety points.</p>
         <div class="hub-tags">
-          <a href="mailto:contact.sricityhub@gmail.com?subject=Emergency%20Medical%20Help" class="hub-tag" style="background:#fef2f2; border-color:#fecaca; color:#b91c1c;">Sri City Care Clinic</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Emergency%20Medical%20Help" class="hub-tag" style="background:#fef2f2; border-color:#fecaca; color:#b91c1c;">Sri City Care Clinic</a>
           <span class="hub-tag">ESIC Corridor Desk</span>
           <span class="hub-tag">24x7 Ambulance Coordination</span>
           <span class="hub-tag">SEZ Fire Safety Station</span>
@@ -247,18 +249,17 @@
       </div>
     </div>
 
-    <!-- Direct Helpdesk CTA -->
     <div class="support-banner">
       <h2>Need Ground Verification or Direct Plant Routing?</h2>
       <p>Sri City Support Hub operates a zero-brokerage helpdesk for workers, technicians, and transit assistance.</p>
-      <a href="mailto:contact.sricityhub@gmail.com?subject=Ground%20Support%20Enquiry">Connect with Official Desk</a>
+      <a href="mailto:sricitysupporthub@gmail.com?subject=Ground%20Support%20Enquiry">Connect with Official Desk</a>
     </div>
   </main>
 
   <footer>
     <p><strong>Sri City Support Hub</strong> — Official Regional Information Desk</p>
     <div style="margin-top: 0.6rem; font-size: 0.85rem;">
-      Official Desk: <a href="mailto:contact.sricityhub@gmail.com">contact.sricityhub@gmail.com</a>
+      Official Desk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
     </div>
   </footer>
 
