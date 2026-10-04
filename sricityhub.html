@@ -1,444 +1,841 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sri City Support Hub | Official Corridor & Candidate Portal</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Sri City Support Hub | Jobs, Local Guidance & Community Network</title>
+  <meta name="description" content="A trusted local support platform for private industrial jobs, interview assistance, verified stay, healthcare and navigation in Sri City, Tada and Sullurpeta." />
+  
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Sri City Support Hub | Jobs & Local Support Ecosystem" />
+  <meta property="og:description" content="Private industrial career listings, interview day help, verified stay and travel guidance in Sri City, Tada and Sullurpeta." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sricitysupporthub.vercel.app/sricityhub.html" />
+
   <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & TOKENS (Eco-Industrial & Calm Professional)
+       ========================================================================== */
     :root {
-      --primary: #0f172a;
-      --accent: #059669;
-      --accent-bg: #ecfdf5;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --border: #cbd5e1;
-      --text: #0f172a;
-      --muted: #64748b;
-      --sos: #e11d48;
+      --primary: #0e2433;          /* Deep Slate Navy */
+      --primary-hover: #16364d;
+      --forest: #1b4d3e;           /* Sri City Greenery / Calm Forest */
+      --forest-soft: #eaf3ef;
+      --forest-border: #c8dfd5;
+      --accent: #b46b15;           /* Refined Amber Gold */
+      --accent-soft: #fdf6ec;
+      --bg: #f8fafc;               /* Slate Crisp Light */
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --border: #e2e8f0;
+      --border-subtle: #edf2f7;
+      --text-main: #0f172a;        /* High Contrast Slate 900 */
+      --text-muted: #475569;       /* Slate 600 */
+      --text-light: #64748b;
+
+      /* Status Badges */
+      --badge-verified-bg: #dcfce7;
+      --badge-verified-text: #166534;
+      --badge-source-bg: #fef9c3;
+      --badge-source-text: #854d0e;
+      --badge-review-bg: #fee2e2;
+      --badge-review-text: #991b1b;
+      --badge-demo-bg: #e0e7ff;
+      --badge-demo-text: #3730a3;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 10px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 3rem; overflow-x: hidden; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-    /* Top Utility Bar */
-    .top-bar {
-      background: #020617;
-      color: #94a3b8;
-      font-size: 0.75rem;
-      padding: 0.45rem 1rem;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      width: 100%;
+      overflow-x: hidden;
+      padding-bottom: 72px; /* Space for mobile sticky dock */
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.15s ease;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* ==========================================================================
+       2. HEADER & NAVIGATION
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(14, 36, 51, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+
+    .nav-wrapper {
       display: flex;
+      align-items: center;
       justify-content: space-between;
+      height: 66px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--forest), #2a7a5f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-desktop {
+      display: none;
       align-items: center;
       gap: 6px;
     }
-    .top-bar strong { color: #f8fafc; }
 
-    /* App Header & Horizontal Scrolling Navigation */
-    header { background: #ffffff; border-bottom: 2px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 1040px; margin: auto; padding: 0.75rem 1rem 0.4rem 1rem; }
-    .brand-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
-    .brand { font-size: 1.15rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-badge { background: var(--accent); color: #ffffff; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
-
-    .nav-tabs {
-      display: flex;
-      gap: 0.45rem;
-      overflow-x: auto;
-      padding-bottom: 0.4rem;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
     }
-    .nav-tabs::-webkit-scrollbar { display: none; }
-    .nav-tab {
-      background: #f1f5f9;
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 0.76rem;
-      font-weight: 700;
-      padding: 0.4rem 0.75rem;
-      border-radius: 20px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      border: 1px solid var(--border);
-    }
-    .nav-tab:active { background: var(--primary); color: #ffffff; }
 
-    .main-container { max-width: 1040px; margin: auto; padding: 1rem; }
-
-    /* Hero */
-    .hero-banner {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    .nav-link:hover {
       color: #ffffff;
-      padding: 1.4rem 1.1rem;
-      border-radius: 12px;
-      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.08);
     }
-    .hero-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.25rem; }
-    .hero-subtitle { font-size: 0.82rem; color: #cbd5e1; }
 
-    /* SOS BANNER */
-    .sos-banner {
-      background: #ffffff;
-      border: 2px solid var(--sos);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.08);
+    .nav-link.accent-link {
+      color: #fcd34d;
+      background: rgba(252, 211, 77, 0.1);
     }
-    .sos-title { font-size: 1.05rem; font-weight: 800; color: #9f1239; margin-bottom: 0.3rem; }
-    .sos-text { font-size: 0.83rem; color: #334155; margin-bottom: 0.75rem; }
 
-    /* DAILY GOOGLE SHEET LIVE NOTICE BOARD */
-    .notice-board {
-      background: #fffbeb;
-      border: 2px solid #f59e0b;
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
+    .nav-link.accent-link:hover {
+      background: rgba(252, 211, 77, 0.2);
     }
-    .notice-head { font-size: 0.95rem; font-weight: 800; color: #92400e; margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between; }
-    .notice-tag { background: #f59e0b; color: #ffffff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; }
-    .notice-item { background: #ffffff; border: 1px solid #fde68a; border-radius: 8px; padding: 0.7rem; margin-top: 0.5rem; font-size: 0.82rem; color: #1e293b; }
-    .notice-item strong { color: #0f172a; display: block; margin-bottom: 2px; }
 
-    /* SECTION TITLES */
-    .sec-head { font-size: 1.15rem; font-weight: 800; margin: 1.6rem 0 0.85rem 0; color: var(--primary); display: flex; align-items: center; gap: 6px; }
-
-    /* CARDS */
-    .cards-stack { display: flex; flex-direction: column; gap: 0.75rem; }
-    .portal-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.95rem;
-      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+    .menu-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .card-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .card-title { font-size: 0.98rem; font-weight: 700; color: var(--primary); }
-    .badge { font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; background: #f1f5f9; color: var(--muted); }
-    .badge.green { background: var(--accent-bg); color: var(--accent); }
-    .badge.blue { background: #eff6ff; color: #1d4ed8; }
 
-    .card-desc { font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.65rem 0; }
+    /* Mobile Drawer */
+    .drawer-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      z-index: 1100;
+      backdrop-filter: blur(3px);
+    }
 
-    /* BUTTONS */
-    .action-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
-    .btn-act {
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      height: 100%;
+      background: var(--surface);
+      z-index: 1101;
+      box-shadow: -6px 0 25px rgba(0, 0, 0, 0.15);
+      transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer.open {
+      right: 0;
+    }
+
+    .drawer-head {
+      padding: 18px 20px;
+      background: var(--primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .drawer-body {
+      overflow-y: auto;
+      padding: 12px 0;
       flex: 1;
-      min-width: 90px;
-      padding: 0.55rem;
-      border-radius: 6px;
+    }
+
+    .drawer-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 22px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .drawer-item:hover {
+      background: var(--surface-subtle);
+      color: var(--forest);
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION (Compact, Fresh & Eco-Industrial)
+       ========================================================================== */
+    .hero {
+      background: linear-gradient(180deg, #0e2433 0%, #153448 60%, #184136 100%);
+      color: #ffffff;
+      padding: 38px 0 46px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-content {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f1f5f9;
       font-size: 0.76rem;
       font-weight: 700;
-      text-align: center;
-      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .hero-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+    }
+
+    .hero-title {
+      font-size: 1.95rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .hero-desc {
+      font-size: 0.96rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      padding: 0 8px;
+    }
+
+    /* Universal Search System */
+    .search-container {
+      max-width: 620px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      display: flex;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      outline: none;
+      min-width: 0;
+    }
+
+    .search-btn {
+      background: var(--forest);
+      color: #ffffff;
+      border: none;
+      padding: 0 22px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .search-btn:hover {
+      background: #153e32;
+    }
+
+    .search-feedback {
+      display: none;
+      margin-top: 14px;
+      font-size: 0.82rem;
+      background: rgba(0, 0, 0, 0.35);
+      color: #fcd34d;
+      padding: 6px 14px;
+      border-radius: 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .search-feedback button {
+      background: none;
+      border: none;
+      color: #ffffff;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    /* Primary Quick Action Chips (Clean & Calm) */
+    .quick-dock {
+      margin-top: -22px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .dock-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .dock-card:hover {
+      border-color: var(--forest);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .dock-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--forest-soft);
+      color: var(--forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .dock-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .dock-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       4. COMMON SECTION ARCHITECTURE
+       ========================================================================== */
+    section {
+      padding: 48px 0;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--forest);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: border-color 0.15s ease;
+    }
+
+    .card:hover {
+      border-color: #cbd5e1;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .badge-verified { background: var(--badge-verified-bg); color: var(--badge-verified-text); }
+    .badge-source { background: var(--badge-source-bg); color: var(--badge-source-text); }
+    .badge-review { background: var(--badge-review-bg); color: var(--badge-review-text); }
+    .badge-demo { background: var(--badge-demo-bg); color: var(--badge-demo-text); }
+
+    /* Button Hierarchy */
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-act.primary { background: var(--primary); color: #ffffff; }
-    .btn-act.secondary { background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
-    .btn-act.accent { background: var(--accent-bg); color: var(--accent); border: 1px solid #a7f3d0; }
-    .btn-act.sos-btn { background: var(--sos); color: #ffffff; }
-
-    /* NATIVE NO-JS DETAILS DRAWER */
-    details.native-drawer { margin-top: 0.5rem; }
-    details.native-drawer summary {
-      cursor: pointer;
-      font-size: 0.76rem;
+      gap: 6px;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: #1d4ed8;
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
-      padding: 0.5rem;
-      border-radius: 6px;
-      text-align: center;
-      list-style: none;
+      border-radius: var(--radius-sm);
+      padding: 9px 16px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      min-height: 40px;
     }
-    details.native-drawer summary::-webkit-details-marker { display: none; }
-    .drawer-content {
-      background: #f8fafc;
-      border: 1px dashed var(--border);
-      border-radius: 6px;
-      padding: 0.75rem;
-      margin-top: 0.5rem;
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-forest {
+      background: var(--forest);
+      color: #ffffff;
+    }
+
+    .btn-forest:hover {
+      background: #143e32;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background: var(--surface-subtle);
+      border-color: #cbd5e1;
+    }
+
+    .btn-wa-subtle {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-weight: 700;
+    }
+
+    .btn-wa-subtle:hover {
+      background: #dcfce7;
+    }
+
+    /* Grids */
+    .grid-2 {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-      font-size: 0.75rem;
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
-    .drawer-content span { display: block; font-size: 0.68rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
-    .drawer-content strong { color: var(--primary); }
 
-    /* SEARCH INPUT */
-    .search-box {
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* Notice Disclaimers */
+    .disclaimer-box {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: #78350f;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    /* ==========================================================================
+       5. JOBS & CAREER SECTION
+       ========================================================================== */
+    .filter-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .filter-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .filter-chip.active, .filter-chip:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .job-card {
+      padding: 20px;
+    }
+
+    .job-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .job-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .job-company {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .job-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 12px;
+      background: var(--surface-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    .job-spec-item strong {
+      color: var(--text-main);
+    }
+
+    .job-spec-item span {
+      color: var(--text-muted);
+    }
+
+    .job-collapsible {
+      display: none;
+      padding-top: 14px;
+      margin-top: 14px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .job-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* ==========================================================================
+       6. INTERVIEW PREP & JOINING ACCORDIONS
+       ========================================================================== */
+    .qa-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .qa-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .qa-trigger {
       width: 100%;
-      padding: 0.85rem 1rem;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.92rem;
+      background: #ffffff;
+      border: none;
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .qa-trigger:hover {
+      background: var(--surface-subtle);
+    }
+
+    .qa-icon {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+
+    .qa-content {
+      display: none;
+      padding: 14px 18px 18px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid var(--border-subtle);
+      background: #fafbfc;
+    }
+
+    /* ==========================================================================
+       7. FORMS (Unified, Mobile-Safe, Touch-Friendly)
+       ========================================================================== */
+    .form-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--text-main);
+      background: #ffffff;
       outline: none;
-      margin-bottom: 0.85rem;
-      display: block;
-    }
-    .search-box:focus { border-color: var(--accent); }
-
-    /* TRAIN GRID */
-    .train-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
-    .train-box { background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem; }
-    .train-code { font-size: 0.7rem; font-weight: 800; color: #1d4ed8; background: #eff6ff; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 3px; }
-    .train-name { font-size: 0.88rem; font-weight: 700; color: var(--primary); }
-    .train-dist { font-size: 0.73rem; color: var(--muted); margin-bottom: 0.4rem; }
-
-    /* FOUNDER & TEAM CARD */
-    .team-card {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      padding: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-    .team-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.6rem; }
-    .team-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
-    .team-title { font-size: 1rem; font-weight: 800; color: var(--primary); }
-    .team-role { font-size: 0.75rem; color: var(--accent); font-weight: 700; }
-    .team-text { font-size: 0.82rem; color: #334155; margin-bottom: 0.75rem; line-height: 1.4; }
-
-    /* REVIEWS & FORMS */
-    .review-box { background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem; margin-bottom: 0.65rem; }
-    .review-form { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 1rem; }
-    .form-group { margin-bottom: 0.7rem; }
-    .form-group label { display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--primary); }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; padding: 0.65rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; outline: none;
+      transition: border-color 0.15s ease;
     }
 
-    footer { border-top: 1px solid var(--border); padding: 2rem 1rem; text-align: center; margin-top: 3rem; background: #ffffff; }
-
-    @media (max-width: 600px) {
-      .train-grid { grid-template-columns: 1fr; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--forest);
+      box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.1);
     }
-  </style>
-</head>
-<body>
 
-  <!-- Top Real-time Bar -->
-  <div class="top-bar">
-    <div>📍 <strong>Sri City / Tada Corridor</strong> • <span id="clock">Active</span></div>
-    <div>☀️ <strong>31°C</strong> • <span style="color:#10b981;">● Online</span></div>
-  </div>
+    /* ==========================================================================
+       8. FOOTER (Institutional & Grounded)
+       ========================================================================== */
+    .footer {
+      background: var(--primary);
+      color: #94a3b8;
+      padding: 50px 0 30px;
+      font-size: 0.84rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-  <!-- Header with Horizontal Fast Tabs (No Hamburger Trap) -->
-  <header>
-    <div class="nav-container">
-      <div class="brand-row">
-        <a href="#home" class="brand">Sri City Support Hub</a>
-        <span class="brand-badge">Official Hub</span>
-      </div>
-      <nav class="nav-tabs">
-        <a href="#sos" class="nav-tab">🍲 SOS Food</a>
-        <a href="#notices" class="nav-tab">📢 Live Notices</a>
-        <a href="#plants" class="nav-tab">🏭 Plants Directory</a>
-        <a href="#railways" class="nav-tab">🚆 10 Stations</a>
-        <a href="#team" class="nav-tab">🤝 Team & Founder</a>
-        <a href="#health" class="nav-tab">🏥 Health</a>
-        <a href="#reviews" class="nav-tab">⭐ Reviews</a>
-      </nav>
-    </div>
-  </header>
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-bottom: 36px;
+    }
 
-  <main class="main-container" id="home">
+    .footer-heading {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+    }
 
-    <!-- Hero Banner -->
-    <div class="hero-banner">
-      <h1 class="hero-title">Sri City Industrial Support Portal</h1>
-      <p class="hero-subtitle">Candidate Walk-in Schedules • Food & Transit Assistance • Corridor Directory</p>
-    </div>
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-    <!-- SOS CANDIDATE FOOD DESK -->
-    <div class="sos-banner" id="sos">
-      <div class="sos-title">🍲 Candidate Care & Emergency Food Desk</div>
-      <p class="sos-text">
-        Door-door se interview dene aane wale candidates ke liye: Gate par bhookhe ho ya return ticket/transit me fase ho, direct connect karo.
-      </p>
-      <div class="action-row">
-        <a href="mailto:sricitysupporthub@gmail.com?subject=Candidate%20SOS%20Emergency%20Food" class="btn-act sos-btn">Food Help Mail</a>
-        <a href="tel:919999999999" class="btn-act primary">Emergency Helpline</a>
-      </div>
-    </div>
+    .footer-link:hover {
+      color: #ffffff;
+    }
 
-    <!-- DAILY GOOGLE SHEET LIVE NOTICE BOARD -->
-    <div class="notice-board" id="notices">
-      <div class="notice-head">
-        <span>📢 Today's Live Gate Notices & Walk-ins</span>
-        <span class="notice-tag">Daily Updates</span>
-      </div>
-      <div id="liveNoticesContainer">
-        <div class="notice-item">
-          <strong>Amber Enterprises (Gate 1) - Walk-in Live</strong>
-          Assembly & Testing line operators ke liye physical token distribution subah 9 AM shuru hoga.
-        </div>
-        <div class="notice-item">
-          <strong>Havells Lloyd (Domestic SEZ Zone)</strong>
-          ITI Electrical/Fitter maintenance candidates ke documents verification chal rahe hain.
-        </div>
-        <div class="notice-item">
-          <strong>South Gate Candidate Care Desk Active</strong>
-          Free water & basic tea guidance counter South Gate circle par 8:30 AM se available hai.
-        </div>
-      </div>
-    </div>
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+      font-size: 0.76rem;
+    }
 
-    <!-- FOUNDER & TEAM DESK -->
-    <h2 class="sec-head" id="team">🤝 Founder & Ground Welfare Team</h2>
-    <div class="team-card">
-      <div class="team-header">
-        <div class="team-avatar">VY</div>
-        <div>
-          <div class="team-title">Vishnu Yadav</div>
-          <div class="team-role">Founder & Ground Support Lead</div>
-        </div>
-      </div>
-      <p class="team-text">
-        "Sri City me interview dene aane wale kisi bhi candidate ko information ki kami ya khane/peene ki dikkat se wapas na lautna pade, yahi hamari ground team ka lakshya hai."
-      </p>
-      <div class="action-row">
-        <a href="mailto:vishnuyadav712000@gmail.com" class="btn-act primary">Direct Email</a>
-        <a href="mailto:sricitysupporthub@gmail.com" class="btn-act secondary">Official Desk</a>
-      </div>
-    </div>
+    .creator-attribution {
+      color: #64748b;
+      font-size: 0.74rem;
+      user-select: text;
+    }
 
-    <!-- SECTION 1: 15+ INDUSTRIAL PLANTS DIRECTORY -->
-    <h2 class="sec-head" id="plants">🏭 Sri City Plants Directory (15+ Active Plants)</h2>
-    <input type="text" id="plantSearch" class="search-box" placeholder="Search company by name (Amber, Daikin, Foxconn, Isuzu...)" onkeyup="filterPlants()">
-
-    <div class="cards-stack" id="plantsList">
-
-      <!-- Amber -->
-      <div class="portal-card plant-card">
-        <div class="card-row">
-          <span class="card-title">Amber Enterprises</span>
-          <span class="badge green">Hiring Active</span>
-        </div>
-        <p class="card-desc">HVAC sheet metal integration and air conditioner heating units.</p>
-        <details class="native-drawer">
-          <summary>View Gate & Walk-in Details ▾</summary>
-          <div class="drawer-content">
-            <div><span>Walk-in Day</span><strong>Thursday (9 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>SEZ Phase 2</strong></div>
-            <div><span>Roles</span><strong>Press & Sheet Operators</strong></div>
-            <div><span>Gate</span><strong>Gate 1 Testing</strong></div>
-          </div>
-        </details>
-        <div class="action-row">
-          <a href="https://maps.google.com/?q=Amber+Enterprises+Sri+City" target="_blank" class="btn-act secondary">Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Amber%20Inquiry" class="btn-act accent">Apply</a>
-        </div>
-      </div>
-
-      <!-- Havells Lloyd -->
-      <div class="portal-card plant-card">
-        <div class="card-row">
-          <span class="card-title">Havells Lloyd India</span>
-          <span class="badge green">Hiring Active</span>
-        </div>
-        <p class="card-desc">Automated consumer air conditioners and pressing unit.</p>
-        <details class="native-drawer">
-          <summary>View Gate & Walk-in Details ▾</summary>
-          <div class="drawer-content">
-            <div><span>Walk-in Day</span><strong>Wednesday (9 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>Domestic Tariff Area</strong></div>
-            <div><span>Roles</span><strong>Machine & Assembly Operators</strong></div>
-            <div><span>Gate</span><strong>HR Gate 1</strong></div>
-          </div>
-        </details>
-        <div class="action-row">
-          <a href="https://maps.google.com/?q=Havells+India+Limited+Sri+City" target="_blank" class="btn-act secondary">Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Havells%20Inquiry" class="btn-act accent">Apply</a>
-        </div>
-      </div>
-
-      <!-- Daikin -->
-      <div class="portal-card plant-card">
-        <div class="card-row">
-          <span class="card-title">Daikin India</span>
-          <span class="badge green">Hiring Active</span>
-        </div>
-        <p class="card-desc">Scroll compressors and residential room AC manufacturing plant.</p>
-        <details class="native-drawer">
-          <summary>View Gate & Walk-in Details ▾</summary>
-          <div class="drawer-content">
-            <div><span>Walk-in Day</span><strong>Tue & Thu (9 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>North Industrial SEZ</strong></div>
-            <div><span>Roles</span><strong>QC & Technicians</strong></div>
-            <div><span>Gate</span><strong>Main Security Center</strong></div>
-          </div>
-        </details>
-        <div class="action-row">
-          <a href="https://maps.google.com/?q=Daikin+Airconditioning+Sri+City" target="_blank" class="btn-act secondary">Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Daikin%20Inquiry" class="btn-act accent">Apply</a>
-        </div>
-      </div>
-
-      <!-- Blue Star -->
-      <div class="portal-card plant-card">
-        <div class="card-row">
-          <span class="card-title">Blue Star Limited</span>
-          <span class="badge green">Hiring Active</span>
-        </div>
-        <p class="card-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
-        <details class="native-drawer">
-          <summary>View Gate & Walk-in Details ▾</summary>
-          <div class="drawer-content">
-            <div><span>Walk-in Day</span><strong>Mon & Wed (8:30 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>Sector 14</strong></div>
-            <div><span>Roles</span><strong>Brazing & Assembly</strong></div>
-            <div><span>Gate</span><strong>HR Block Gate 2</strong></div>
-          </div>
-        </details>
-        <div class="action-row">
-          <a href="https://maps.google.com/?q=Blue+Star+Limited+Sri+City" target="_blank" class="btn-act secondary">Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Blue%20Star%20Inquiry" class="btn-act accent">Apply</a>
-        </div>
-      </div>
-
-      <!-- Foxconn (Rising Stars) -->
-      <div class="portal-card plant-card">
-        <div class="card-row">
-          <span class="card-title">Foxconn (Rising Stars Mobile)</span>
-          <span class="badge green">Large Scale Hiring</span>
-        </div>
-        <p class="card-desc">High-tech smartphone manufacturing and PCB precision assembly plant.</p>
-        <details class="native-drawer">
-          <summary>View Gate & Walk-in Details ▾</summary>
-          <div class="drawer-content">
-            <div><span>Walk-in Day</span><strong>Mon to Fri (Daily 8 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>Central Electronics Zone</strong></div>
-            <div><span>Roles</span><strong>SMT, Assembly, Testing</strong></div>
-            <div><span>Gate</span><strong>Recruitment Gate 3</strong></div>
-          </div>
-        </details>
-        <div class="action-row">
-          <a href="https://maps.google.com/?q=Rising+Stars+Mobile+Sri+City" target="_blank" class="btn-act secondary">Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Foxconn%20Inquiry" class="btn-act accent">Apply</a>
-        </div>
-      </div>
-
-      <!-- Alstom Transport -->
-      <div class="portal-card plant-card">
-        <div class="card-row">
-          <span class="card-title">Alstom Transport India</span>
-          <span class="badge blue">Rail Division</span>
-        </div>
-        <p class="card-desc">Metro rail coach manufacturing and high-speed electrical rolling stock.</p>
-        <details class="native-drawer">
-          <summary>View Gate & Walk-in Details ▾</summary>
-          <div class="drawer-content">
-            <div><span>Walk-in Day</span><strong>Notification Based</strong></div>
-            <div><span>Plant Zone</span><strong>Sector 22 Rail Cluster</strong></div>
-            <div><span>Roles</span><strong>Welders, Fitters, Wiremen</strong></div>
-   
+    /* =================================================
