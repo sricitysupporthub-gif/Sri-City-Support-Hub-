@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sri City Support Hub | Industrial Corridor Community & Candidate Portal</title>
+  <title>Sri City Support Hub | Official Corridor & Candidate Portal</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
       --primary: #0f172a;
       --accent: #059669;
-      --accent-light: #ecfdf5;
+      --accent-bg: #ecfdf5;
       --bg: #f8fafc;
       --card: #ffffff;
-      --border: #e2e8f0;
+      --border: #cbd5e1;
       --text: #0f172a;
       --muted: #64748b;
       --sos: #e11d48;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 2rem; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 3rem; overflow-x: hidden; }
 
-    /* Live Top Utility Bar */
+    /* Top Utility Bar */
     .top-bar {
       background: #020617;
       color: #94a3b8;
@@ -30,126 +31,106 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 6px;
     }
-    .top-bar-item { display: flex; align-items: center; gap: 5px; }
     .top-bar strong { color: #f8fafc; }
 
-    /* Sticky Navigation */
-    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 9999; }
-    .nav-container { max-width: 1040px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.2rem; position: relative; }
+    /* App Header & Horizontal Scrolling Navigation */
+    header { background: #ffffff; border-bottom: 2px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1040px; margin: auto; padding: 0.75rem 1rem 0.4rem 1rem; }
+    .brand-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
     .brand { font-size: 1.15rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: var(--accent); border-radius: 2px; }
+    .brand-badge { background: var(--accent); color: #ffffff; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
 
-    .menu-toggle { display: none; background: #f1f5f9; border: 1px solid #cbd5e1; font-size: 1.3rem; cursor: pointer; color: var(--primary); padding: 4px 10px; border-radius: 6px; line-height: 1; }
-    .nav-menu { display: flex; gap: 0.8rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--muted); font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.65rem; border-radius: 6px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--accent); background: var(--accent-light); }
+    .nav-tabs {
+      display: flex;
+      gap: 0.45rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      background: #f1f5f9;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.4rem 0.75rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+    .nav-tab:active { background: var(--primary); color: #ffffff; }
 
-    .main-container { max-width: 1040px; margin: auto; padding: 1.2rem; }
+    .main-container { max-width: 1040px; margin: auto; padding: 1rem; }
 
-    /* Hero Banner */
+    /* Hero */
     .hero-banner {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #ffffff;
-      padding: 1.6rem 1.2rem;
+      padding: 1.4rem 1.1rem;
       border-radius: 12px;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      margin-bottom: 1rem;
     }
-    .hero-title { font-size: 1.45rem; font-weight: 800; margin-bottom: 0.3rem; }
-    .hero-subtitle { font-size: 0.85rem; color: #cbd5e1; }
+    .hero-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.82rem; color: #cbd5e1; }
 
-    /* SOS CANDIDATE FOOD & WELFARE BANNER */
+    /* SOS BANNER */
     .sos-banner {
       background: #ffffff;
       border: 2px solid var(--sos);
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.08);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.08);
     }
-    .sos-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 0.35rem; }
-    .sos-badge { background: var(--sos); color: #ffffff; font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
-    .sos-title { font-size: 1rem; font-weight: 800; color: #9f1239; }
-    .sos-text { font-size: 0.83rem; color: #475569; margin-bottom: 0.75rem; line-height: 1.4; }
+    .sos-title { font-size: 1.05rem; font-weight: 800; color: #9f1239; margin-bottom: 0.3rem; }
+    .sos-text { font-size: 0.83rem; color: #334155; margin-bottom: 0.75rem; }
 
-    /* Category Navigation Grid */
-    .section-head { font-size: 1.15rem; font-weight: 800; margin: 1.8rem 0 0.85rem 0; display: flex; align-items: center; gap: 8px; color: var(--primary); }
-    
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.65rem;
+    /* DAILY GOOGLE SHEET LIVE NOTICE BOARD */
+    .notice-board {
+      background: #fffbeb;
+      border: 2px solid #f59e0b;
+      border-radius: 12px;
+      padding: 1rem;
       margin-bottom: 1.5rem;
     }
-    .cat-btn {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.85rem 0.5rem;
-      text-align: center;
-      text-decoration: none;
-      color: var(--primary);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
-    }
-    .cat-btn:active { transform: scale(0.97); background: #f1f5f9; }
-    .cat-icon { font-size: 1.45rem; line-height: 1; }
-    .cat-label { font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .notice-head { font-size: 0.95rem; font-weight: 800; color: #92400e; margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between; }
+    .notice-tag { background: #f59e0b; color: #ffffff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; }
+    .notice-item { background: #ffffff; border: 1px solid #fde68a; border-radius: 8px; padding: 0.7rem; margin-top: 0.5rem; font-size: 0.82rem; color: #1e293b; }
+    .notice-item strong { color: #0f172a; display: block; margin-bottom: 2px; }
 
-    /* Search Box */
-    .search-box {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border: 2px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      outline: none;
-      background: #ffffff;
-      color: var(--primary);
-      margin-bottom: 0.85rem;
-      display: block;
-    }
-    .search-box:focus { border-color: var(--accent); }
+    /* SECTION TITLES */
+    .sec-head { font-size: 1.15rem; font-weight: 800; margin: 1.6rem 0 0.85rem 0; color: var(--primary); display: flex; align-items: center; gap: 6px; }
 
-    /* Filter Tabs */
-    .filter-tabs { display: flex; gap: 0.45rem; overflow-x: auto; padding-bottom: 0.75rem; margin-bottom: 1rem; -webkit-overflow-scrolling: touch; }
-    .filter-tab {
-      background: #ffffff; border: 1px solid #cbd5e1; padding: 0.4rem 0.8rem; border-radius: 20px;
-      font-size: 0.75rem; font-weight: 700; color: var(--muted); cursor: pointer; white-space: nowrap; flex-shrink: 0;
-    }
-    .filter-tab.active { background: var(--primary); color: #ffffff; border-color: var(--primary); }
-
-    /* Universal Cards */
+    /* CARDS */
     .cards-stack { display: flex; flex-direction: column; gap: 0.75rem; }
     .portal-card {
       background: #ffffff;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+      padding: 0.95rem;
+      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
     }
-    .portal-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .portal-card-title { font-size: 0.98rem; font-weight: 700; color: var(--primary); }
-    .badge { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; background: #f1f5f9; color: var(--muted); }
-    .badge.green { background: var(--accent-light); color: var(--accent); }
+    .card-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .card-title { font-size: 0.98rem; font-weight: 700; color: var(--primary); }
+    .badge { font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; background: #f1f5f9; color: var(--muted); }
+    .badge.green { background: var(--accent-bg); color: var(--accent); }
     .badge.blue { background: #eff6ff; color: #1d4ed8; }
-    .badge.red { background: #fef2f2; color: #b91c1c; }
 
-    .portal-desc { font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.65rem 0; line-height: 1.4; }
+    .card-desc { font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.65rem 0; }
 
-    /* Action Buttons Row */
-    .action-row { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+    /* BUTTONS */
+    .action-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
     .btn-act {
       flex: 1;
-      padding: 0.48rem 0.5rem;
+      min-width: 90px;
+      padding: 0.55rem;
       border-radius: 6px;
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 700;
       text-align: center;
       text-decoration: none;
@@ -161,106 +142,112 @@
     }
     .btn-act.primary { background: var(--primary); color: #ffffff; }
     .btn-act.secondary { background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
-    .btn-act.accent { background: var(--accent-light); color: var(--accent); border: 1px solid #a7f3d0; }
+    .btn-act.accent { background: var(--accent-bg); color: var(--accent); border: 1px solid #a7f3d0; }
     .btn-act.sos-btn { background: var(--sos); color: #ffffff; }
-    .btn-act.emergency { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
 
-    /* Expandable Drawer */
-    .card-drawer { display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px dashed var(--border); }
-    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; font-size: 0.75rem; margin-bottom: 0.75rem; }
-    .detail-grid span { color: var(--muted); display: block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; }
-    .detail-grid strong { color: var(--primary); font-weight: 700; }
+    /* NATIVE NO-JS DETAILS DRAWER */
+    details.native-drawer { margin-top: 0.5rem; }
+    details.native-drawer summary {
+      cursor: pointer;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      padding: 0.5rem;
+      border-radius: 6px;
+      text-align: center;
+      list-style: none;
+    }
+    details.native-drawer summary::-webkit-details-marker { display: none; }
+    .drawer-content {
+      background: #f8fafc;
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+    .drawer-content span { display: block; font-size: 0.68rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+    .drawer-content strong { color: var(--primary); }
 
-    /* Railway Station Grid */
-    .train-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
-    .train-box { background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem; }
-    .train-box-code { font-size: 0.7rem; font-weight: 800; color: #1d4ed8; background: #eff6ff; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
-    .train-box-name { font-size: 0.88rem; font-weight: 700; color: var(--primary); }
-    .train-box-dist { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.5rem; }
-
-    /* Review & Proofs Styling */
-    .review-box {
-      background: #ffffff;
-      border: 1px solid var(--border);
+    /* SEARCH INPUT */
+    .search-box {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--border);
       border-radius: 8px;
-      padding: 0.9rem;
-      margin-bottom: 0.65rem;
+      font-size: 0.92rem;
+      outline: none;
+      margin-bottom: 0.85rem;
+      display: block;
     }
-    .review-user-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; }
-    .review-user { font-size: 0.85rem; font-weight: 700; color: var(--primary); }
-    .review-stars { color: #f59e0b; font-size: 0.8rem; }
-    .review-comment { font-size: 0.8rem; color: #475569; line-height: 1.4; }
+    .search-box:focus { border-color: var(--accent); }
 
-    .video-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 0.75rem;
-    }
-    .video-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .video-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; }
+    /* TRAIN GRID */
+    .train-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+    .train-box { background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem; }
+    .train-code { font-size: 0.7rem; font-weight: 800; color: #1d4ed8; background: #eff6ff; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 3px; }
+    .train-name { font-size: 0.88rem; font-weight: 700; color: var(--primary); }
+    .train-dist { font-size: 0.73rem; color: var(--muted); margin-bottom: 0.4rem; }
 
-    .review-form {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
+    /* FOUNDER & TEAM CARD */
+    .team-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
       padding: 1.1rem;
-      margin-top: 1rem;
+      margin-bottom: 1.5rem;
     }
-    .form-group { margin-bottom: 0.75rem; }
+    .team-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.6rem; }
+    .team-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
+    .team-title { font-size: 1rem; font-weight: 800; color: var(--primary); }
+    .team-role { font-size: 0.75rem; color: var(--accent); font-weight: 700; }
+    .team-text { font-size: 0.82rem; color: #334155; margin-bottom: 0.75rem; line-height: 1.4; }
+
+    /* REVIEWS & FORMS */
+    .review-box { background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem; margin-bottom: 0.65rem; }
+    .review-form { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 1rem; }
+    .form-group { margin-bottom: 0.7rem; }
     .form-group label { display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--primary); }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%; padding: 0.65rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; outline: none;
     }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
 
-    footer { border-top: 1px solid var(--border); padding: 2.2rem 1.2rem; text-align: center; margin-top: 3rem; background: #ffffff; }
-    .footer-brand { font-size: 0.9rem; font-weight: 800; color: var(--primary); margin-bottom: 0.3rem; }
-    .footer-helpdesk { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.9rem; }
-    .footer-helpdesk a { color: var(--accent); font-weight: 700; text-decoration: none; }
-    .footer-curator { border-top: 1px dashed var(--border); display: inline-block; padding-top: 0.8rem; font-size: 0.78rem; color: var(--muted); }
-    .footer-curator strong { color: var(--primary); }
-    .footer-personal-email { font-size: 0.74rem; color: #475569; font-family: monospace; margin-top: 0.2rem; }
+    footer { border-top: 1px solid var(--border); padding: 2rem 1rem; text-align: center; margin-top: 3rem; background: #ffffff; }
 
-    @media (max-width: 768px) {
-      .category-grid { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 600px) {
       .train-grid { grid-template-columns: 1fr; }
-      .menu-toggle { display: block; }
-      .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; flex-direction: column; padding: 0.8rem 1.2rem; border-bottom: 2px solid var(--border); box-shadow: 0 8px 16px rgba(0,0,0,0.06); }
-      .nav-menu.active { display: flex !important; }
-      .nav-menu a { display: block; padding: 0.6rem 0.8rem; font-size: 0.92rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Live Utility Bar (Time, Date, Weather) -->
+  <!-- Top Real-time Bar -->
   <div class="top-bar">
-    <div class="top-bar-item">
-      <span>📍 <strong>Sri City / Tada</strong></span>
-      <span>•</span>
-      <span id="liveClock">Loading...</span>
-    </div>
-    <div class="top-bar-item">
-      <span>☀️ <strong>31°C Clear</strong></span>
-      <span>•</span>
-      <span style="color:#10b981;">● Corridor Active</span>
-    </div>
+    <div>📍 <strong>Sri City / Tada Corridor</strong> • <span id="clock">Active</span></div>
+    <div>☀️ <strong>31°C</strong> • <span style="color:#10b981;">● Online</span></div>
   </div>
 
-  <!-- Header -->
+  <!-- Header with Horizontal Fast Tabs (No Hamburger Trap) -->
   <header>
     <div class="nav-container">
-      <a href="#home" class="brand"><div class="brand-mark"></div>Sri City Portal</a>
-      <button type="button" class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
-      <ul class="nav-menu" id="navLinks">
-        <li><a href="#sos">SOS Food</a></li>
-        <li><a href="#plants">Plants</a></li>
-        <li><a href="#railways">Trains</a></li>
-        <li><a href="#health">Health</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-      </ul>
+      <div class="brand-row">
+        <a href="#home" class="brand">Sri City Support Hub</a>
+        <span class="brand-badge">Official Hub</span>
+      </div>
+      <nav class="nav-tabs">
+        <a href="#sos" class="nav-tab">🍲 SOS Food</a>
+        <a href="#notices" class="nav-tab">📢 Live Notices</a>
+        <a href="#plants" class="nav-tab">🏭 Plants Directory</a>
+        <a href="#railways" class="nav-tab">🚆 10 Stations</a>
+        <a href="#team" class="nav-tab">🤝 Team & Founder</a>
+        <a href="#health" class="nav-tab">🏥 Health</a>
+        <a href="#reviews" class="nav-tab">⭐ Reviews</a>
+      </nav>
     </div>
   </header>
 
@@ -268,149 +255,190 @@
 
     <!-- Hero Banner -->
     <div class="hero-banner">
-      <h1 class="hero-title">Sri City Corridor Hub</h1>
-      <p class="hero-subtitle">Industrial plant walk-ins, candidate emergency food/transit support, railway coordination, and community reviews.</p>
+      <h1 class="hero-title">Sri City Industrial Support Portal</h1>
+      <p class="hero-subtitle">Candidate Walk-in Schedules • Food & Transit Assistance • Corridor Directory</p>
     </div>
 
-    <!-- SPECIAL SOS CANDIDATE FOOD & EMERGENCY CARE DESK -->
+    <!-- SOS CANDIDATE FOOD DESK -->
     <div class="sos-banner" id="sos">
-      <div class="sos-header">
-        <span class="sos-title">🍲 Candidate Care & Emergency Food Desk</span>
-        <span class="sos-badge">Community Help</span>
-      </div>
+      <div class="sos-title">🍲 Candidate Care & Emergency Food Desk</div>
       <p class="sos-text">
-        Door-door se subah-sham interview dene aane wale bhaiyon ke liye: Agar plant ke gate par bhookhe ho, lunch break me paise/food ki dikkat hai ya return ticket/transit me fase ho — direct connect karo. Jitna humse ho sakega ground level par help karenge!
+        Door-door se interview dene aane wale candidates ke liye: Gate par bhookhe ho ya return ticket/transit me fase ho, direct connect karo.
       </p>
       <div class="action-row">
-        <a href="mailto:sricitysupporthub@gmail.com?subject=SOS%20Candidate%20Food%20or%20Emergency%20Help" class="btn-act sos-btn">SOS Food Help</a>
-        <a href="tel:919999999999" class="btn-act primary">Call Helpline</a>
+        <a href="mailto:sricitysupporthub@gmail.com?subject=Candidate%20SOS%20Emergency%20Food" class="btn-act sos-btn">Food Help Mail</a>
+        <a href="tel:919999999999" class="btn-act primary">Emergency Helpline</a>
       </div>
     </div>
 
-    <!-- Quick Navigation Logo Buttons -->
-    <h2 class="section-head">⚡ Corridor Quick Services</h2>
-    <div class="category-grid">
-      <a href="#plants" class="cat-btn">
-        <span class="cat-icon">🏭</span>
-        <span class="cat-label">Plants</span>
-      </a>
-      <a href="#sos" class="cat-btn">
-        <span class="cat-icon">🍲</span>
-        <span class="cat-label">Food Help</span>
-      </a>
-      <a href="#railways" class="cat-btn">
-        <span class="cat-icon">🚆</span>
-        <span class="cat-label">Trains</span>
-      </a>
-      <a href="#health" class="cat-btn">
-        <span class="cat-icon">🏥</span>
-        <span class="cat-label">Health</span>
-      </a>
-      <a href="#food" class="cat-btn">
-        <span class="cat-icon">🍳</span>
-        <span class="cat-label">Mess</span>
-      </a>
-      <a href="#market" class="cat-btn">
-        <span class="cat-icon">🛒</span>
-        <span class="cat-label">Market</span>
-      </a>
-      <a href="#housing" class="cat-btn">
-        <span class="cat-icon">🏠</span>
-        <span class="cat-label">Rooms/PG</span>
-      </a>
-      <a href="#reviews" class="cat-btn">
-        <span class="cat-icon">⭐</span>
-        <span class="cat-label">Reviews</span>
-      </a>
+    <!-- DAILY GOOGLE SHEET LIVE NOTICE BOARD -->
+    <div class="notice-board" id="notices">
+      <div class="notice-head">
+        <span>📢 Today's Live Gate Notices & Walk-ins</span>
+        <span class="notice-tag">Daily Updates</span>
+      </div>
+      <div id="liveNoticesContainer">
+        <div class="notice-item">
+          <strong>Amber Enterprises (Gate 1) - Walk-in Live</strong>
+          Assembly & Testing line operators ke liye physical token distribution subah 9 AM shuru hoga.
+        </div>
+        <div class="notice-item">
+          <strong>Havells Lloyd (Domestic SEZ Zone)</strong>
+          ITI Electrical/Fitter maintenance candidates ke documents verification chal rahe hain.
+        </div>
+        <div class="notice-item">
+          <strong>South Gate Candidate Care Desk Active</strong>
+          Free water & basic tea guidance counter South Gate circle par 8:30 AM se available hai.
+        </div>
+      </div>
     </div>
 
-    <!-- SECTION 1: INDUSTRIAL PLANTS & SEARCH -->
-    <h2 class="section-head" id="plants">🏭 Industrial Plants & Live Search</h2>
-    <input type="text" id="plantSearch" class="search-box" placeholder="Search company (Amber, Blue Star, Daikin, Isuzu, Cadbury)..." oninput="filterPlants()">
-
-    <div class="filter-tabs">
-      <button type="button" class="filter-tab active" onclick="setPlantCat('all', this)">All (50+)</button>
-      <button type="button" class="filter-tab" onclick="setPlantCat('hvac', this)">HVAC</button>
-      <button type="button" class="filter-tab" onclick="setPlantCat('auto', this)">Auto & Rail</button>
-      <button type="button" class="filter-tab" onclick="setPlantCat('fmcg', this)">FMCG</button>
+    <!-- FOUNDER & TEAM DESK -->
+    <h2 class="sec-head" id="team">🤝 Founder & Ground Welfare Team</h2>
+    <div class="team-card">
+      <div class="team-header">
+        <div class="team-avatar">VY</div>
+        <div>
+          <div class="team-title">Vishnu Yadav</div>
+          <div class="team-role">Founder & Ground Support Lead</div>
+        </div>
+      </div>
+      <p class="team-text">
+        "Sri City me interview dene aane wale kisi bhi candidate ko information ki kami ya khane/peene ki dikkat se wapas na lautna pade, yahi hamari ground team ka lakshya hai."
+      </p>
+      <div class="action-row">
+        <a href="mailto:vishnuyadav712000@gmail.com" class="btn-act primary">Direct Email</a>
+        <a href="mailto:sricitysupporthub@gmail.com" class="btn-act secondary">Official Desk</a>
+      </div>
     </div>
 
-    <div class="cards-stack" id="plantCardsContainer">
+    <!-- SECTION 1: 15+ INDUSTRIAL PLANTS DIRECTORY -->
+    <h2 class="sec-head" id="plants">🏭 Sri City Plants Directory (15+ Active Plants)</h2>
+    <input type="text" id="plantSearch" class="search-box" placeholder="Search company by name (Amber, Daikin, Foxconn, Isuzu...)" onkeyup="filterPlants()">
+
+    <div class="cards-stack" id="plantsList">
 
       <!-- Amber -->
-      <div class="portal-card plant-card" data-cat="hvac" data-title="Amber Enterprises HVAC Sheet Metal AC">
-        <div class="portal-card-header">
-          <span class="portal-card-title">Amber Enterprises</span>
+      <div class="portal-card plant-card">
+        <div class="card-row">
+          <span class="card-title">Amber Enterprises</span>
           <span class="badge green">Hiring Active</span>
         </div>
-        <p class="portal-desc">HVAC sheet metal integration and air conditioner heating units.</p>
+        <p class="card-desc">HVAC sheet metal integration and air conditioner heating units.</p>
+        <details class="native-drawer">
+          <summary>View Gate & Walk-in Details ▾</summary>
+          <div class="drawer-content">
+            <div><span>Walk-in Day</span><strong>Thursday (9 AM)</strong></div>
+            <div><span>Plant Zone</span><strong>SEZ Phase 2</strong></div>
+            <div><span>Roles</span><strong>Press & Sheet Operators</strong></div>
+            <div><span>Gate</span><strong>Gate 1 Testing</strong></div>
+          </div>
+        </details>
         <div class="action-row">
-          <button type="button" class="btn-act primary" onclick="toggleDrawer(this)">Details ▾</button>
           <a href="https://maps.google.com/?q=Amber+Enterprises+Sri+City" target="_blank" class="btn-act secondary">Map</a>
           <a href="mailto:sricitysupporthub@gmail.com?subject=Amber%20Inquiry" class="btn-act accent">Apply</a>
         </div>
-        <div class="card-drawer">
-          <div class="detail-grid">
-            <div><span>Walk-in Day</span><strong>Thursday (9 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>SEZ Phase 2</strong></div>
-            <div><span>Open Roles</span><strong>Press & Sheet Operators</strong></div>
-            <div><span>Interview Desk</span><strong>Gate 1 Testing</strong></div>
-          </div>
-        </div>
       </div>
 
-      <!-- Blue Star -->
-      <div class="portal-card plant-card" data-cat="hvac" data-title="Blue Star Limited Commercial Refrigeration AC">
-        <div class="portal-card-header">
-          <span class="portal-card-title">Blue Star Limited</span>
+      <!-- Havells Lloyd -->
+      <div class="portal-card plant-card">
+        <div class="card-row">
+          <span class="card-title">Havells Lloyd India</span>
           <span class="badge green">Hiring Active</span>
         </div>
-        <p class="portal-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
-        <div class="action-row">
-          <button type="button" class="btn-act primary" onclick="toggleDrawer(this)">Details ▾</button>
-          <a href="https://maps.google.com/?q=Blue+Star+Limited+Sri+City" target="_blank" class="btn-act secondary">Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Blue%20Star%20Inquiry" class="btn-act accent">Apply</a>
-        </div>
-        <div class="card-drawer">
-          <div class="detail-grid">
-            <div><span>Walk-in Day</span><strong>Mon & Wed (8:30 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>Sector 14</strong></div>
-            <div><span>Open Roles</span><strong>Brazing & Assembly</strong></div>
-            <div><span>Interview Desk</span><strong>HR Block Gate 2</strong></div>
+        <p class="card-desc">Automated consumer air conditioners and pressing unit.</p>
+        <details class="native-drawer">
+          <summary>View Gate & Walk-in Details ▾</summary>
+          <div class="drawer-content">
+            <div><span>Walk-in Day</span><strong>Wednesday (9 AM)</strong></div>
+            <div><span>Plant Zone</span><strong>Domestic Tariff Area</strong></div>
+            <div><span>Roles</span><strong>Machine & Assembly Operators</strong></div>
+            <div><span>Gate</span><strong>HR Gate 1</strong></div>
           </div>
+        </details>
+        <div class="action-row">
+          <a href="https://maps.google.com/?q=Havells+India+Limited+Sri+City" target="_blank" class="btn-act secondary">Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Havells%20Inquiry" class="btn-act accent">Apply</a>
         </div>
       </div>
 
       <!-- Daikin -->
-      <div class="portal-card plant-card" data-cat="hvac" data-title="Daikin India AC Compressors HVAC">
-        <div class="portal-card-header">
-          <span class="portal-card-title">Daikin India</span>
+      <div class="portal-card plant-card">
+        <div class="card-row">
+          <span class="card-title">Daikin India</span>
           <span class="badge green">Hiring Active</span>
         </div>
-        <p class="portal-desc">Scroll compressors and residential room AC manufacturing plant.</p>
+        <p class="card-desc">Scroll compressors and residential room AC manufacturing plant.</p>
+        <details class="native-drawer">
+          <summary>View Gate & Walk-in Details ▾</summary>
+          <div class="drawer-content">
+            <div><span>Walk-in Day</span><strong>Tue & Thu (9 AM)</strong></div>
+            <div><span>Plant Zone</span><strong>North Industrial SEZ</strong></div>
+            <div><span>Roles</span><strong>QC & Technicians</strong></div>
+            <div><span>Gate</span><strong>Main Security Center</strong></div>
+          </div>
+        </details>
         <div class="action-row">
-          <button type="button" class="btn-act primary" onclick="toggleDrawer(this)">Details ▾</button>
           <a href="https://maps.google.com/?q=Daikin+Airconditioning+Sri+City" target="_blank" class="btn-act secondary">Map</a>
           <a href="mailto:sricitysupporthub@gmail.com?subject=Daikin%20Inquiry" class="btn-act accent">Apply</a>
         </div>
-        <div class="card-drawer">
-          <div class="detail-grid">
-            <div><span>Walk-in Day</span><strong>Tue & Thu (9 AM)</strong></div>
-            <div><span>Plant Zone</span><strong>North Industrial SEZ</strong></div>
-            <div><span>Open Roles</span><strong>QC & Technicians</strong></div>
-            <div><span>Interview Desk</span><strong>Main Security Center</strong></div>
+      </div>
+
+      <!-- Blue Star -->
+      <div class="portal-card plant-card">
+        <div class="card-row">
+          <span class="card-title">Blue Star Limited</span>
+          <span class="badge green">Hiring Active</span>
+        </div>
+        <p class="card-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
+        <details class="native-drawer">
+          <summary>View Gate & Walk-in Details ▾</summary>
+          <div class="drawer-content">
+            <div><span>Walk-in Day</span><strong>Mon & Wed (8:30 AM)</strong></div>
+            <div><span>Plant Zone</span><strong>Sector 14</strong></div>
+            <div><span>Roles</span><strong>Brazing & Assembly</strong></div>
+            <div><span>Gate</span><strong>HR Block Gate 2</strong></div>
           </div>
+        </details>
+        <div class="action-row">
+          <a href="https://maps.google.com/?q=Blue+Star+Limited+Sri+City" target="_blank" class="btn-act secondary">Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Blue%20Star%20Inquiry" class="btn-act accent">Apply</a>
         </div>
       </div>
 
-      <!-- Isuzu Motors -->
-      <div class="portal-card plant-card" data-cat="auto" data-title="Isuzu Motors India Automotive Commercial Vehicle">
-        <div class="portal-card-header">
-          <span class="portal-card-title">Isuzu Motors India</span>
-          <span class="badge green">Hiring Active</span>
+      <!-- Foxconn (Rising Stars) -->
+      <div class="portal-card plant-card">
+        <div class="card-row">
+          <span class="card-title">Foxconn (Rising Stars Mobile)</span>
+          <span class="badge green">Large Scale Hiring</span>
         </div>
-        <p class="portal-desc">Commercial utility vehicle manufacturing and chassis welding line.</p>
+        <p class="card-desc">High-tech smartphone manufacturing and PCB precision assembly plant.</p>
+        <details class="native-drawer">
+          <summary>View Gate & Walk-in Details ▾</summary>
+          <div class="drawer-content">
+            <div><span>Walk-in Day</span><strong>Mon to Fri (Daily 8 AM)</strong></div>
+            <div><span>Plant Zone</span><strong>Central Electronics Zone</strong></div>
+            <div><span>Roles</span><strong>SMT, Assembly, Testing</strong></div>
+            <div><span>Gate</span><strong>Recruitment Gate 3</strong></div>
+          </div>
+        </details>
         <div class="action-row">
-          <button type="button" class="btn-act primary" onclick="toggleDrawer(this)">Details ▾</button>
-          <a href="https://maps.google.com/?q=Isuzu+Motors+India+Sri+City" target="_blank" class="btn-act secondary">Map</a>
-          <a href="mailto:sricitysupporthub@gm
+          <a href="https://maps.google.com/?q=Rising+Stars+Mobile+Sri+City" target="_blank" class="btn-act secondary">Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Foxconn%20Inquiry" class="btn-act accent">Apply</a>
+        </div>
+      </div>
+
+      <!-- Alstom Transport -->
+      <div class="portal-card plant-card">
+        <div class="card-row">
+          <span class="card-title">Alstom Transport India</span>
+          <span class="badge blue">Rail Division</span>
+        </div>
+        <p class="card-desc">Metro rail coach manufacturing and high-speed electrical rolling stock.</p>
+        <details class="native-drawer">
+          <summary>View Gate & Walk-in Details ▾</summary>
+          <div class="drawer-content">
+            <div><span>Walk-in Day</span><strong>Notification Based</strong></div>
+            <div><span>Plant Zone</span><strong>Sector 22 Rail Cluster</strong></div>
+            <div><span>Roles</span><strong>Welders, Fitters, Wiremen</strong></div>
+   
