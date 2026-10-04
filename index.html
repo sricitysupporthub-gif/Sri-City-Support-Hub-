@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sri City Support Hub | Industrial Gateway & Verification Desk</title>
+  <title>Sri City Support Hub</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
@@ -14,7 +14,7 @@
       --emerald: #065f46;
       --slate-muted: #64748b;
       --border: #e2e8f0;
-      --card-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.06);
+      --card-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
     }
     * { 
       box-sizing: border-box; 
@@ -22,67 +22,66 @@
       padding: 0; 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      user-select: none;
     }
-    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
+    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.5; }
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 1020px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
-    .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-container { max-width: 1020px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1.2rem; }
+    .brand { font-size: 1.1rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .brand-mark { width: 10px; height: 10px; background: var(--emerald); border-radius: 2px; }
-    .nav-menu { display: flex; gap: 1rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
+    .nav-menu { display: flex; gap: 0.8rem; list-style: none; }
+    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.88rem; font-weight: 600; padding: 0.4rem 0.65rem; border-radius: 6px; }
     .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: #ecfdf5; }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
 
-    .main-container { max-width: 1020px; margin: auto; padding: 1.8rem 1.2rem; }
+    .main-container { max-width: 1020px; margin: auto; padding: 1.5rem 1.2rem; }
 
-    /* HD Architectural Industrial Hero Header */
     .hero-banner {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.88) 100%), 
                   url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color: #fff;
-      border-radius: 14px;
-      padding: 3rem 1.8rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.25);
+      border-radius: 12px;
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.2);
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(8px);
       color: #a7f3d0;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
-      padding: 0.35rem 0.8rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 20px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
-    .hero-banner h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.8rem; }
-    .hero-banner p { font-size: 0.98rem; color: #f1f5f9; line-height: 1.6; max-width: 680px; margin-bottom: 1.8rem; }
-    .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .btn-hero-primary {
+    .hero-banner h1 { font-size: 1.75rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+    .hero-banner p { font-size: 0.92rem; color: #f1f5f9; line-height: 1.5; max-width: 640px; margin-bottom: 1.4rem; }
+    .hero-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    
+    .btn-s-primary {
       background: #ffffff;
       color: var(--charcoal);
       font-weight: 700;
-      font-size: 0.86rem;
-      padding: 0.65rem 1.4rem;
+      font-size: 0.8rem;
+      padding: 0.45rem 1rem;
       border-radius: 6px;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
-    .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
+    .btn-s-secondary {
+      background: rgba(255, 255, 255, 0.14);
       color: #ffffff;
       font-weight: 600;
-      font-size: 0.86rem;
-      padding: 0.65rem 1.4rem;
+      font-size: 0.8rem;
+      padding: 0.45rem 1rem;
       border-radius: 6px;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .zero-point-ticker {
@@ -90,102 +89,133 @@
       border: 1px solid var(--border);
       border-left: 4px solid var(--emerald);
       border-radius: 8px;
-      padding: 0.8rem 1.2rem;
-      margin-bottom: 1.8rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
       box-shadow: var(--card-shadow);
     }
     .ticker-live {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
+      gap: 6px;
+      font-size: 0.75rem;
       font-weight: 800;
       color: var(--emerald);
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
     }
-    .pulse-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; }
-    .ticker-items { display: flex; gap: 1.2rem; flex-wrap: wrap; font-size: 0.78rem; color: var(--slate-muted); font-weight: 600; }
+    .pulse-dot { width: 7px; height: 7px; background: #10b981; border-radius: 50%; }
+    .ticker-items { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.76rem; color: var(--slate-muted); font-weight: 600; }
     .ticker-item span { color: var(--charcoal); font-weight: 700; }
 
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0.8rem;
+      gap: 0.6rem;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.2rem;
-      margin-bottom: 2rem;
+      padding: 1rem;
+      margin-bottom: 1.6rem;
       box-shadow: var(--card-shadow);
       text-align: center;
     }
-    .stat-box h4 { font-size: 1.4rem; font-weight: 800; color: var(--charcoal); }
-    .stat-box span { font-size: 0.72rem; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; }
+    .stat-box h4 { font-size: 1.3rem; font-weight: 800; color: var(--charcoal); }
+    .stat-box span { font-size: 0.7rem; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; }
 
-    .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; color: var(--charcoal); }
-    .section-desc { font-size: 0.88rem; color: var(--slate-muted); margin-bottom: 1.4rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.2rem; color: var(--charcoal); }
+    .section-desc { font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 1.2rem; }
 
-    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.6rem; }
     .feature-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem;
+      border-radius: 8px;
+      padding: 1.2rem;
       box-shadow: var(--card-shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .feature-card p { font-size: 0.86rem; color: #475569; margin-bottom: 1rem; line-height: 1.5; }
-    .btn-clean-link {
-      font-size: 0.82rem;
+    .feature-card h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .feature-card p { font-size: 0.82rem; color: #475569; margin-bottom: 0.8rem; line-height: 1.45; }
+    
+    .btn-short-card {
+      align-self: flex-start;
+      font-size: 0.76rem;
       font-weight: 700;
-      color: var(--emerald);
+      color: #1d4ed8;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      padding: 0.35rem 0.75rem;
+      border-radius: 5px;
       text-decoration: none;
     }
 
-    /* Short Clean Contact Banner */
-    .contact-bar {
+    /* Short Clean Interactive Support Bar */
+    .support-bar {
       background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.6rem;
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.8rem;
       box-shadow: var(--card-shadow);
     }
-    .contact-bar-text h3 { font-size: 1.1rem; font-weight: 800; }
-    .contact-bar-text p { font-size: 0.85rem; color: var(--slate-muted); }
-    .btn-short-contact {
+    .support-bar-text h4 { font-size: 0.96rem; font-weight: 700; color: var(--charcoal); }
+    .support-bar-text p { font-size: 0.8rem; color: var(--slate-muted); }
+    .btn-business-mail {
       background: var(--charcoal);
-      color: #fff;
-      font-size: 0.82rem;
+      color: #ffffff;
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 0.55rem 1.3rem;
+      padding: 0.45rem 1rem;
       border-radius: 6px;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    footer { border-top: 1px solid var(--border); padding: 2.2rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3.5rem; background: #fff; }
-    footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
+    /* Clean Footer with Active Business Mail + Plain Unclickable Personal Contact */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.2rem;
+      text-align: center;
+      margin-top: 3rem;
+      background: #ffffff;
+    }
+    .footer-brand { font-size: 0.86rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; }
+    .footer-business { font-size: 0.8rem; color: var(--slate-muted); margin-bottom: 0.8rem; }
+    .footer-business a { color: var(--emerald); font-weight: 700; text-decoration: none; }
+    
+    .footer-personal-block {
+      border-top: 1px dashed var(--border);
+      display: inline-block;
+      padding-top: 0.8rem;
+      margin-top: 0.2rem;
+      pointer-events: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .footer-curator { font-size: 0.76rem; color: var(--slate-muted); }
+    .footer-curator strong { color: var(--charcoal); font-weight: 700; }
+    .footer-personal-id { font-size: 0.74rem; color: #475569; font-family: monospace; margin-top: 0.2rem; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
-      .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .hero-banner { padding: 2rem 1.2rem; }
-      .hero-banner h1 { font-size: 1.5rem; }
+      .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .hero-banner { padding: 1.8rem 1.2rem; }
+      .hero-banner h1 { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -194,12 +224,12 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="jobs.html">Openings</a></li>
         <li><a href="sricityhub.html">Directory</a></li>
-        <li><a href="about.html">About & Team</a></li>
+        <li><a href="about.html">Operations</a></li>
       </ul>
     </div>
   </header>
@@ -207,98 +237,110 @@
   <main class="main-container">
     
     <div class="hero-banner">
-      <span class="hero-badge">Industrial Manufacturing Ecosystem</span>
-      <h1>Sri City Industrial Corridor Directory & Direct Helpdesk</h1>
-      <p>Direct zero-brokerage connectivity, verified company plant listings, transit routes, and regional onboarding support across the Tada - Sri City SEZ corridor.</p>
+      <span class="hero-badge">Industrial Manufacturing Hub</span>
+      <h1>Sri City Industrial Corridor Directory</h1>
+      <p>Direct plant listings, verified routes, and interview schedule verification across Tada – Sri City corridor.</p>
       <div class="hero-actions">
-        <a href="sricityhub.html" class="btn-hero-primary">Browse 50+ Plants</a>
-        <a href="jobs.html" class="btn-hero-secondary">View Openings</a>
+        <a href="sricityhub.html" class="btn-s-primary">50+ Plants</a>
+        <a href="jobs.html" class="btn-s-secondary">Openings</a>
       </div>
     </div>
 
     <div class="zero-point-ticker">
       <div class="ticker-live">
         <div class="pulse-dot"></div>
-        Zero Point Junction Status
+        Zero Point Junction
       </div>
       <div class="ticker-items">
-        <div class="ticker-item">Traffic Flow: <span>NH16 Tada Express Smooth</span></div>
-        <div class="ticker-item">Hiring Facilitation: <span>100% Free / Direct</span></div>
+        <div class="ticker-item">Highway: <span>NH16 Tada Flow Clear</span></div>
+        <div class="ticker-item">Policy: <span>100% Zero-Brokerage</span></div>
       </div>
     </div>
 
     <div class="stats-strip">
       <div class="stat-box">
         <h4>50+</h4>
-        <span>Listed Plants</span>
+        <span>Listed Units</span>
       </div>
       <div class="stat-box">
         <h4>250+</h4>
-        <span>Total Corridor Units</span>
+        <span>Corridor Plants</span>
       </div>
       <div class="stat-box">
         <h4>15+</h4>
-        <span>Shift Bus Routes</span>
+        <span>Bus Routes</span>
       </div>
       <div class="stat-box">
         <h4>₹0</h4>
-        <span>Placement Fee</span>
+        <span>Charge</span>
       </div>
     </div>
 
-    <div class="section-title">Corridor Clusters</div>
-    <div class="section-desc">Direct shortcuts into the regional industrial belts.</div>
+    <div class="section-title">Corridor Sectors</div>
+    <div class="section-desc">Direct shortcuts into verified plant clusters.</div>
 
     <div class="feature-grid">
       <div class="feature-card">
         <div>
-          <h3>❄️ HVAC & Cooling Cluster</h3>
-          <p>Blue Star, Daikin, Havells Lloyd, and EPACK Durable manufacturing units.</p>
+          <h3>❄️ HVAC & Cooling</h3>
+          <p>Blue Star, Daikin, Havells Lloyd, and EPACK Durable units.</p>
         </div>
-        <a href="sricityhub.html" class="btn-clean-link">View Plants & Maps →</a>
+        <a href="sricityhub.html" class="btn-short-card">View Directory →</a>
       </div>
 
       <div class="feature-card">
         <div>
-          <h3>🚗 Automotive & Heavy Units</h3>
-          <p>Isuzu Motors, Kobelco Cranes, Alstom Metro, and precision component manufacturers.</p>
+          <h3>🚗 Automotive & Rail</h3>
+          <p>Isuzu Motors, Kobelco Cranes, and Alstom Metro manufacturing.</p>
         </div>
-        <a href="sricityhub.html" class="btn-clean-link">View Plants & Maps →</a>
+        <a href="sricityhub.html" class="btn-short-card">View Directory →</a>
       </div>
 
       <div class="feature-card">
         <div>
-          <h3>🍫 FMCG & Food Processing</h3>
-          <p>Mondelēz (Cadbury), Kellogg's, PepsiCo, and Colgate-Palmolive complexes.</p>
+          <h3>🍫 FMCG & Consumer</h3>
+          <p>Mondelēz Cadbury, Kellogg's, PepsiCo, and Colgate plants.</p>
         </div>
-        <a href="sricityhub.html" class="btn-clean-link">View Plants & Maps →</a>
+        <a href="sricityhub.html" class="btn-short-card">View Directory →</a>
       </div>
     </div>
 
-    <!-- Short Clean Support Bar (No big clunky boxes) -->
-    <div class="contact-bar">
-      <div class="contact-bar-text">
-        <h3>Need direct plant routing or candidate assistance?</h3>
-        <p>Our team desk is available for free zero-brokerage guidance.</p>
+    <!-- Active Business Support Desk -->
+    <div class="support-bar">
+      <div class="support-bar-text">
+        <h4>Direct Candidate & Plant Facilitation</h4>
+        <p>Zero-brokerage verification and official interview assistance.</p>
       </div>
-      <a href="mailto:sricitysupporthub@gmail.com" class="btn-short-contact">Contact Desk</a>
+      <a href="mailto:sricitysupporthub@gmail.com" class="btn-business-mail">✉ Contact Official Desk</a>
     </div>
 
   </main>
 
   <footer>
-    <p><strong>Sri City Support Hub</strong> — Official Regional Information Desk</p>
-    <div style="margin-top: 0.5rem; font-size: 0.85rem;">
-      <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
+    <div class="footer-brand">Sri City Support Hub</div>
+    <div class="footer-business">
+      Official Helpdesk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
+    </div>
+    
+    <!-- Personal Unclickable Details -->
+    <div class="footer-personal-block">
+      <div class="footer-curator">Curated & Managed by <strong>Vishnu Yadav</strong></div>
+      <div class="footer-personal-id">Direct Contact: vishnuyadav712000@gmail.com</div>
     </div>
   </footer>
 
   <script>
     const menuBtn = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
+      document.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    }
   </script>
 
 </body>
