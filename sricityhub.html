@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sri City Corridor Directory | 50+ Top Plants & Maps</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
@@ -18,7 +18,6 @@
       line-height: 1.5; 
     }
     
-    /* Sticky Clean Navigation */
     header { 
       background: #ffffff; 
       border-bottom: 1px solid #e2e8f0; 
@@ -76,7 +75,6 @@
       background: #ecfdf5; 
     }
 
-    /* Main Container */
     .main-container { 
       max-width: 1020px; 
       margin: auto; 
@@ -87,7 +85,6 @@
     .page-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.2rem; }
     .page-sub { font-size: 0.88rem; color: #64748b; }
 
-    /* Guaranteed Real-Time Search Box */
     .search-box {
       width: 100%;
       padding: 0.85rem 1rem;
@@ -104,7 +101,6 @@
       border-color: #065f46; 
     }
 
-    /* Category Filter Tabs */
     .filter-tabs { 
       display: flex; 
       gap: 0.45rem; 
@@ -131,7 +127,6 @@
       border-color: #0f172a; 
     }
 
-    /* Company Cards Grid */
     .company-grid { 
       display: flex; 
       flex-direction: column; 
@@ -146,9 +141,6 @@
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
       display: block;
     }
-    .company-card.hidden {
-      display: none !important;
-    }
 
     .company-header { 
       display: flex; 
@@ -158,7 +150,6 @@
     }
     .company-name { font-size: 0.98rem; font-weight: 700; color: #0f172a; }
     
-    /* Clickable Category Tag */
     .category-badge {
       font-size: 0.65rem;
       font-weight: 700;
@@ -169,11 +160,6 @@
       text-transform: uppercase;
       white-space: nowrap;
       cursor: pointer;
-      border: 1px solid transparent;
-    }
-    .category-badge:hover {
-      background: #e2e8f0;
-      color: #0f172a;
     }
 
     .company-desc { 
@@ -207,7 +193,6 @@
       display: inline-block; 
     }
 
-    /* Details Toggle Button */
     .btn-detail-trigger {
       background: #0f172a;
       border: 1px solid #0f172a;
@@ -218,19 +203,12 @@
       border-radius: 6px;
       cursor: pointer;
     }
-    .company-card.is-open .btn-detail-trigger {
-      background: #475569;
-      border-color: #475569;
-    }
 
     .company-drawer {
       display: none;
       margin-top: 0.85rem;
       padding-top: 0.85rem;
       border-top: 1px dashed #cbd5e1;
-    }
-    .company-card.is-open .company-drawer {
-      display: block !important;
     }
 
     .detail-grid {
@@ -252,7 +230,6 @@
     }
     .detail-item strong { color: #0f172a; font-weight: 700; }
 
-    /* Single Word Action Buttons */
     .action-row { display: flex; gap: 0.5rem; }
     .btn-action {
       flex: 1;
@@ -270,7 +247,6 @@
     .btn-action.apply { background: #0f172a; color: #ffffff; }
     .btn-action.query { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
 
-    /* Operations Desks Section */
     .desk-section-title {
       font-size: 1.15rem;
       font-weight: 800;
@@ -319,7 +295,6 @@
       border-radius: 6px;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid #e2e8f0;
       padding: 2.2rem 1.2rem;
@@ -341,7 +316,6 @@
     .footer-curator strong { color: #0f172a; font-weight: 700; }
     .footer-personal-id { font-size: 0.75rem; color: #475569; font-family: monospace; margin-top: 0.2rem; }
 
-    /* Mobile Responsive Hamburger Menu Dropdown */
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-menu { 
@@ -359,15 +333,8 @@
       .nav-menu.active { 
         display: flex !important; 
       }
-      .nav-menu li {
-        width: 100%;
-        margin-bottom: 0.4rem;
-      }
-      .nav-menu a {
-        display: block;
-        padding: 0.6rem 0.8rem;
-        font-size: 0.95rem;
-      }
+      .nav-menu li { width: 100%; margin-bottom: 0.4rem; }
+      .nav-menu a { display: block; padding: 0.6rem 0.8rem; font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -376,7 +343,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button type="button" class="menu-toggle" id="menuBtn" onclick="toggleNavigation()">☰</button>
+      <button type="button" class="menu-toggle" onclick="var m = document.getElementById('navLinks'); m.classList.toggle('active');">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="jobs.html">Openings</a></li>
@@ -393,32 +360,32 @@
       <p class="page-sub">Tap Details for schedule and map navigation.</p>
     </div>
 
-    <!-- Live Instant Filter Input -->
-    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g. Amber, Blue Star, Daikin)..." oninput="executeSearch()" onkeyup="executeSearch()">
+    <!-- Direct Pure Filter Search Box -->
+    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g. Amber, Blue Star, Daikin)..." oninput="filterPlants()">
 
-    <!-- Filter Category Tabs -->
+    <!-- Category Tabs -->
     <div class="filter-tabs">
-      <button type="button" class="filter-tab active" onclick="applyCategory('all', this)">All (50+)</button>
-      <button type="button" class="filter-tab" onclick="applyCategory('hvac', this)">HVAC</button>
-      <button type="button" class="filter-tab" onclick="applyCategory('auto', this)">Auto & Rail</button>
-      <button type="button" class="filter-tab" onclick="applyCategory('food', this)">FMCG</button>
-      <button type="button" class="filter-tab" onclick="applyCategory('pharma', this)">Pharma</button>
-      <button type="button" class="filter-tab" onclick="applyCategory('precision', this)">Metals</button>
-      <button type="button" class="filter-tab" onclick="applyCategory('logistics', this)">Logistics</button>
+      <button type="button" class="filter-tab active" onclick="setCat('all', this)">All (50+)</button>
+      <button type="button" class="filter-tab" onclick="setCat('hvac', this)">HVAC</button>
+      <button type="button" class="filter-tab" onclick="setCat('auto', this)">Auto & Rail</button>
+      <button type="button" class="filter-tab" onclick="setCat('food', this)">FMCG</button>
+      <button type="button" class="filter-tab" onclick="setCat('pharma', this)">Pharma</button>
+      <button type="button" class="filter-tab" onclick="setCat('precision', this)">Metals</button>
+      <button type="button" class="filter-tab" onclick="setCat('logistics', this)">Logistics</button>
     </div>
 
     <div class="company-grid" id="companyGrid">
 
       <!-- Amber Enterprises -->
-      <div class="company-card" data-cat="hvac" data-name="amber enterprises hvac sheet metal ac components heating units">
+      <div class="company-card" data-cat="hvac" data-keywords="amber enterprises hvac sheet metal ac components heating units">
         <div class="company-header">
           <span class="company-name">Amber Enterprises</span>
-          <span class="category-badge" onclick="filterByBadge('hvac')">HVAC</span>
+          <span class="category-badge" onclick="setCatByTag('hvac')">HVAC</span>
         </div>
         <p class="company-desc">HVAC sheet metal integration and heating exchange units.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleDetails(this)">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="handleDrawer(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -436,15 +403,15 @@
       </div>
 
       <!-- Blue Star Limited -->
-      <div class="company-card" data-cat="hvac" data-name="blue star limited hvac commercial refrigeration ac deep freezer">
+      <div class="company-card" data-cat="hvac" data-keywords="blue star limited hvac commercial refrigeration ac deep freezer">
         <div class="company-header">
           <span class="company-name">Blue Star Limited</span>
-          <span class="category-badge" onclick="filterByBadge('hvac')">HVAC</span>
+          <span class="category-badge" onclick="setCatByTag('hvac')">HVAC</span>
         </div>
         <p class="company-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleDetails(this)">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="handleDrawer(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -462,15 +429,15 @@
       </div>
 
       <!-- Daikin India -->
-      <div class="company-card" data-cat="hvac" data-name="daikin india air conditioning compressors hvac">
+      <div class="company-card" data-cat="hvac" data-keywords="daikin india air conditioning compressors hvac">
         <div class="company-header">
           <span class="company-name">Daikin India</span>
-          <span class="category-badge" onclick="filterByBadge('hvac')">HVAC</span>
+          <span class="category-badge" onclick="setCatByTag('hvac')">HVAC</span>
         </div>
         <p class="company-desc">Scroll compressors and room AC integration plant.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleDetails(this)">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="handleDrawer(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -488,15 +455,15 @@
       </div>
 
       <!-- Havells Lloyd -->
-      <div class="company-card" data-cat="hvac" data-name="havells lloyd consumer air conditioner ac">
+      <div class="company-card" data-cat="hvac" data-keywords="havells lloyd consumer air conditioner ac">
         <div class="company-header">
           <span class="company-name">Havells Lloyd</span>
-          <span class="category-badge" onclick="filterByBadge('hvac')">HVAC</span>
+          <span class="category-badge" onclick="setCatByTag('hvac')">HVAC</span>
         </div>
         <p class="company-desc">Automated consumer air conditioners and pressing unit.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleDetails(this)">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="handleDrawer(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -514,15 +481,15 @@
       </div>
 
       <!-- EPACK Durable -->
-      <div class="company-card" data-cat="hvac" data-name="epack durable room ac component oem fabrication">
+      <div class="company-card" data-cat="hvac" data-keywords="epack durable room ac component oem fabrication">
         <div class="company-header">
           <span class="company-name">EPACK Durable</span>
-          <span class="category-badge" onclick="filterByBadge('hvac')">HVAC</span>
+          <span class="category-badge" onclick="setCatByTag('hvac')">HVAC</span>
         </div>
         <p class="company-desc">OEM room AC component and heat exchanger fabrication.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleDetails(this)">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="handleDrawer(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -540,18 +507,33 @@
       </div>
 
       <!-- Isuzu Motors -->
-      <div class="company-card" data-cat="auto" data-name="isuzu motors india automotive commercial vehicle welding">
+      <div class="company-card" data-cat="auto" data-keywords="isuzu motors india automotive commercial vehicle welding">
         <div class="company-header">
           <span class="company-name">Isuzu Motors India</span>
-          <span class="category-badge" onclick="filterByBadge('auto')">Auto</span>
+          <span class="category-badge" onclick="setCatByTag('auto')">Auto</span>
         </div>
         <p class="company-desc">Commercial utility vehicle manufacturing and chassis welding.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleDetails(this)">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="handleDrawer(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>4 days ago</strong></div>
             <div class="detail-item"><span>Walk-in Day</span><strong>Mon & Thu</strong></div>
-            <div class="detail-item"><span>Pl
+            <div class="detail-item"><span>Plant Zone</span><strong>Auto Cluster</strong></div>
+            <div class="detail-item"><span>Profile</span><strong>Weld / Paint / Line</strong></div>
+          </div>
+          <div class="action-row">
+            <a href="https://maps.google.com/?q=Isuzu+Motors+India+Sri+City" target="_blank" class="btn-action map">Map</a>
+            <a href="jobs.html" class="btn-action apply">Apply</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Isuzu%20Vacancy" class="btn-action query">Desk</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alstom Transport -->
+      <div class="company-card" data-cat="auto" data-keywords="alstom transport rail metro rolling stock">
+        <div class="company-header">
+          <span class="company-name">Alstom Transport</span>
+          <span class="category-badge" onclick="setCatByTag('auto')">Rai
