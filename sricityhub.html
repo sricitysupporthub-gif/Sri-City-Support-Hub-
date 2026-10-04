@@ -128,13 +128,24 @@
       gap: 0.75rem; 
     }
     
-    .company-card {
+    /* Native Details Card - Browser handles open/close natively */
+    details.company-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
       padding: 1rem 1.1rem;
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      display: block;
     }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+
     .company-header { 
       display: flex; 
       justify-content: space-between; 
@@ -183,25 +194,20 @@
       display: inline-block; 
     }
 
-    .btn-detail-trigger {
+    .btn-detail-tag {
       background: #0f172a;
-      border: none;
       color: #ffffff;
       font-size: 0.76rem;
       font-weight: 700;
-      padding: 0.45rem 0.85rem;
+      padding: 0.4rem 0.8rem;
       border-radius: 6px;
-      cursor: pointer;
+      pointer-events: none;
     }
 
     .company-drawer {
-      display: none;
       margin-top: 0.85rem;
       padding-top: 0.85rem;
       border-top: 1px dashed #cbd5e1;
-    }
-    .company-card.is-open .company-drawer {
-      display: block !important;
     }
 
     .detail-grid {
@@ -292,11 +298,11 @@
 
     <div class="page-header">
       <h1 class="page-title">Corridor Directory</h1>
-      <p class="page-sub">Tap button for schedule and map navigation.</p>
+      <p class="page-sub">Tap card for schedule and map navigation.</p>
     </div>
 
     <!-- Live Search Input -->
-    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g. Amber, Daikin, Blue Star)..." oninput="runFilter()" onkeyup="runFilter()">
+    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g. Amber, Daikin, Blue Star)...">
 
     <!-- Filter Buttons -->
     <div class="filter-tabs">
@@ -312,16 +318,18 @@
     <div class="company-grid" id="companyGrid">
 
       <!-- Amber Enterprises -->
-      <div class="company-card" data-cat="hvac" data-name="amber enterprises hvac sheet metal ac components">
-        <div class="company-header">
-          <span class="company-name">Amber Enterprises</span>
-          <span class="category-badge">HVAC</span>
-        </div>
-        <p class="company-desc">HVAC sheet metal integration and heating exchange units.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        </div>
+      <details class="company-card" data-cat="hvac" data-name="amber enterprises hvac sheet metal ac components">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">Amber Enterprises</span>
+            <span class="category-badge">HVAC</span>
+          </div>
+          <p class="company-desc">HVAC sheet metal integration and heating exchange units.</p>
+          <div class="company-bar">
+            <span class="status-indicator">Hiring Active</span>
+            <span class="btn-detail-tag">Details ▾</span>
+          </div>
+        </summary>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>4 days ago</strong></div>
@@ -335,19 +343,21 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Amber%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- Blue Star -->
-      <div class="company-card" data-cat="hvac" data-name="blue star limited hvac commercial refrigeration ac deep freezer">
-        <div class="company-header">
-          <span class="company-name">Blue Star Limited</span>
-          <span class="category-badge">HVAC</span>
-        </div>
-        <p class="company-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        </div>
+      <details class="company-card" data-cat="hvac" data-name="blue star limited hvac commercial refrigeration ac deep freezer">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">Blue Star Limited</span>
+            <span class="category-badge">HVAC</span>
+          </div>
+          <p class="company-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
+          <div class="company-bar">
+            <span class="status-indicator">Hiring Active</span>
+            <span class="btn-detail-tag">Details ▾</span>
+          </div>
+        </summary>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>2 days ago</strong></div>
@@ -361,19 +371,21 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Blue%20Star%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- Daikin -->
-      <div class="company-card" data-cat="hvac" data-name="daikin india air conditioning compressors hvac">
-        <div class="company-header">
-          <span class="company-name">Daikin India</span>
-          <span class="category-badge">HVAC</span>
-        </div>
-        <p class="company-desc">Scroll compressors and room AC integration plant.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        </div>
+      <details class="company-card" data-cat="hvac" data-name="daikin india air conditioning compressors hvac">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">Daikin India</span>
+            <span class="category-badge">HVAC</span>
+          </div>
+          <p class="company-desc">Scroll compressors and room AC integration plant.</p>
+          <div class="company-bar">
+            <span class="status-indicator">Hiring Active</span>
+            <span class="btn-detail-tag">Details ▾</span>
+          </div>
+        </summary>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>Yesterday</strong></div>
@@ -387,19 +399,21 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Daikin%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- Havells Lloyd -->
-      <div class="company-card" data-cat="hvac" data-name="havells lloyd consumer air conditioner ac">
-        <div class="company-header">
-          <span class="company-name">Havells Lloyd</span>
-          <span class="category-badge">HVAC</span>
-        </div>
-        <p class="company-desc">Automated consumer air conditioners and pressing unit.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        </div>
+      <details class="company-card" data-cat="hvac" data-name="havells lloyd consumer air conditioner ac">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">Havells Lloyd</span>
+            <span class="category-badge">HVAC</span>
+          </div>
+          <p class="company-desc">Automated consumer air conditioners and pressing unit.</p>
+          <div class="company-bar">
+            <span class="status-indicator">Hiring Active</span>
+            <span class="btn-detail-tag">Details ▾</span>
+          </div>
+        </summary>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>3 days ago</strong></div>
@@ -413,19 +427,21 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Havells%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- EPACK -->
-      <div class="company-card" data-cat="hvac" data-name="epack durable room ac component oem fabrication">
-        <div class="company-header">
-          <span class="company-name">EPACK Durable</span>
-          <span class="category-badge">HVAC</span>
-        </div>
-        <p class="company-desc">OEM room AC component and heat exchanger fabrication.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        </div>
+      <details class="company-card" data-cat="hvac" data-name="epack durable room ac component oem fabrication">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">EPACK Durable</span>
+            <span class="category-badge">HVAC</span>
+          </div>
+          <p class="company-desc">OEM room AC component and heat exchanger fabrication.</p>
+          <div class="company-bar">
+            <span class="status-indicator">Hiring Active</span>
+            <span class="btn-detail-tag">Details ▾</span>
+          </div>
+        </summary>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>1 week ago</strong></div>
@@ -439,19 +455,21 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=EPACK%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- Isuzu Motors -->
-      <div class="company-card" data-cat="auto" data-name="isuzu motors india automotive commercial vehicle welding">
-        <div class="company-header">
-          <span class="company-name">Isuzu Motors India</span>
-          <span class="category-badge">Automotive</span>
-        </div>
-        <p class="company-desc">Commercial utility vehicle manufacturing and chassis welding.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        </div>
+      <details class="company-card" data-cat="auto" data-name="isuzu motors india automotive commercial vehicle welding">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">Isuzu Motors India</span>
+            <span class="category-badge">Automotive</span>
+          </div>
+          <p class="company-desc">Commercial utility vehicle manufacturing and chassis welding.</p>
+          <div class="company-bar">
+            <span class="status-indicator">Hiring Active</span>
+            <span class="btn-detail-tag">Details ▾</span>
+          </div>
+        </summary>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>4 days ago</strong></div>
@@ -465,19 +483,21 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Isuzu%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- Alstom Transport -->
-      <div class="company-card" data-cat="auto" data-name="alstom transport rail metro rolling stock">
-        <div class="company-header">
-          <span class="company-name">Alstom Transport</span>
-          <span class="category-badge">Rail</span>
-        </div>
-        <p class="company-desc">Metro rail rolling stock and train coach integration plant.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        </div>
+      <details class="company-card" data-cat="auto" data-name="alstom transport rail metro rolling stock">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">Alstom Transport</span>
+            <span class="category-badge">Rail</span>
+          </div>
+          <p class="company-desc">Metro rail rolling stock and train coach integration plant.</p>
+          <div class="company-bar">
+            <span class="status-indicator">Hiring Active</span>
+            <span class="btn-detail-tag">Details ▾</span>
+          </div>
+        </summary>
         <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>5 days ago</strong></div>
@@ -491,17 +511,13 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Alstom%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- Mondelēz Cadbury -->
-      <div class="company-card" data-cat="food" data-name="mondelez india cadbury chocolate fmcg food processing">
-        <div class="company-header">
-          <span class="company-name">Mondelēz India (Cadbury)</span>
-          <span class="category-badge">FMCG</span>
-        </div>
-        <p class="company-desc">Chocolate mass production, moulding, and automated wrapping lines.</p>
-        <div class="company-bar">
-          <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
-        
-    
+      <details class="company-card" data-cat="food" data-name="mondelez india cadbury chocolate fmcg food processing">
+        <summary>
+          <div class="company-header">
+            <span class="company-name">Mondelēz India (Cadbury)</span>
+            <span class="category-badge">FMCG</span>
+          </div>
+          <p class="company-desc">Chocolate mass product
