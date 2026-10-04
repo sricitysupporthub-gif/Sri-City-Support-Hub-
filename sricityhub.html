@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sri City Support Hub | Industrial Directory & Maps</title>
+  <title>Sri City Corridor Directory | 50+ Top Plants & Maps</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
@@ -11,117 +11,108 @@
       --surface: #ffffff;
       --charcoal: #0f172a;
       --charcoal-hover: #1e293b;
+      --emerald: #065f46;
       --slate-muted: #64748b;
-      --slate-light: #f1f5f9;
       --border: #e2e8f0;
       --card-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
-      --accent-green: #059669;
-      --accent-green-bg: #ecfdf5;
-      --accent-green-border: #a7f3d0;
     }
     * { 
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-      -webkit-tap-highlight-color: transparent; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       user-select: none;
     }
     body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
+    .nav-container { max-width: 1020px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
     .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: var(--charcoal); border-radius: 2px; }
+    .brand-mark { width: 10px; height: 10px; background: var(--emerald); border-radius: 2px; }
     .nav-menu { display: flex; gap: 1rem; list-style: none; }
     .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--slate-light); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: #ecfdf5; }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
 
-    .main-container { max-width: 980px; margin: auto; padding: 1.8rem 1.2rem; }
+    .main-container { max-width: 1020px; margin: auto; padding: 2rem 1.2rem; }
     
-    .light-hero {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      margin-bottom: 1.8rem;
-      box-shadow: var(--card-shadow);
-    }
-    .hero-badge {
-      display: inline-block;
-      background: var(--accent-green-bg);
-      color: var(--accent-green);
-      font-size: 0.74rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 0.25rem 0.65rem;
-      border-radius: 4px;
-      margin-bottom: 0.8rem;
-    }
-    .light-hero h1 { font-size: 1.65rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.5rem; color: var(--charcoal); }
-    .light-hero p { font-size: 0.92rem; color: var(--slate-muted); line-height: 1.55; max-width: 720px; }
+    .page-header { margin-bottom: 1.8rem; }
+    .page-title { font-size: 1.65rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .page-sub { font-size: 0.92rem; color: var(--slate-muted); }
 
-    /* Clean Metrics Strip */
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.8rem;
+    /* Search and Quick Filters */
+    .search-box {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
       background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       box-shadow: var(--card-shadow);
-      text-align: center;
+      -webkit-user-select: text;
+      user-select: text;
     }
-    .stat-box h4 { font-size: 1.3rem; font-weight: 800; color: var(--charcoal); }
-    .stat-box span { font-size: 0.72rem; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; }
+    .filter-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.8rem; margin-bottom: 1.5rem; }
+    .filter-tab {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--slate-muted);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .filter-tab.active { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
 
-    .directory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.3rem; margin-bottom: 2rem; }
-    .hub-box { border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; background: var(--surface); box-shadow: var(--card-shadow); }
-    .hub-box h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 6px; }
-    .hub-box p { font-size: 0.86rem; color: var(--slate-muted); margin-bottom: 1rem; line-height: 1.45; }
-    
-    .hub-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; }
-    .hub-tag {
+    /* Compact 50+ Company Cards Grid */
+    .company-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .company-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .company-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; }
+    .company-name { font-size: 1rem; font-weight: 700; color: var(--charcoal); }
+    .category-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: var(--slate-muted);
+      text-transform: uppercase;
+    }
+    .company-desc { font-size: 0.82rem; color: #475569; margin-bottom: 0.8rem; line-height: 1.4; }
+    .company-actions { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 0.6rem; }
+    .location-btn {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      font-size: 0.78rem;
-      background: var(--slate-light);
-      color: #1e293b;
-      border: 1px solid #cbd5e1;
-      padding: 0.45rem 0.8rem;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      touch-action: manipulation;
+      gap: 3px;
     }
-    .hub-tag:hover, .hub-tag:active {
-      background: var(--charcoal);
-      color: #ffffff;
-      border-color: var(--charcoal);
-    }
-    .transit-tag { background: var(--accent-green-bg); border-color: var(--accent-green-border); color: var(--accent-green); }
-    .transit-tag:hover, .transit-tag:active { background: var(--accent-green); color: #fff; border-color: var(--accent-green); }
+    .openings-badge { font-size: 0.72rem; color: var(--emerald); font-weight: 700; }
 
-    .support-banner { background: var(--charcoal); color: #fff; border-radius: 10px; padding: 1.8rem 1.4rem; margin-top: 2rem; }
-    .support-banner h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-    .support-banner p { font-size: 0.88rem; color: #94a3b8; margin-bottom: 1.2rem; }
-    .support-banner a { display: inline-block; background: #fff; color: var(--charcoal); font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.3rem; border-radius: 6px; text-decoration: none; }
-
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3rem; background: #fff; }
+    footer { border-top: 1px solid var(--border); padding: 2.2rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3.5rem; background: #fff; }
     footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
-      .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
   </style>
 </head>
@@ -130,7 +121,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+      <button class="menu-toggle" id="menuToggle">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="jobs.html">Openings</a></li>
@@ -141,128 +132,248 @@
   </header>
 
   <main class="main-container">
-    
-    <div class="light-hero">
-      <span class="hero-badge">Verified Regional Logistics & Plant Directory</span>
-      <h1>Sri City Industrial Corridor Directory</h1>
-      <p>Direct Google Maps navigation for manufacturing plants, Tada-Gummidipoondi worker transit junctions, and verified support amenities across Tada and Sri City SEZ.</p>
+
+    <div class="page-header">
+      <h1 class="page-title">Sri City Industrial Directory</h1>
+      <p class="page-sub">Verified manufacturing plants, sector clusters, and direct Google Maps navigation.</p>
     </div>
 
-    <!-- Official Ground Stats -->
-    <div class="stats-strip">
-      <div class="stat-box">
-        <h4>250+</h4>
-        <span>Global Plants</span>
-      </div>
-      <div class="stat-box">
-        <h4>70K+</h4>
-        <span>Corridor Jobs</span>
-      </div>
-      <div class="stat-box">
-        <h4>15+</h4>
-        <span>Daily Bus Routes</span>
-      </div>
-      <div class="stat-box">
-        <h4>₹0</h4>
-        <span>Direct Free Desk</span>
-      </div>
+    <!-- Instant Search Bar -->
+    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g., Daikin, Isuzu, Cadbury, Blue Star)...">
+
+    <!-- Category Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterCategory('all')">All Plants (50+)</button>
+      <button class="filter-tab" onclick="filterCategory('hvac')">HVAC & Cooling</button>
+      <button class="filter-tab" onclick="filterCategory('auto')">Automotive & Rail</button>
+      <button class="filter-tab" onclick="filterCategory('food')">FMCG & Food</button>
+      <button class="filter-tab" onclick="filterCategory('pharma')">Pharma & Health</button>
+      <button class="filter-tab" onclick="filterCategory('precision')">Precision & Metals</button>
+      <button class="filter-tab" onclick="filterCategory('packaging')">Logistics & Pack</button>
     </div>
 
-    <div class="directory-grid">
-      <!-- HVAC & Consumer Electronics (Working Map Links) -->
-      <div class="hub-box">
-        <h3>❄️ HVAC & Electronics Manufacturing</h3>
-        <p>Direct plant navigation and cluster desks for air conditioning and component manufacturing units.</p>
-        <div class="hub-tags">
-          <a href="https://maps.google.com/?q=Blue+Star+Climatech+Sri+City" target="_blank" class="hub-tag">📍 Blue Star Tech</a>
-          <a href="https://maps.google.com/?q=Daikin+Airconditioning+Sri+City" target="_blank" class="hub-tag">📍 Daikin</a>
-          <a href="https://maps.google.com/?q=Panasonic+Life+Solutions+Sri+City" target="_blank" class="hub-tag">📍 Panasonic</a>
-          <a href="https://maps.google.com/?q=Havells+India+Sri+City" target="_blank" class="hub-tag">📍 Havells Lloyd</a>
-          <a href="https://maps.google.com/?q=EPACK+Durable+Sri+City" target="_blank" class="hub-tag">📍 EPACK Durable</a>
+    <!-- 50+ Top Real Sri City Plants Grid -->
+    <div class="company-grid" id="companyGrid">
+      
+      <!-- HVAC & Electronics -->
+      <div class="company-card" data-cat="hvac">
+        <div class="company-top"><span class="company-name">Blue Star Limited</span><span class="category-badge">HVAC</span></div>
+        <p class="company-desc">Commercial & room air conditioning unit manufacturing facility.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Blue+Star+Limited+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
         </div>
       </div>
 
-      <!-- Automotive & Mobility (Working Map Links) -->
-      <div class="hub-box">
-        <h3>⚙️ Automotive & Precision Units</h3>
-        <p>Heavy mobility assembly lines, coach manufacturing, and engineering plants.</p>
-        <div class="hub-tags">
-          <a href="https://maps.google.com/?q=Isuzu+Motors+India+Sri+City" target="_blank" class="hub-tag">📍 Isuzu Motors</a>
-          <a href="https://maps.google.com/?q=Alstom+Transport+India+Sri+City" target="_blank" class="hub-tag">📍 Alstom Metro Coach</a>
-          <a href="https://maps.google.com/?q=Kobelco+Cranes+India+Sri+City" target="_blank" class="hub-tag">📍 Kobelco Machinery</a>
-          <a href="https://maps.google.com/?q=NHK+Spring+India+Sri+City" target="_blank" class="hub-tag">📍 NHK Springs</a>
+      <div class="company-card" data-cat="hvac">
+        <div class="company-top"><span class="company-name">Daikin India</span><span class="category-badge">HVAC</span></div>
+        <p class="company-desc">Mega AC manufacturing & scroll compressor production plant.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Daikin+Airconditioning+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
         </div>
       </div>
 
-      <!-- FMCG & Confectionery (Working Map Links) -->
-      <div class="hub-box">
-        <h3>🍫 FMCG & Health Science</h3>
-        <p>Food processing, confectionery, and hygiene product plants.</p>
-        <div class="hub-tags">
-          <a href="https://maps.google.com/?q=Mondelez+India+Foods+Sri+City" target="_blank" class="hub-tag">📍 Mondelez (Cadbury)</a>
-          <a href="https://maps.google.com/?q=Kellogg+India+Sri+City" target="_blank" class="hub-tag">📍 Kellogg's</a>
-          <a href="https://maps.google.com/?q=Colgate+Palmolive+Sri+City" target="_blank" class="hub-tag">📍 Colgate-Palmolive</a>
+      <div class="company-card" data-cat="hvac">
+        <div class="company-top"><span class="company-name">Havells Lloyd</span><span class="category-badge">HVAC</span></div>
+        <p class="company-desc">Automated consumer air conditioner production & testing unit.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Havells+India+Limited+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
         </div>
       </div>
 
-      <!-- Transit Routes & Google Maps Links (Active Map Coordinates) -->
-      <div class="hub-box">
-        <h3>🚌 Transit Routes & Chennai Border (Maps)</h3>
-        <p>Tap any transit point to open instant bus stop and junction navigation in Google Maps.</p>
-        <div class="hub-tags">
-          <a href="https://maps.google.com/?q=Tada+Bus+Stop+Andhra+Pradesh" target="_blank" class="hub-tag transit-tag">🗺️ Tada Checkpost / Bus Stand</a>
-          <a href="https://maps.google.com/?q=Gummidipoondi+Railway+Station+Tamil+Nadu" target="_blank" class="hub-tag transit-tag">🗺️ Chennai (Gummidipoondi)</a>
-          <a href="https://maps.google.com/?q=Red+Hills+Bus+Terminus+Chennai" target="_blank" class="hub-tag transit-tag">🗺️ Chennai (Red Hills Route)</a>
-          <a href="https://maps.google.com/?q=Naidupeta+RTC+Bus+Stand" target="_blank" class="hub-tag transit-tag">🗺️ Naidupeta Junction</a>
-          <a href="https://maps.google.com/?q=Sullurpeta+Railway+Station" target="_blank" class="hub-tag transit-tag">🗺️ Sullurpeta Station</a>
-          <a href="https://maps.google.com/?q=Srikalahasti+Bus+Stand" target="_blank" class="hub-tag transit-tag">🗺️ Srikalahasti Corridor</a>
+      <div class="company-card" data-cat="hvac">
+        <div class="company-top"><span class="company-name">EPACK Durable</span><span class="category-badge">HVAC</span></div>
+        <p class="company-desc">ODM/OEM manufacturer of room ACs and induction components.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=EPACK+Durable+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
         </div>
       </div>
 
-      <!-- Residential & Accommodation (Working Map Links) -->
-      <div class="hub-box">
-        <h3>🏠 Residential & Industrial Housing</h3>
-        <p>Worker accommodation zones and rental PG clusters across Tada and border regions.</p>
-        <div class="hub-tags">
-          <a href="https://maps.google.com/?q=Tada+Andhra+Pradesh" target="_blank" class="hub-tag">📍 Tada Town Cluster</a>
-          <a href="https://maps.google.com/?q=Arambakkam+Tamil+Nadu" target="_blank" class="hub-tag">📍 Arambakkam Border</a>
-          <a href="https://maps.google.com/?q=Satyavedu+Andhra+Pradesh" target="_blank" class="hub-tag">📍 Satyavedu Sector</a>
+      <div class="company-card" data-cat="hvac">
+        <div class="company-top"><span class="company-name">Panasonic Life Solutions</span><span class="category-badge">HVAC</span></div>
+        <p class="company-desc">Home appliances & electrical wiring equipment manufacturing.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Panasonic+Life+Solutions+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
         </div>
       </div>
 
-      <!-- Emergency Medical Links (Working Map Links) -->
-      <div class="hub-box">
-        <h3>🏥 Emergency, Clinic & Safety</h3>
-        <p>Immediate medical clinic, ESIC coordinator desk, and emergency support links.</p>
-        <div class="hub-tags">
-          <a href="https://maps.google.com/?q=Sri+City+Care+Hospital" target="_blank" class="hub-tag" style="background:#fef2f2; border-color:#fecaca; color:#b91c1c;">📍 Sri City Clinic & Emergency</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Emergency%20ESIC%20Assistance" class="hub-tag">📩 ESIC Corridor Desk</a>
+      <div class="company-card" data-cat="hvac">
+        <div class="company-top"><span class="company-name">Amber Enterprises</span><span class="category-badge">HVAC</span></div>
+        <p class="company-desc">Precision sheet metal and HVAC component integration.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Amber+Enterprises+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
         </div>
       </div>
-    </div>
 
-    <!-- Direct Official Desk -->
-    <div class="support-banner">
-      <h2>Need Ground Verification or Direct Plant Routing?</h2>
-      <p>Sri City Support Hub operates a 100% zero-brokerage desk for technical workforce and transit coordination.</p>
-      <a href="mailto:sricitysupporthub@gmail.com?subject=Ground%20Support%20Enquiry">Connect with Official Desk</a>
-    </div>
-  </main>
+      <!-- Automotive, Rail & Heavy -->
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">Isuzu Motors India</span><span class="category-badge">Automotive</span></div>
+        <p class="company-desc">Passenger pickup and commercial vehicle manufacturing plant.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Isuzu+Motors+India+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
 
-  <footer>
-    <p><strong>Sri City Support Hub</strong> — Official Regional Information Desk</p>
-    <div style="margin-top: 0.6rem; font-size: 0.85rem;">
-      Official Desk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
-    </div>
-  </footer>
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">Alstom Transport</span><span class="category-badge">Rail</span></div>
+        <p class="company-desc">Rolling stock and metro train coach assembly facility.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Alstom+Transport+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
 
-  <script>
-    const menuBtn = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">Kobelco Cranes India</span><span class="category-badge">Heavy Mach</span></div>
+        <p class="company-desc">Hydraulic crawler cranes and heavy machinery plant.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Kobelco+Cranes+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
 
-</body>
-</html>
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">Kobelco Construction</span><span class="category-badge">Heavy Mach</span></div>
+        <p class="company-desc">Hydraulic excavator assembly and construction equipment.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Kobelco+Construction+Equipment+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">Brakes India Private Ltd</span><span class="category-badge">Auto Parts</span></div>
+        <p class="company-desc">Automotive braking systems and casting parts manufacturing.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Brakes+India+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">NS Instruments India</span><span class="category-badge">Auto Parts</span></div>
+        <p class="company-desc">Automotive instrument clusters and electronic display meters.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=NS+Instruments+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">NHK Springs</span><span class="category-badge">Auto Parts</span></div>
+        <p class="company-desc">Automotive suspension coil springs and stabilizer bars.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=NHK+Spring+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">Tata Toyo Radiator</span><span class="category-badge">Auto Parts</span></div>
+        <p class="company-desc">Heat exchangers and automotive engine radiator systems.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Tata+Toyo+Radiator+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="auto">
+        <div class="company-top"><span class="company-name">Piolax India</span><span class="category-badge">Auto Parts</span></div>
+        <p class="company-desc">Precision automotive plastic fasteners and spring clips.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Piolax+India+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <!-- Food, FMCG & Consumer -->
+      <div class="company-card" data-cat="food">
+        <div class="company-top"><span class="company-name">Mondelēz India (Cadbury)</span><span class="category-badge">Food / FMCG</span></div>
+        <p class="company-desc">Asia's largest chocolate and confectionery manufacturing plant.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Mondelez+India+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="food">
+        <div class="company-top"><span class="company-name">Kellogg's India</span><span class="category-badge">Food / FMCG</span></div>
+        <p class="company-desc">Breakfast cereal and packaged grain food processing unit.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Kellogg+India+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="food">
+        <div class="company-top"><span class="company-name">PepsiCo India</span><span class="category-badge">Beverages</span></div>
+        <p class="company-desc">Large scale carbonated beverages & juice manufacturing base.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=PepsiCo+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="food">
+        <div class="company-top"><span class="company-name">Colgate-Palmolive</span><span class="category-badge">Consumer</span></div>
+        <p class="company-desc">Oral hygiene, toothbrush and personal care production unit.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Colgate+Palmolive+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="food">
+        <div class="company-top"><span class="company-name">Unicharm India</span><span class="category-badge">Consumer</span></div>
+        <p class="company-desc">Hygiene and personal disposable fabric product facility.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Unicharm+India+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="food">
+        <div class="company-top"><span class="company-name">Blendhub India</span><span class="category-badge">Food Tech</span></div>
+        <p class="company-desc">Multi-ingredient powder food blending & nutrition processing.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Blendhub+India+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <!-- Pharma & Health Science -->
+      <div class="company-card" data-cat="pharma">
+        <div class="company-top"><span class="company-name">West Pharmaceutical</span><span class="category-badge">Pharma Pack</span></div>
+        <p class="company-desc">Packaging components for injectable medical solutions.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=West+Pharmaceutical+Services+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="pharma">
+        <div class="company-top"><span class="company-name">Gesco Healthcare</span><span class="category-badge">Med Devices</span></div>
+        <p class="company-desc">Spinal implants and surgical instrumentation facility.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=Gesco+Healthcare+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <!-- Precision, Steel & Engineering -->
+      <div class="company-card" data-cat="precision">
+        <div class="company-top"><span class="company-name">India Metal One Steel</span><span class="category-badge">Steel Proc</span></div>
+        <p class="company-desc">High precision steel plate processing and cut-to-length lines.</p>
+        <div class="company-actions">
+          <a href="https://maps.google.com/?q=India+Metal+One+Steel+Plate+Sri+City" target="_blank" class="location-btn">📍 View Map</a>
+          <span class="openings-badge">Active Unit</span>
+        </div>
+      </div>
+
+      <div class="company-card" data-cat="precision"
