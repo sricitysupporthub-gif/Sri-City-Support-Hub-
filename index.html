@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sri City Support Hub | Industrial Ecosystem & Career Desk</title>
+  <title>Sri City Support Hub | Industrial Gateway & Verification Desk</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
     :root {
@@ -12,11 +12,9 @@
       --charcoal: #0f172a;
       --charcoal-hover: #1e293b;
       --emerald: #065f46;
-      --emerald-accent: #10b981;
-      --emerald-tint: #ecfdf5;
       --slate-muted: #64748b;
       --border: #e2e8f0;
-      --card-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+      --card-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.06);
     }
     * { 
       box-sizing: border-box; 
@@ -30,23 +28,70 @@
     }
     body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
+    .nav-container { max-width: 1020px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
     .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .brand-mark { width: 10px; height: 10px; background: var(--emerald); border-radius: 2px; }
     .nav-menu { display: flex; gap: 1rem; list-style: none; }
     .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: var(--emerald-tint); }
+    .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: #ecfdf5; }
     .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
 
-    .main-container { max-width: 980px; margin: auto; padding: 1.8rem 1.2rem; }
+    .main-container { max-width: 1020px; margin: auto; padding: 1.8rem 1.2rem; }
+
+    /* HD Architectural Industrial Hero Header */
+    .hero-banner {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.88) 100%), 
+                  url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #fff;
+      border-radius: 14px;
+      padding: 3rem 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.25);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      color: #a7f3d0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .hero-banner h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.8rem; }
+    .hero-banner p { font-size: 0.98rem; color: #f1f5f9; line-height: 1.6; max-width: 680px; margin-bottom: 1.8rem; }
+    .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: #ffffff;
+      color: var(--charcoal);
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.86rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
 
     .zero-point-ticker {
       background: #ffffff;
       border: 1px solid var(--border);
       border-left: 4px solid var(--emerald);
       border-radius: 8px;
-      padding: 0.75rem 1.2rem;
-      margin-bottom: 1.6rem;
+      padding: 0.8rem 1.2rem;
+      margin-bottom: 1.8rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -64,64 +109,9 @@
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--emerald-accent);
-      border-radius: 50%;
-    }
-    .ticker-items {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
-      color: var(--slate-muted);
-      font-weight: 600;
-    }
+    .pulse-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; }
+    .ticker-items { display: flex; gap: 1.2rem; flex-wrap: wrap; font-size: 0.78rem; color: var(--slate-muted); font-weight: 600; }
     .ticker-item span { color: var(--charcoal); font-weight: 700; }
-
-    .hero-banner {
-      background: linear-gradient(135deg, #064e3b 0%, #065f46 55%, #0f172a 100%);
-      color: #fff;
-      border-radius: 12px;
-      padding: 2.4rem 1.6rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 12px 28px -6px rgba(6, 78, 59, 0.25);
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.16);
-      color: #a7f3d0;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
-      border-radius: 20px;
-      margin-bottom: 1rem;
-    }
-    .hero-banner h1 { font-size: 1.85rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.8rem; }
-    .hero-banner p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.55; max-width: 680px; margin-bottom: 1.6rem; }
-    .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .btn-hero-primary {
-      background: #ffffff;
-      color: var(--emerald);
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.6rem 1.3rem;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-    .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 0.6rem 1.3rem;
-      border-radius: 6px;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
 
     .stats-strip {
       display: grid;
@@ -130,27 +120,13 @@
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.1rem;
+      padding: 1.2rem;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
       text-align: center;
     }
-    .stat-box h4 { font-size: 1.35rem; font-weight: 800; color: var(--emerald); }
+    .stat-box h4 { font-size: 1.4rem; font-weight: 800; color: var(--charcoal); }
     .stat-box span { font-size: 0.72rem; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; }
-
-    .trust-box {
-      background: var(--surface);
-      border-left: 4px solid var(--emerald);
-      border-top: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.3rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--card-shadow);
-    }
-    .trust-box h3 { font-size: 1.05rem; font-weight: 800; color: var(--emerald); margin-bottom: 0.3rem; }
-    .trust-box p { font-size: 0.88rem; color: #334155; line-height: 1.55; }
 
     .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; color: var(--charcoal); }
     .section-desc { font-size: 0.88rem; color: var(--slate-muted); margin-bottom: 1.4rem; }
@@ -166,19 +142,41 @@
       flex-direction: column;
       justify-content: space-between;
     }
-    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
     .feature-card p { font-size: 0.86rem; color: #475569; margin-bottom: 1rem; line-height: 1.5; }
-    .feature-card a {
+    .btn-clean-link {
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--emerald);
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
     }
 
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3.5rem; background: #fff; }
+    /* Short Clean Contact Banner */
+    .contact-bar {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      box-shadow: var(--card-shadow);
+    }
+    .contact-bar-text h3 { font-size: 1.1rem; font-weight: 800; }
+    .contact-bar-text p { font-size: 0.85rem; color: var(--slate-muted); }
+    .btn-short-contact {
+      background: var(--charcoal);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    footer { border-top: 1px solid var(--border); padding: 2.2rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3.5rem; background: #fff; }
     footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
 
     @media (max-width: 768px) {
@@ -186,9 +184,8 @@
       .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); }
       .nav-menu.active { display: flex; }
       .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .hero-banner { padding: 1.8rem 1.2rem; }
-      .hero-banner h1 { font-size: 1.45rem; }
-      .zero-point-ticker { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .hero-banner { padding: 2rem 1.2rem; }
+      .hero-banner h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -209,87 +206,90 @@
 
   <main class="main-container">
     
-    <div class="zero-point-ticker">
-      <div class="ticker-live">
-        <div class="pulse-dot"></div>
-        Zero Point Junction Live Status
-      </div>
-      <div class="ticker-items">
-        <div class="ticker-item">Corridor Climate: <span>Lush Green Eco-SEZ</span></div>
-        <div class="ticker-item">Transit Highway: <span>NH16 Tada Flow Active</span></div>
-        <div class="ticker-item">Support Desk: <span>100% Zero-Brokerage</span></div>
+    <div class="hero-banner">
+      <span class="hero-badge">Industrial Manufacturing Ecosystem</span>
+      <h1>Sri City Industrial Corridor Directory & Direct Helpdesk</h1>
+      <p>Direct zero-brokerage connectivity, verified company plant listings, transit routes, and regional onboarding support across the Tada - Sri City SEZ corridor.</p>
+      <div class="hero-actions">
+        <a href="sricityhub.html" class="btn-hero-primary">Browse 50+ Plants</a>
+        <a href="jobs.html" class="btn-hero-secondary">View Openings</a>
       </div>
     </div>
 
-    <div class="hero-banner">
-      <span class="hero-badge">🌿 8,500+ Acre Eco-Smart Industrial Hub</span>
-      <h1>Empowering Workers & Industry in Tada – Sri City Corridor</h1>
-      <p>Direct zero-commission hiring desk, ground verification, verified transit routes, and industrial accommodation mapping connecting Sri City SEZ and Chennai gateway.</p>
-      <div class="hero-actions">
-        <a href="jobs.html" class="btn-hero-primary">Explore Verified Openings</a>
-        <a href="sricityhub.html" class="btn-hero-secondary">View Corridor Directory</a>
+    <div class="zero-point-ticker">
+      <div class="ticker-live">
+        <div class="pulse-dot"></div>
+        Zero Point Junction Status
+      </div>
+      <div class="ticker-items">
+        <div class="ticker-item">Traffic Flow: <span>NH16 Tada Express Smooth</span></div>
+        <div class="ticker-item">Hiring Facilitation: <span>100% Free / Direct</span></div>
       </div>
     </div>
 
     <div class="stats-strip">
       <div class="stat-box">
-        <h4>250+</h4>
-        <span>Global Plants</span>
+        <h4>50+</h4>
+        <span>Listed Plants</span>
       </div>
       <div class="stat-box">
-        <h4>70K+</h4>
-        <span>Industrial Jobs</span>
+        <h4>250+</h4>
+        <span>Total Corridor Units</span>
       </div>
       <div class="stat-box">
         <h4>15+</h4>
-        <span>Daily Bus Routes</span>
+        <span>Shift Bus Routes</span>
       </div>
       <div class="stat-box">
         <h4>₹0</h4>
-        <span>Zero Broker Fee</span>
+        <span>Placement Fee</span>
       </div>
     </div>
 
-    <div class="trust-box">
-      <h3>🛡️ 100% Zero-Brokerage Policy</h3>
-      <p>Sri City Support Hub operates independently for regional welfare and industrial growth. Candidates are never charged registration or placement fees. All interview facilitation is strictly direct with authorized plant personnel.</p>
-    </div>
-
-    <div class="section-title">Industrial Infrastructure & Services</div>
-    <div class="section-desc">Connecting manufacturing talent with verified industrial clusters.</div>
+    <div class="section-title">Corridor Clusters</div>
+    <div class="section-desc">Direct shortcuts into the regional industrial belts.</div>
 
     <div class="feature-grid">
       <div class="feature-card">
         <div>
-          <h3>❄️ HVAC & Cooling Tech Cluster</h3>
-          <p>Direct manufacturing vacancies in Blue Star, Daikin, Havells Lloyd, and EPACK covering brazing, assembly lines, and testing.</p>
+          <h3>❄️ HVAC & Cooling Cluster</h3>
+          <p>Blue Star, Daikin, Havells Lloyd, and EPACK Durable manufacturing units.</p>
         </div>
-        <a href="jobs.html">View AC Openings →</a>
+        <a href="sricityhub.html" class="btn-clean-link">View Plants & Maps →</a>
       </div>
 
       <div class="feature-card">
         <div>
-          <h3>⚙️ Automotive & Precision Units</h3>
-          <p>Operating support for Isuzu Motors, Alstom Metro Coach, Kobelco Cranes, and specialized CNC/die casting plants.</p>
+          <h3>🚗 Automotive & Heavy Units</h3>
+          <p>Isuzu Motors, Kobelco Cranes, Alstom Metro, and precision component manufacturers.</p>
         </div>
-        <a href="sricityhub.html">Explore Cluster →</a>
+        <a href="sricityhub.html" class="btn-clean-link">View Plants & Maps →</a>
       </div>
 
       <div class="feature-card">
         <div>
-          <h3>🚌 Transit & Chennai Border Route</h3>
-          <p>Worker shift bus routes connecting Tada, Gummidipoondi, Red Hills, Naidupeta, Ponneri, and Sullurpeta.</p>
+          <h3>🍫 FMCG & Food Processing</h3>
+          <p>Mondelēz (Cadbury), Kellogg's, PepsiCo, and Colgate-Palmolive complexes.</p>
         </div>
-        <a href="sricityhub.html">Check Bus Points →</a>
+        <a href="sricityhub.html" class="btn-clean-link">View Plants & Maps →</a>
       </div>
+    </div>
+
+    <!-- Short Clean Support Bar (No big clunky boxes) -->
+    <div class="contact-bar">
+      <div class="contact-bar-text">
+        <h3>Need direct plant routing or candidate assistance?</h3>
+        <p>Our team desk is available for free zero-brokerage guidance.</p>
+      </div>
+      <a href="mailto:sricitysupporthub@gmail.com" class="btn-short-contact">Contact Desk</a>
     </div>
 
   </main>
 
   <footer>
     <p><strong>Sri City Support Hub</strong> — Official Regional Information Desk</p>
-    <div style="margin-top: 0.6rem; font-size: 0.85rem;">
-      Official Desk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
+    <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+      <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
     </div>
   </footer>
 
