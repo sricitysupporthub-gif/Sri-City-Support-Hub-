@@ -42,7 +42,7 @@
 
     .search-box {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.8rem 1rem;
       border: 1px solid var(--border);
       border-radius: 8px;
       font-size: 0.95rem;
@@ -66,26 +66,20 @@
       cursor: pointer;
       white-space: nowrap;
       flex-shrink: 0;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .filter-tab.active { background: var(--charcoal); color: #ffffff; border-color: var(--charcoal); }
 
     .company-grid { display: flex; flex-direction: column; gap: 0.75rem; }
     
-    /* Native Details Container */
-    details.company-card {
+    .company-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.95rem 1.1rem;
       box-shadow: var(--card-shadow);
     }
-    summary {
-      list-style: none;
-      cursor: pointer;
-      outline: none;
-    }
-    summary::-webkit-details-marker { display: none; }
-
     .company-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
     .company-name { font-size: 0.96rem; font-weight: 700; color: var(--charcoal); }
     .category-badge {
@@ -104,26 +98,39 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.74rem;
       border-top: 1px solid #f1f5f9;
       padding-top: 0.5rem;
     }
-    .status-indicator { font-weight: 700; color: var(--emerald); display: flex; align-items: center; gap: 5px; }
+    .status-indicator { font-size: 0.74rem; font-weight: 700; color: var(--emerald); display: flex; align-items: center; gap: 5px; }
     .status-indicator::before { content: ""; width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; display: inline-block; }
-    
-    .btn-toggle-view {
+
+    /* Touch Button for Details */
+    .btn-detail-trigger {
       background: #f1f5f9;
+      border: 1px solid var(--border);
       color: var(--charcoal);
+      font-size: 0.74rem;
       font-weight: 700;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.72rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
-    .company-details-body {
+    .company-drawer {
+      display: none;
       margin-top: 0.75rem;
       padding-top: 0.75rem;
       border-top: 1px dashed var(--border);
+    }
+    .company-card.is-open .company-drawer {
+      display: block;
+    }
+    .company-card.is-open .btn-detail-trigger {
+      background: var(--charcoal);
+      color: #ffffff;
+      border-color: var(--charcoal);
     }
 
     .detail-grid {
@@ -139,7 +146,6 @@
     .detail-item span { color: var(--slate-muted); display: block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; }
     .detail-item strong { color: var(--charcoal); font-weight: 700; }
 
-    /* Compact Buttons */
     .action-row { display: flex; gap: 0.45rem; }
     .btn-action {
       flex: 1;
@@ -191,7 +197,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="jobs.html">Openings</a></li>
@@ -205,13 +211,11 @@
 
     <div class="page-header">
       <h1 class="page-title">Corridor Directory</h1>
-      <p class="page-sub">Tap any plant for schedule and map navigation.</p>
+      <p class="page-sub">Tap button for schedule and map navigation.</p>
     </div>
 
-    <!-- Search Input -->
-    <input type="search" id="searchInput" class="search-box" placeholder="Search plant (e.g. Daikin, Blue Star, Isuzu)...">
+    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g. Daikin, Blue Star, Isuzu)...">
 
-    <!-- Filter Buttons -->
     <div class="filter-tabs">
       <button type="button" class="filter-tab active" data-cat="all">All (50+)</button>
       <button type="button" class="filter-tab" data-cat="hvac">HVAC</button>
@@ -222,23 +226,20 @@
       <button type="button" class="filter-tab" data-cat="logistics">Logistics</button>
     </div>
 
-    <!-- Company Grid -->
     <div class="company-grid" id="companyGrid">
 
       <!-- Blue Star -->
-      <details class="company-card" data-cat="hvac">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">Blue Star Limited</span>
-            <span class="category-badge">HVAC</span>
-          </div>
-          <p class="company-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
+      <div class="company-card" data-cat="hvac">
+        <div class="company-header">
+          <span class="company-name">Blue Star Limited</span>
+          <span class="category-badge">HVAC</span>
+        </div>
+        <p class="company-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger">Details ▾</button>
+        </div>
+        <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>2 days ago</strong></div>
             <div class="detail-item"><span>Walk-in Day</span><strong>Mon & Wed (8:30 AM)</strong></div>
@@ -251,22 +252,20 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Blue%20Star%20Vacancy" class="btn-action query">✉ Desk</a>
           </div>
         </div>
-      </details>
+      </div>
 
       <!-- Daikin -->
-      <details class="company-card" data-cat="hvac">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">Daikin India</span>
-            <span class="category-badge">HVAC</span>
-          </div>
-          <p class="company-desc">Scroll compressors and room AC integration plant.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
+      <div class="company-card" data-cat="hvac">
+        <div class="company-header">
+          <span class="company-name">Daikin India</span>
+          <span class="category-badge">HVAC</span>
+        </div>
+        <p class="company-desc">Scroll compressors and room AC integration plant.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger">Details ▾</button>
+        </div>
+        <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>Yesterday</strong></div>
             <div class="detail-item"><span>Walk-in Day</span><strong>Tue & Thu (9 AM)</strong></div>
@@ -279,22 +278,20 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Daikin%20Vacancy" class="btn-action query">✉ Desk</a>
           </div>
         </div>
-      </details>
+      </div>
 
       <!-- Havells Lloyd -->
-      <details class="company-card" data-cat="hvac">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">Havells Lloyd</span>
-            <span class="category-badge">HVAC</span>
-          </div>
-          <p class="company-desc">Automated consumer air conditioners and pressing unit.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
+      <div class="company-card" data-cat="hvac">
+        <div class="company-header">
+          <span class="company-name">Havells Lloyd</span>
+          <span class="category-badge">HVAC</span>
+        </div>
+        <p class="company-desc">Automated consumer air conditioners and pressing unit.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger">Details ▾</button>
+        </div>
+        <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>3 days ago</strong></div>
             <div class="detail-item"><span>Walk-in Day</span><strong>Wednesday</strong></div>
@@ -307,22 +304,20 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Havells%20Vacancy" class="btn-action query">✉ Desk</a>
           </div>
         </div>
-      </details>
+      </div>
 
-      <!-- EPACK Durable -->
-      <details class="company-card" data-cat="hvac">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">EPACK Durable</span>
-            <span class="category-badge">HVAC</span>
-          </div>
-          <p class="company-desc">OEM room AC component and heat exchanger fabrication.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
+      <!-- EPACK -->
+      <div class="company-card" data-cat="hvac">
+        <div class="company-header">
+          <span class="company-name">EPACK Durable</span>
+          <span class="category-badge">HVAC</span>
+        </div>
+        <p class="company-desc">OEM room AC component and heat exchanger fabrication.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger">Details ▾</button>
+        </div>
+        <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>1 week ago</strong></div>
             <div class="detail-item"><span>Walk-in Day</span><strong>Friday</strong></div>
@@ -335,50 +330,20 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=EPACK%20Vacancy" class="btn-action query">✉ Desk</a>
           </div>
         </div>
-      </details>
-
-      <!-- Amber -->
-      <details class="company-card" data-cat="hvac">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">Amber Enterprises</span>
-            <span class="category-badge">HVAC</span>
-          </div>
-          <p class="company-desc">HVAC sheet metal integration and heating exchange units.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
-          <div class="detail-grid">
-            <div class="detail-item"><span>Last Update</span><strong>4 days ago</strong></div>
-            <div class="detail-item"><span>Walk-in Day</span><strong>Thursday</strong></div>
-            <div class="detail-item"><span>Plant Zone</span><strong>SEZ Phase 2</strong></div>
-            <div class="detail-item"><span>Profile</span><strong>Press & Sheet Work</strong></div>
-          </div>
-          <div class="action-row">
-            <a href="https://maps.google.com/?q=Amber+Enterprises+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
-            <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=Amber%20Vacancy" class="btn-action query">✉ Desk</a>
-          </div>
-        </div>
-      </details>
+      </div>
 
       <!-- Isuzu Motors -->
-      <details class="company-card" data-cat="auto">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">Isuzu Motors India</span>
-            <span class="category-badge">Automotive</span>
-          </div>
-          <p class="company-desc">Commercial utility vehicle manufacturing and chassis welding.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
+      <div class="company-card" data-cat="auto">
+        <div class="company-header">
+          <span class="company-name">Isuzu Motors India</span>
+          <span class="category-badge">Automotive</span>
+        </div>
+        <p class="company-desc">Commercial utility vehicle manufacturing and chassis welding.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger">Details ▾</button>
+        </div>
+        <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>4 days ago</strong></div>
             <div class="detail-item"><span>Walk-in Day</span><strong>Mon & Thu</strong></div>
@@ -391,22 +356,20 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Isuzu%20Vacancy" class="btn-action query">✉ Desk</a>
           </div>
         </div>
-      </details>
+      </div>
 
-      <!-- Alstom -->
-      <details class="company-card" data-cat="auto">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">Alstom Transport</span>
-            <span class="category-badge">Rail</span>
-          </div>
-          <p class="company-desc">Metro rail rolling stock and train coach integration plant.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
+      <!-- Alstom Transport -->
+      <div class="company-card" data-cat="auto">
+        <div class="company-header">
+          <span class="company-name">Alstom Transport</span>
+          <span class="category-badge">Rail</span>
+        </div>
+        <p class="company-desc">Metro rail rolling stock and train coach integration plant.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger">Details ▾</button>
+        </div>
+        <div class="company-drawer">
           <div class="detail-grid">
             <div class="detail-item"><span>Last Update</span><strong>5 days ago</strong></div>
             <div class="detail-item"><span>Walk-in Day</span><strong>Scheduled Tests</strong></div>
@@ -419,23 +382,62 @@
             <a href="mailto:sricitysupporthub@gmail.com?subject=Alstom%20Vacancy" class="btn-action query">✉ Desk</a>
           </div>
         </div>
-      </details>
+      </div>
 
-      <!-- Kobelco -->
-      <details class="company-card" data-cat="auto">
-        <summary>
-          <div class="company-header">
-            <span class="company-name">Kobelco Cranes</span>
-            <span class="category-badge">Heavy Mach</span>
-          </div>
-          <p class="company-desc">Crawler crane and industrial lifting vehicle assembly facility.</p>
-          <div class="company-bar">
-            <span class="status-indicator">Hiring Active</span>
-            <span class="btn-toggle-view">Details ▾</span>
-          </div>
-        </summary>
-        <div class="company-details-body">
+      <!-- Mondelēz -->
+      <div class="company-card" data-cat="food">
+        <div class="company-header">
+          <span class="company-name">Mondelēz India (Cadbury)</span>
+          <span class="category-badge">FMCG</span>
+        </div>
+        <p class="company-desc">Chocolate mass production, moulding, and automated wrapping lines.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger">Details ▾</button>
+        </div>
+        <div class="company-drawer">
           <div class="detail-grid">
-            <div class="detail-item"><span>Last Update</span><strong>1 week ago</strong></div>
-            <div class="detail-item"><span>Walk-in Day</span><strong>Wednesday</strong></div>
-            <div class="detail-item"><sp
+            <div class="detail-item"><span>Last Update</span><strong>3 days ago</strong></div>
+            <div class="detail-item"><span>Walk-in Day</span><strong>Tue & Fri</strong></div>
+            <div class="detail-item"><span>Plant Zone</span><strong>Food Processing Zone</strong></div>
+            <div class="detail-item"><span>Profile</span><strong>Packaging & Line Operative</strong></div>
+          </div>
+          <div class="action-row">
+            <a href="https://maps.google.com/?q=Mondelez+India+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
+            <a href="jobs.html" class="btn-action apply">Apply</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Mondelez%20Vacancy" class="btn-action query">✉ Desk</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-brand">Sri City Support Hub</div>
+    <div class="footer-business">
+      Official Helpdesk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
+    </div>
+    <div class="footer-personal-block">
+      <div class="footer-curator">Curated & Managed by <strong>Vishnu Yadav</strong></div>
+      <div class="footer-personal-id">Direct Contact: vishnuyadav712000@gmail.com</div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Menu Toggle (Touch Proof)
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
+      document.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+      });
+    }
+
+    // 2. Direct Details Toggle
+    document.querySelectorAll('.btn-detail-trigger').forE
