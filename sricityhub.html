@@ -2,135 +2,206 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sri City Corridor Directory | 50+ Top Plants & Maps</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
   <style>
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --charcoal: #0f172a;
-      --emerald: #065f46;
-      --emerald-bg: #ecfdf5;
-      --slate-muted: #64748b;
-      --border: #e2e8f0;
-      --card-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
-    }
     * { 
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      -webkit-tap-highlight-color: transparent;
     }
-    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.5; }
+    body { 
+      background-color: #f8fafc; 
+      color: #0f172a; 
+      line-height: 1.5; 
+    }
     
-    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 1020px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1.2rem; }
-    .brand { font-size: 1.1rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: var(--emerald); border-radius: 2px; }
-    .nav-menu { display: flex; gap: 0.8rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.88rem; font-weight: 600; padding: 0.4rem 0.65rem; border-radius: 6px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: var(--emerald-bg); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
+    header { 
+      background: #ffffff; 
+      border-bottom: 1px solid #e2e8f0; 
+      width: 100%;
+    }
+    .nav-container { 
+      max-width: 1020px; 
+      margin: auto; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 0.85rem 1.2rem; 
+    }
+    .brand { 
+      font-size: 1.1rem; 
+      font-weight: 800; 
+      color: #0f172a; 
+      text-decoration: none; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+    }
+    .brand-mark { width: 10px; height: 10px; background: #065f46; border-radius: 2px; }
+    
+    .menu-toggle { 
+      display: none; 
+      background: #f1f5f9; 
+      border: 1px solid #cbd5e1; 
+      font-size: 1.2rem; 
+      cursor: pointer; 
+      color: #0f172a; 
+      padding: 4px 10px; 
+      border-radius: 6px;
+    }
+    .nav-menu { 
+      display: flex; 
+      gap: 0.8rem; 
+      list-style: none; 
+    }
+    .nav-menu a { 
+      text-decoration: none; 
+      color: #64748b; 
+      font-size: 0.88rem; 
+      font-weight: 600; 
+      padding: 0.4rem 0.65rem; 
+      border-radius: 6px; 
+    }
+    .nav-menu a.active, .nav-menu a:hover { 
+      color: #065f46; 
+      background: #ecfdf5; 
+    }
 
-    .main-container { max-width: 1020px; margin: auto; padding: 1.5rem 1.2rem; }
+    .main-container { 
+      max-width: 1020px; 
+      margin: auto; 
+      padding: 1.5rem 1.2rem; 
+    }
     
     .page-header { margin-bottom: 1.2rem; }
     .page-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.2rem; }
-    .page-sub { font-size: 0.88rem; color: var(--slate-muted); }
+    .page-sub { font-size: 0.88rem; color: #64748b; }
 
     .search-box {
       width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      border: 2px solid #cbd5e1;
       border-radius: 8px;
-      font-size: 0.95rem;
+      font-size: 1rem;
       outline: none;
       background: #ffffff;
+      color: #0f172a;
       margin-bottom: 0.85rem;
-      box-shadow: var(--card-shadow);
       display: block;
     }
-    .search-box:focus { border-color: var(--emerald); }
+    .search-box:focus { 
+      border-color: #065f46; 
+    }
 
-    .filter-tabs { display: flex; gap: 0.45rem; overflow-x: auto; padding-bottom: 0.75rem; margin-bottom: 1.2rem; -webkit-overflow-scrolling: touch; }
+    .filter-tabs { 
+      display: flex; 
+      gap: 0.45rem; 
+      overflow-x: auto; 
+      padding-bottom: 0.75rem; 
+      margin-bottom: 1.2rem; 
+      -webkit-overflow-scrolling: touch; 
+    }
     .filter-tab {
       background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.8rem;
+      border: 1px solid #cbd5e1;
+      padding: 0.45rem 0.85rem;
       border-radius: 20px;
-      font-size: 0.74rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      color: var(--slate-muted);
+      color: #64748b;
       cursor: pointer;
       white-space: nowrap;
       flex-shrink: 0;
-      user-select: none;
-      -webkit-user-select: none;
     }
-    .filter-tab.active { background: var(--charcoal); color: #ffffff; border-color: var(--charcoal); }
+    .filter-tab.active { 
+      background: #0f172a; 
+      color: #ffffff; 
+      border-color: #0f172a; 
+    }
 
-    .company-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+    .company-grid { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0.75rem; 
+    }
     
     .company-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 8px;
-      padding: 0.95rem 1.1rem;
-      box-shadow: var(--card-shadow);
+      padding: 1rem 1.1rem;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
     }
-    .company-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .company-name { font-size: 0.96rem; font-weight: 700; color: var(--charcoal); }
+    .company-header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: flex-start; 
+      gap: 8px; 
+    }
+    .company-name { font-size: 0.98rem; font-weight: 700; color: #0f172a; }
     .category-badge {
       font-size: 0.65rem;
       font-weight: 700;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       background: #f1f5f9;
-      color: var(--slate-muted);
+      color: #64748b;
       text-transform: uppercase;
       white-space: nowrap;
     }
-    .company-desc { font-size: 0.81rem; color: #475569; margin: 0.3rem 0 0.55rem 0; line-height: 1.4; }
+    .company-desc { 
+      font-size: 0.82rem; 
+      color: #475569; 
+      margin: 0.3rem 0 0.6rem 0; 
+      line-height: 1.4; 
+    }
 
     .company-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid #f1f5f9;
-      padding-top: 0.5rem;
+      padding-top: 0.55rem;
     }
-    .status-indicator { font-size: 0.74rem; font-weight: 700; color: var(--emerald); display: flex; align-items: center; gap: 5px; }
-    .status-indicator::before { content: ""; width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; display: inline-block; }
+    .status-indicator { 
+      font-size: 0.76rem; 
+      font-weight: 700; 
+      color: #065f46; 
+      display: flex; 
+      align-items: center; 
+      gap: 5px; 
+    }
+    .status-indicator::before { 
+      content: ""; 
+      width: 6px; 
+      height: 6px; 
+      background: #065f46; 
+      border-radius: 50%; 
+      display: inline-block; 
+    }
 
-    /* Touch Button for Details */
     .btn-detail-trigger {
-      background: #f1f5f9;
-      border: 1px solid var(--border);
-      color: var(--charcoal);
-      font-size: 0.74rem;
+      background: #0f172a;
+      border: none;
+      color: #ffffff;
+      font-size: 0.76rem;
       font-weight: 700;
-      padding: 0.3rem 0.65rem;
-      border-radius: 5px;
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
       cursor: pointer;
-      user-select: none;
-      -webkit-user-select: none;
     }
 
     .company-drawer {
       display: none;
-      margin-top: 0.75rem;
-      padding-top: 0.75rem;
-      border-top: 1px dashed var(--border);
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed #cbd5e1;
     }
     .company-card.is-open .company-drawer {
-      display: block;
-    }
-    .company-card.is-open .btn-detail-trigger {
-      background: var(--charcoal);
-      color: #ffffff;
-      border-color: var(--charcoal);
+      display: block !important;
     }
 
     .detail-grid {
@@ -138,56 +209,66 @@
       grid-template-columns: 1fr 1fr;
       gap: 0.5rem;
       background: #f8fafc;
-      padding: 0.7rem;
+      padding: 0.75rem;
       border-radius: 6px;
       font-size: 0.75rem;
       margin-bottom: 0.75rem;
     }
-    .detail-item span { color: var(--slate-muted); display: block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; }
-    .detail-item strong { color: var(--charcoal); font-weight: 700; }
+    .detail-item span { 
+      color: #64748b; 
+      display: block; 
+      font-size: 0.68rem; 
+      font-weight: 600; 
+      text-transform: uppercase; 
+    }
+    .detail-item strong { color: #0f172a; font-weight: 700; }
 
-    .action-row { display: flex; gap: 0.45rem; }
+    .action-row { display: flex; gap: 0.5rem; }
     .btn-action {
       flex: 1;
-      padding: 0.42rem 0.5rem;
-      border-radius: 5px;
-      font-size: 0.72rem;
+      padding: 0.5rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
       font-weight: 700;
       text-align: center;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
     }
     .btn-action.map { background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
-    .btn-action.apply { background: var(--charcoal); color: #ffffff; border: 1px solid var(--charcoal); }
-    .btn-action.query { background: #ecfdf5; color: var(--emerald); border: 1px solid #a7f3d0; }
+    .btn-action.apply { background: #0f172a; color: #ffffff; }
+    .btn-action.query { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 1.2rem;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.2rem 1.2rem;
       text-align: center;
       margin-top: 3rem;
       background: #ffffff;
     }
-    .footer-brand { font-size: 0.86rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; }
-    .footer-business { font-size: 0.8rem; color: var(--slate-muted); margin-bottom: 0.8rem; }
-    .footer-business a { color: var(--emerald); font-weight: 700; text-decoration: none; }
+    .footer-brand { font-size: 0.88rem; font-weight: 700; color: #0f172a; margin-bottom: 0.3rem; }
+    .footer-business { font-size: 0.82rem; color: #64748b; margin-bottom: 0.9rem; }
+    .footer-business a { color: #065f46; font-weight: 700; text-decoration: none; }
     
     .footer-personal-block {
-      border-top: 1px dashed var(--border);
+      border-top: 1px dashed #e2e8f0;
       display: inline-block;
       padding-top: 0.8rem;
       margin-top: 0.2rem;
     }
-    .footer-curator { font-size: 0.76rem; color: var(--slate-muted); }
-    .footer-curator strong { color: var(--charcoal); font-weight: 700; }
-    .footer-personal-id { font-size: 0.74rem; color: #475569; font-family: monospace; margin-top: 0.2rem; }
+    .footer-curator { font-size: 0.78rem; color: #64748b; }
+    .footer-curator strong { color: #0f172a; font-weight: 700; }
+    .footer-personal-id { font-size: 0.75rem; color: #475569; font-family: monospace; margin-top: 0.2rem; }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+      .nav-menu { 
+        display: none; 
+        width: 100%; 
+        flex-direction: column; 
+        padding: 0.8rem 0; 
+      }
       .nav-menu.active { display: flex; }
     }
   </style>
@@ -197,7 +278,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+      <button type="button" class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
       <ul class="nav-menu" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="jobs.html">Openings</a></li>
@@ -214,22 +295,50 @@
       <p class="page-sub">Tap button for schedule and map navigation.</p>
     </div>
 
-    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g. Daikin, Blue Star, Isuzu)...">
+    <!-- Live Search Input -->
+    <input type="text" id="searchInput" class="search-box" placeholder="Search plant (e.g. Amber, Daikin, Blue Star)..." oninput="runFilter()" onkeyup="runFilter()">
 
+    <!-- Filter Buttons -->
     <div class="filter-tabs">
-      <button type="button" class="filter-tab active" data-cat="all">All (50+)</button>
-      <button type="button" class="filter-tab" data-cat="hvac">HVAC</button>
-      <button type="button" class="filter-tab" data-cat="auto">Auto & Rail</button>
-      <button type="button" class="filter-tab" data-cat="food">FMCG</button>
-      <button type="button" class="filter-tab" data-cat="pharma">Pharma</button>
-      <button type="button" class="filter-tab" data-cat="precision">Metals</button>
-      <button type="button" class="filter-tab" data-cat="logistics">Logistics</button>
+      <button type="button" class="filter-tab active" onclick="setCategory('all', this)">All (50+)</button>
+      <button type="button" class="filter-tab" onclick="setCategory('hvac', this)">HVAC</button>
+      <button type="button" class="filter-tab" onclick="setCategory('auto', this)">Auto & Rail</button>
+      <button type="button" class="filter-tab" onclick="setCategory('food', this)">FMCG</button>
+      <button type="button" class="filter-tab" onclick="setCategory('pharma', this)">Pharma</button>
+      <button type="button" class="filter-tab" onclick="setCategory('precision', this)">Metals</button>
+      <button type="button" class="filter-tab" onclick="setCategory('logistics', this)">Logistics</button>
     </div>
 
     <div class="company-grid" id="companyGrid">
 
+      <!-- Amber Enterprises -->
+      <div class="company-card" data-cat="hvac" data-name="amber enterprises hvac sheet metal ac components">
+        <div class="company-header">
+          <span class="company-name">Amber Enterprises</span>
+          <span class="category-badge">HVAC</span>
+        </div>
+        <p class="company-desc">HVAC sheet metal integration and heating exchange units.</p>
+        <div class="company-bar">
+          <span class="status-indicator">Hiring Active</span>
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
+        </div>
+        <div class="company-drawer">
+          <div class="detail-grid">
+            <div class="detail-item"><span>Last Update</span><strong>4 days ago</strong></div>
+            <div class="detail-item"><span>Walk-in Day</span><strong>Thursday</strong></div>
+            <div class="detail-item"><span>Plant Zone</span><strong>SEZ Phase 2</strong></div>
+            <div class="detail-item"><span>Profile</span><strong>Press & Sheet Work</strong></div>
+          </div>
+          <div class="action-row">
+            <a href="https://maps.google.com/?q=Amber+Enterprises+Sri+City" target="_blank" class="btn-action map">Map</a>
+            <a href="jobs.html" class="btn-action apply">Apply</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Amber%20Vacancy" class="btn-action query">Desk</a>
+          </div>
+        </div>
+      </div>
+
       <!-- Blue Star -->
-      <div class="company-card" data-cat="hvac">
+      <div class="company-card" data-cat="hvac" data-name="blue star limited hvac commercial refrigeration ac deep freezer">
         <div class="company-header">
           <span class="company-name">Blue Star Limited</span>
           <span class="category-badge">HVAC</span>
@@ -237,7 +346,7 @@
         <p class="company-desc">Commercial air conditioners and deep freezer manufacturing unit.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -247,15 +356,15 @@
             <div class="detail-item"><span>Profile</span><strong>Brazing / Assembly</strong></div>
           </div>
           <div class="action-row">
-            <a href="https://maps.google.com/?q=Blue+Star+Limited+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
+            <a href="https://maps.google.com/?q=Blue+Star+Limited+Sri+City" target="_blank" class="btn-action map">Map</a>
             <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=Blue%20Star%20Vacancy" class="btn-action query">✉ Desk</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Blue%20Star%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
       </div>
 
       <!-- Daikin -->
-      <div class="company-card" data-cat="hvac">
+      <div class="company-card" data-cat="hvac" data-name="daikin india air conditioning compressors hvac">
         <div class="company-header">
           <span class="company-name">Daikin India</span>
           <span class="category-badge">HVAC</span>
@@ -263,7 +372,7 @@
         <p class="company-desc">Scroll compressors and room AC integration plant.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -273,15 +382,15 @@
             <div class="detail-item"><span>Profile</span><strong>Technician & QC</strong></div>
           </div>
           <div class="action-row">
-            <a href="https://maps.google.com/?q=Daikin+Airconditioning+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
+            <a href="https://maps.google.com/?q=Daikin+Airconditioning+Sri+City" target="_blank" class="btn-action map">Map</a>
             <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=Daikin%20Vacancy" class="btn-action query">✉ Desk</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Daikin%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
       </div>
 
       <!-- Havells Lloyd -->
-      <div class="company-card" data-cat="hvac">
+      <div class="company-card" data-cat="hvac" data-name="havells lloyd consumer air conditioner ac">
         <div class="company-header">
           <span class="company-name">Havells Lloyd</span>
           <span class="category-badge">HVAC</span>
@@ -289,7 +398,7 @@
         <p class="company-desc">Automated consumer air conditioners and pressing unit.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -299,15 +408,15 @@
             <div class="detail-item"><span>Profile</span><strong>Machine Operator</strong></div>
           </div>
           <div class="action-row">
-            <a href="https://maps.google.com/?q=Havells+India+Limited+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
+            <a href="https://maps.google.com/?q=Havells+India+Limited+Sri+City" target="_blank" class="btn-action map">Map</a>
             <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=Havells%20Vacancy" class="btn-action query">✉ Desk</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Havells%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
       </div>
 
       <!-- EPACK -->
-      <div class="company-card" data-cat="hvac">
+      <div class="company-card" data-cat="hvac" data-name="epack durable room ac component oem fabrication">
         <div class="company-header">
           <span class="company-name">EPACK Durable</span>
           <span class="category-badge">HVAC</span>
@@ -315,7 +424,7 @@
         <p class="company-desc">OEM room AC component and heat exchanger fabrication.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -325,15 +434,15 @@
             <div class="detail-item"><span>Profile</span><strong>Line Operators</strong></div>
           </div>
           <div class="action-row">
-            <a href="https://maps.google.com/?q=EPACK+Durable+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
+            <a href="https://maps.google.com/?q=EPACK+Durable+Sri+City" target="_blank" class="btn-action map">Map</a>
             <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=EPACK%20Vacancy" class="btn-action query">✉ Desk</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=EPACK%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
       </div>
 
       <!-- Isuzu Motors -->
-      <div class="company-card" data-cat="auto">
+      <div class="company-card" data-cat="auto" data-name="isuzu motors india automotive commercial vehicle welding">
         <div class="company-header">
           <span class="company-name">Isuzu Motors India</span>
           <span class="category-badge">Automotive</span>
@@ -341,7 +450,7 @@
         <p class="company-desc">Commercial utility vehicle manufacturing and chassis welding.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -351,15 +460,15 @@
             <div class="detail-item"><span>Profile</span><strong>Weld / Paint / Line</strong></div>
           </div>
           <div class="action-row">
-            <a href="https://maps.google.com/?q=Isuzu+Motors+India+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
+            <a href="https://maps.google.com/?q=Isuzu+Motors+India+Sri+City" target="_blank" class="btn-action map">Map</a>
             <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=Isuzu%20Vacancy" class="btn-action query">✉ Desk</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Isuzu%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
       </div>
 
       <!-- Alstom Transport -->
-      <div class="company-card" data-cat="auto">
+      <div class="company-card" data-cat="auto" data-name="alstom transport rail metro rolling stock">
         <div class="company-header">
           <span class="company-name">Alstom Transport</span>
           <span class="category-badge">Rail</span>
@@ -367,7 +476,7 @@
         <p class="company-desc">Metro rail rolling stock and train coach integration plant.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger">Details ▾</button>
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
         </div>
         <div class="company-drawer">
           <div class="detail-grid">
@@ -377,15 +486,15 @@
             <div class="detail-item"><span>Profile</span><strong>Fitter / Electrical</strong></div>
           </div>
           <div class="action-row">
-            <a href="https://maps.google.com/?q=Alstom+Transport+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
+            <a href="https://maps.google.com/?q=Alstom+Transport+Sri+City" target="_blank" class="btn-action map">Map</a>
             <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=Alstom%20Vacancy" class="btn-action query">✉ Desk</a>
+            <a href="mailto:sricitysupporthub@gmail.com?subject=Alstom%20Vacancy" class="btn-action query">Desk</a>
           </div>
         </div>
       </div>
 
-      <!-- Mondelēz -->
-      <div class="company-card" data-cat="food">
+      <!-- Mondelēz Cadbury -->
+      <div class="company-card" data-cat="food" data-name="mondelez india cadbury chocolate fmcg food processing">
         <div class="company-header">
           <span class="company-name">Mondelēz India (Cadbury)</span>
           <span class="category-badge">FMCG</span>
@@ -393,52 +502,6 @@
         <p class="company-desc">Chocolate mass production, moulding, and automated wrapping lines.</p>
         <div class="company-bar">
           <span class="status-indicator">Hiring Active</span>
-          <button type="button" class="btn-detail-trigger">Details ▾</button>
-        </div>
-        <div class="company-drawer">
-          <div class="detail-grid">
-            <div class="detail-item"><span>Last Update</span><strong>3 days ago</strong></div>
-            <div class="detail-item"><span>Walk-in Day</span><strong>Tue & Fri</strong></div>
-            <div class="detail-item"><span>Plant Zone</span><strong>Food Processing Zone</strong></div>
-            <div class="detail-item"><span>Profile</span><strong>Packaging & Line Operative</strong></div>
-          </div>
-          <div class="action-row">
-            <a href="https://maps.google.com/?q=Mondelez+India+Sri+City" target="_blank" class="btn-action map">📍 Map</a>
-            <a href="jobs.html" class="btn-action apply">Apply</a>
-            <a href="mailto:sricitysupporthub@gmail.com?subject=Mondelez%20Vacancy" class="btn-action query">✉ Desk</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </main>
-
-  <footer>
-    <div class="footer-brand">Sri City Support Hub</div>
-    <div class="footer-business">
-      Official Helpdesk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
-    </div>
-    <div class="footer-personal-block">
-      <div class="footer-curator">Curated & Managed by <strong>Vishnu Yadav</strong></div>
-      <div class="footer-personal-id">Direct Contact: vishnuyadav712000@gmail.com</div>
-    </div>
-  </footer>
-
-  <script>
-    // 1. Menu Toggle (Touch Proof)
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        navLinks.classList.toggle('active');
-      });
-      document.addEventListener('click', function() {
-        navLinks.classList.remove('active');
-      });
-    }
-
-    // 2. Direct Details Toggle
-    document.querySelectorAll('.btn-detail-trigger').forE
+          <button type="button" class="btn-detail-trigger" onclick="toggleCard(this)">Details ▾</button>
+        
     
