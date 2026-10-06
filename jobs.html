@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Verified Industrial Directory & Careers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sri City Support Hub | Verified Industrial Directory</title>
   <style>
     :root {
       --primary: #0a2540;
@@ -13,34 +13,36 @@
       --card-bg: #ffffff;
       --text-main: #0f172a;
       --text-muted: #64748b;
-      --border-color: #e2e8f0;
+      --border-color: #cbd5e1;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation; /* Instant tap response on mobile */
     }
 
     body {
       background-color: var(--bg-light);
       color: var(--text-main);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     /* HEADER */
     .header {
       background-color: var(--primary);
       color: #ffffff;
-      padding: 14px 18px;
+      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     .brand-wrap {
@@ -51,8 +53,8 @@
 
     .brand-logo {
       background-color: var(--accent-green);
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -65,7 +67,7 @@
     .brand-title h1 {
       font-size: 16px;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.1;
     }
 
     .brand-title p {
@@ -74,38 +76,57 @@
     }
 
     .menu-btn {
+      background: transparent;
+      border: none;
+      color: #ffffff;
       font-size: 26px;
       cursor: pointer;
-      user-select: none;
-      padding: 4px 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* SIDE DRAWER */
+    /* SIDE DRAWER & OVERLAY */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1999;
+    }
+
+    .drawer-overlay.active {
+      display: block;
+    }
+
     .side-drawer {
       position: fixed;
       top: 0;
-      right: -280px;
+      right: 0;
       width: 260px;
       height: 100%;
       background: #0f172a;
-      transition: right 0.3s ease, visibility 0.3s;
-      visibility: hidden;
-      z-index: 200;
-      padding: 24px 20px;
-      box-shadow: -4px 0 16px rgba(0,0,0,0.3);
+      transform: translateX(100%);
+      transition: transform 0.25s ease-out;
+      z-index: 2000;
+      padding: 20px;
+      box-shadow: -4px 0 16px rgba(0,0,0,0.4);
     }
 
     .side-drawer.open {
-      right: 0;
-      visibility: visible;
+      transform: translateX(0);
     }
 
     .close-btn {
       color: #fff;
-      font-size: 22px;
+      font-size: 24px;
       text-align: right;
       cursor: pointer;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .side-drawer a {
@@ -121,15 +142,15 @@
     .hero {
       background: linear-gradient(180deg, var(--primary) 0%, #162a45 100%);
       color: #ffffff;
-      padding: 20px 16px 28px 16px;
+      padding: 18px 14px 24px 14px;
       text-align: center;
     }
 
     .hero-desc {
-      font-size: 12.5px;
+      font-size: 12px;
       color: #cbd5e1;
       max-width: 580px;
-      margin: 0 auto 14px auto;
+      margin: 0 auto 12px auto;
     }
 
     .quick-categories {
@@ -146,29 +167,33 @@
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.25);
       color: #fff;
-      padding: 6px 14px;
+      padding: 6px 13px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 11.5px;
       white-space: nowrap;
       cursor: pointer;
+    }
+
+    .cat-btn:active {
+      background: var(--accent-green);
     }
 
     /* SEARCH BAR */
     .search-container {
       display: flex;
-      margin: 16px auto 0 auto;
+      margin: 14px auto 0 auto;
       max-width: 600px;
       background: #fff;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .search-container input {
       flex: 1;
       border: none;
       padding: 12px 14px;
-      font-size: 13.5px;
+      font-size: 14px;
       outline: none;
       color: #1e293b;
     }
@@ -178,8 +203,8 @@
       color: #fff;
       border: none;
       padding: 0 20px;
-      font-weight: 600;
-      font-size: 13.5px;
+      font-weight: 700;
+      font-size: 14px;
       cursor: pointer;
     }
 
@@ -187,11 +212,11 @@
     .container {
       max-width: 860px;
       margin: 0 auto;
-      padding: 16px 14px;
+      padding: 14px;
     }
 
     .section-tag {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       color: var(--accent-green);
       text-transform: uppercase;
@@ -199,10 +224,10 @@
     }
 
     .section-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       color: #0f172a;
-      margin: 2px 0 10px 0;
+      margin: 2px 0 8px 0;
     }
 
     /* FILTER PILLS */
@@ -210,27 +235,38 @@
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding: 6px 0 14px 0;
+      padding: 4px 0 14px 0;
       scrollbar-width: none;
     }
     .pill-group::-webkit-scrollbar { display: none; }
 
     .pill-btn {
-      background: #fff;
-      border: 1px solid var(--border-color);
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
       padding: 6px 14px;
       border-radius: 20px;
       font-size: 12px;
-      color: #475569;
+      color: #334155;
       cursor: pointer;
       white-space: nowrap;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .pill-btn.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }
+
+    /* NO RESULTS MESSAGE */
+    #noResultsNotice {
+      display: none;
+      background: #fff;
+      padding: 24px;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 20px;
     }
 
     /* CARDS */
@@ -243,7 +279,7 @@
 
     .item-card {
       background: var(--card-bg);
-      border: 1px solid var(--border-color);
+      border: 1px solid #e2e8f0;
       border-radius: 10px;
       padding: 14px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.03);
@@ -258,10 +294,10 @@
 
     .item-badge {
       display: inline-block;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 4px;
       font-size: 10.5px;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
     }
 
@@ -271,26 +307,14 @@
       font-weight: 700;
     }
 
-    /* SMALL & COMPACT JOB TITLE */
-    .card-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: #334155;
-      margin-bottom: 4px;
-    }
-
-    /* PROMINENT PLANT HIGHLIGHT BADGE */
-    .plant-highlight {
+    /* PROMINENT PLANT HIGHLIGHT AT TOP */
+    .plant-highlight-box {
       background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-left: 4px solid #2563eb;
-      padding: 7px 10px;
+      border: 1.5px solid #bfdbfe;
+      border-left: 5px solid #2563eb;
+      padding: 8px 10px;
       border-radius: 6px;
-      margin: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
+      margin: 6px 0 8px 0;
     }
 
     .plant-label {
@@ -299,14 +323,25 @@
       font-size: 10px;
       font-weight: 800;
       padding: 2px 6px;
-      border-radius: 4px;
+      border-radius: 3px;
       letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 3px;
     }
 
     .plant-names {
-      font-size: 12.5px;
-      font-weight: 700;
+      font-size: 13.5px;
+      font-weight: 800;
       color: #1e3a8a;
+      line-height: 1.3;
+    }
+
+    /* SMALL & CLEAN ROLE SUBTITLE */
+    .role-subtitle {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 8px;
     }
 
     .details-box {
@@ -315,11 +350,11 @@
       border-radius: 6px;
       padding: 8px 10px;
       font-size: 12px;
-      line-height: 1.55;
+      line-height: 1.5;
       margin: 8px 0;
     }
 
-    /* COMPACT BUTTONS WITH INVERTED COLORS */
+    /* BUTTONS */
     .card-actions {
       display: flex;
       gap: 8px;
@@ -330,10 +365,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 7px 12px;
+      padding: 8px 12px;
       border-radius: 6px;
       font-size: 12.5px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       flex: 1;
@@ -351,11 +386,11 @@
       color: #ffffff; 
     }
 
-    /* FOOTER (CLEAN & MINIMAL) */
+    /* FOOTER */
     .footer {
       background: #0b1522;
       color: #94a3b8;
-      padding: 26px 16px;
+      padding: 24px 16px;
       border-top: 1px solid #1e293b;
       margin-top: 30px;
     }
@@ -369,11 +404,11 @@
       color: #ffffff;
       font-size: 15px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .contact-item {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 12.5px;
     }
 
@@ -408,6 +443,9 @@
 </head>
 <body>
 
+  <!-- BACKDROP OVERLAY FOR MENU -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeNav()"></div>
+
   <!-- HEADER -->
   <header class="header">
     <div class="brand-wrap">
@@ -417,35 +455,36 @@
         <p>Verified Industrial Directory • Employment Information</p>
       </div>
     </div>
-    <div class="menu-btn" onclick="toggleNav()">☰</div>
+    <button type="button" class="menu-btn" onclick="openNav()" aria-label="Open Menu">☰</button>
   </header>
 
   <!-- NAVIGATION DRAWER -->
   <nav id="sideNav" class="side-drawer">
-    <div class="close-btn" onclick="toggleNav()">✕</div>
-    <a href="#industrialJobs" onclick="toggleNav()">All Manufacturing Units</a>
-    <a href="#footer-section" onclick="toggleNav()">About & Contact</a>
+    <div class="close-btn" onclick="closeNav()">✕</div>
+    <a href="#industrialJobs" onclick="closeNav()">All Manufacturing Units</a>
+    <a href="#footer-section" onclick="closeNav()">About & Contact</a>
   </nav>
 
   <!-- HERO SECTION -->
   <section class="hero">
     <p class="hero-desc">Independent industrial knowledge base for job seekers and local technical workforce across Sri City SEZ.</p>
     
-    <!-- QUICK CATEGORY BUTTONS (WORKING) -->
+    <!-- QUICK CATEGORY BUTTONS -->
     <div class="quick-categories">
-      <button class="cat-btn" onclick="quickFilter('HVAC')">❄️ HVAC / AC</button>
-      <button class="cat-btn" onclick="quickFilter('Alstom')">🚆 Rail (Alstom)</button>
-      <button class="cat-btn" onclick="quickFilter('Mobile')">📱 Electronics & Mobile</button>
-      <button class="cat-btn" onclick="quickFilter('Auto')">🏍️ Auto & Bikes</button>
-      <button class="cat-btn" onclick="quickFilter('Maintenance')">🔧 Maintenance</button>
-      <button class="cat-btn" onclick="quickFilter('Quality')">🔍 QA / QC</button>
-      <button class="cat-btn" onclick="quickFilter('R&D')">🔬 R&D</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('Blue Star')">❄️ Blue Star</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('HVAC')">❄️ HVAC / AC</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('Alstom')">🚆 Rail (Alstom)</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('Electronics')">📱 Electronics & Mobile</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('Auto')">🏍️ Auto & Bikes</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('Maintenance')">🔧 Maintenance</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('Quality')">🔍 QA / QC</button>
+      <button type="button" class="cat-btn" onclick="applyQuickSearch('R&D')">🔬 R&D</button>
     </div>
 
-    <!-- SEARCH BAR (WORKING) -->
+    <!-- SEARCH BAR -->
     <div class="search-container">
-      <input type="text" id="mainSearchInput" placeholder="Search company (Voltas, Alstom, Hero), qualification..." oninput="executeSearch()">
-      <button type="button" onclick="executeSearch()">Search</button>
+      <input type="text" id="mainSearchInput" placeholder="Search company (Blue Star, Voltas, Alstom), trade..." oninput="handleSearch()">
+      <button type="button" onclick="handleSearch()">Search</button>
     </div>
   </section>
 
@@ -455,38 +494,49 @@
     <div class="section-tag">Directory Overview</div>
     <h2 class="section-title">Verified Industrial Units & Openings</h2>
 
-    <!-- FILTER PILLS (WORKING) -->
+    <!-- FILTER PILLS -->
     <div class="pill-group">
-      <button class="pill-btn active" onclick="filterByTag('all', this)">All Sectors</button>
-      <button class="pill-btn" onclick="filterByTag('10th', this)">10th / 12th</button>
-      <button class="pill-btn" onclick="filterByTag('iti', this)">ITI Trades</button>
-      <button class="pill-btn" onclick="filterByTag('diploma', this)">Diploma</button>
-      <button class="pill-btn" onclick="filterByTag('btech', this)">B.Tech / Staff</button>
-      <button class="pill-btn" onclick="filterByTag('helper', this)">Helper / Labor</button>
-      <button class="pill-btn" onclick="filterByTag('technical', this)">QA / Maint / R&D</button>
+      <button type="button" class="pill-btn active" data-tag="all" onclick="handlePillClick(this, 'all')">All Sectors</button>
+      <button type="button" class="pill-btn" data-tag="10th" onclick="handlePillClick(this, '10th')">10th / 12th</button>
+      <button type="button" class="pill-btn" data-tag="iti" onclick="handlePillClick(this, 'iti')">ITI Trades</button>
+      <button type="button" class="pill-btn" data-tag="diploma" onclick="handlePillClick(this, 'diploma')">Diploma</button>
+      <button type="button" class="pill-btn" data-tag="btech" onclick="handlePillClick(this, 'btech')">B.Tech / Staff</button>
+      <button type="button" class="pill-btn" data-tag="helper" onclick="handlePillClick(this, 'helper')">Helper / Labor</button>
+      <button type="button" class="pill-btn" data-tag="technical" onclick="handlePillClick(this, 'technical')">QA / Maint / R&D</button>
+    </div>
+
+    <!-- ZERO RESULTS MESSAGE -->
+    <div id="noResultsNotice">
+      <h3 style="font-size:15px; color:#b91c1c;">No matching companies or vacancies found</h3>
+      <p style="font-size:12.5px; color:#64748b; margin-top:4px;">Try searching <strong>Blue Star</strong>, <strong>Voltas</strong>, <strong>Alstom</strong>, <strong>Hero</strong>, or select <strong>All Sectors</strong> above.</p>
     </div>
 
     <div class="card-list" id="industrialJobs">
 
-      <!-- 1. AC & HVAC (Voltas, Amber, EPACK, Daikin) -->
-      <div class="item-card search-target" data-tags="all 10th 12th iti diploma btech hvac ac voltas amber epack daikin operator technician">
+      <!-- 1. AC & HVAC (Blue Star, Voltas, Amber, EPACK, Daikin) -->
+      <div class="item-card search-target" data-tags="all 10th 12th iti diploma btech hvac ac blue star bluestar voltas amber epack daikin operator technician">
         <div class="badge-row">
           <span class="item-badge" style="background:#e0f2fe; color:#0369a1;">AC & HVAC APPLIANCES</span>
-          <span class="shift-tag">8 Hrs Shift + Overtime Available</span>
+          <span class="shift-tag">8 Hrs Shift + Overtime</span>
         </div>
-        <div class="card-title">HVAC Assembly Operator / Brazing Tech / Staff Engineer</div>
-        <div class="plant-highlight">
+        
+        <!-- PROMINENT PLANT HIGHLIGHT -->
+        <div class="plant-highlight-box">
           <span class="plant-label">PLANTS</span>
-          <span class="plant-names">Voltas Limited, Amber Enterprises, EPACK Durable, Daikin</span>
+          <div class="plant-names">Blue Star Climatech, Voltas Limited, Amber Enterprises, EPACK Durable, Daikin</div>
         </div>
+
+        <!-- SMALL SUBTITLE ROLE -->
+        <div class="role-subtitle">Roles: HVAC Assembly Operator • Brazing Tech • Copper Pipe Fitter • Line Engineer</div>
+
         <div class="details-box">
-          <div>🏭 <strong>Manufacturing:</strong> Split ACs, Condensers, Heat Exchangers, Sheet Metal Stamping</div>
+          <div>🏭 <strong>Manufacturing:</strong> Split ACs, Commercial Refrigeration, Condensers, Heat Exchangers, Sheet Metal</div>
           <div>🎓 <strong>Eligibility:</strong> 10th / 12th / ITI (RAC/Fitter/Welder) / Diploma & B.Tech (Mech/EEE)</div>
-          <div>💰 <strong>Indicative Salary:</strong> ₹14,500 – ₹52,000/month (Based on role)</div>
+          <div>💰 <strong>Indicative Salary:</strong> ₹14,500 – ₹52,000/month (Based on role & experience)</div>
         </div>
         <div class="card-actions">
-          <a href="https://www.google.com/maps/search/?api=1&query=Voltas+Limited+Sri+City" target="_blank" class="btn btn-green-map">📍 Company Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: HVAC Sector (Voltas/Amber/EPACK)" class="btn btn-black-apply">Apply</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Blue+Star+Climatech+Sri+City" target="_blank" class="btn btn-green-map">📍 Company Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: HVAC Sector (Blue Star/Voltas/Amber)" class="btn btn-black-apply">Apply</a>
         </div>
       </div>
 
@@ -494,15 +544,18 @@
       <div class="item-card search-target" data-tags="all iti diploma btech train rail alstom rolling stock welder fitter technician">
         <div class="badge-row">
           <span class="item-badge" style="background:#fef3c7; color:#b45309;">ROLLING STOCK / TRAIN</span>
-          <span class="shift-tag">Safety Certified • Shift Rotations</span>
+          <span class="shift-tag">Safety Certified • Rotations</span>
         </div>
-        <div class="card-title">Rolling Stock Assembler / TIG-MIG Welder / Testing Technician</div>
-        <div class="plant-highlight">
+        
+        <div class="plant-highlight-box">
           <span class="plant-label">PLANTS</span>
-          <span class="plant-names">Alstom Transport India (Rolling Stock Facility)</span>
+          <div class="plant-names">Alstom Transport India (Rolling Stock Facility)</div>
         </div>
+
+        <div class="role-subtitle">Roles: Metro Coach Assembler • TIG/MIG Welder • Testing Technician • QA Engineer</div>
+
         <div class="details-box">
-          <div>🏭 <strong>Manufacturing:</strong> Metro Rail Coaches (Chennai, Mumbai, Kochi), Train Sets</div>
+          <div>🏭 <strong>Manufacturing:</strong> Metro Rail Coaches (Chennai, Mumbai, Kochi), High-Speed Train Sets</div>
           <div>🎓 <strong>Eligibility:</strong> ITI (Welder, Fitter) / Diploma (Mech, Electrical) / B.Tech</div>
           <div>💰 <strong>Indicative Salary:</strong> ₹16,000 – ₹58,000/month + Technical Training</div>
         </div>
@@ -518,11 +571,14 @@
           <span class="item-badge" style="background:#fee2e2; color:#b91c1c;">TWO-WHEELER & AUTO</span>
           <span class="shift-tag">8 Hrs + Daily 2-4 Hrs OT</span>
         </div>
-        <div class="card-title">Bike Assembly / CNC Machinist / Production Shift Engineer</div>
-        <div class="plant-highlight">
+        
+        <div class="plant-highlight-box">
           <span class="plant-label">PLANTS</span>
-          <span class="plant-names">Hero Motors, Isuzu Motors India, Kobelco Construction</span>
+          <div class="plant-names">Hero Motors, Isuzu Motors India, Kobelco Construction</div>
         </div>
+
+        <div class="role-subtitle">Roles: Bike Assembly Operator • CNC Machinist • VMC Setter • Shift Engineer</div>
+
         <div class="details-box">
           <div>🏭 <strong>Manufacturing:</strong> Bike Transmissions, Commercial Pickups, Excavators</div>
           <div>🎓 <strong>Eligibility:</strong> 10th / ITI (Machinist, Turner, Fitter) / Diploma & B.Tech (Mech)</div>
@@ -540,11 +596,14 @@
           <span class="item-badge" style="background:#f3e8ff; color:#7e22ce;">MOBILE & CAMERA OPTICS</span>
           <span class="shift-tag">AC Cleanroom • 8 Hrs Shift</span>
         </div>
-        <div class="card-title">SMT Line Operator / Camera Module Assembly / Inspection Staff</div>
-        <div class="plant-highlight">
+        
+        <div class="plant-highlight-box">
           <span class="plant-label">PLANTS</span>
-          <span class="plant-names">Bharat FIH (Foxconn Group), Salcomp, Dixon Technologies</span>
+          <div class="plant-names">Bharat FIH (Foxconn Group), Salcomp, Dixon Technologies</div>
         </div>
+
+        <div class="role-subtitle">Roles: SMT Line Operator • Camera Module Assembler • Quality Inspector</div>
+
         <div class="details-box">
           <div>🏭 <strong>Manufacturing:</strong> Smartphones, Camera Modules, Adapters, PCB Motherboards</div>
           <div>🎓 <strong>Eligibility:</strong> 10th / 12th Pass / ITI / Diploma (ECE, Electrical)</div>
@@ -560,45 +619,16 @@
       <div class="item-card search-target" data-tags="all 10th iti pipe plastic prince astral alpla helper operator">
         <div class="badge-row">
           <span class="item-badge" style="background:#e0e7ff; color:#3730a3;">PIPES & PLASTICS</span>
-          <span class="shift-tag">Continuous Rotating Shifts</span>
+          <span class="shift-tag">Continuous Shifts</span>
         </div>
-        <div class="card-title">Extrusion Plant Operator / Pipe Moulding Staff / Plant Helper</div>
-        <div class="plant-highlight">
+        
+        <div class="plant-highlight-box">
           <span class="plant-label">PLANTS</span>
-          <span class="plant-names">Prince Pipes & Fittings, Astral Pipes, Alpla Packaging</span>
+          <div class="plant-names">Prince Pipes & Fittings, Astral Pipes, Alpla Packaging</div>
         </div>
+
+        <div class="role-subtitle">Roles: Extrusion Line Operator • Pipe Moulding Staff • Plant Helper</div>
+
         <div class="details-box">
           <div>🏭 <strong>Manufacturing:</strong> CPVC, UPVC Plumbing Pipes, Industrial Fittings, PET Preforms</div>
-          <div>🎓 <strong>Eligibility:</strong> 8th / 10th (Helper) / ITI (Plastics / CIPET / Mechanical)</div>
-          <div>💰 <strong>Indicative Salary:</strong> ₹13,500 – ₹36,000/month + OT Allowance</div>
-        </div>
-        <div class="card-actions">
-          <a href="https://www.google.com/maps/search/?api=1&query=Prince+Pipes+Sri+City" target="_blank" class="btn btn-green-map">📍 Company Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: Pipe & Plastic Manufacturing" class="btn btn-black-apply">Apply</a>
-        </div>
-      </div>
-
-      <!-- 6. Ready-to-Drink / Breezer / Bottling -->
-      <div class="item-card search-target" data-tags="all 10th 12th beverage drink breezer bottling operator helper food">
-        <div class="badge-row">
-          <span class="item-badge" style="background:#ffedd5; color:#c2410c;">BEVERAGES & BOTTLING</span>
-          <span class="shift-tag">Hygiene Certified</span>
-        </div>
-        <div class="card-title">Bottling Line Technician / Packaging Staff / Sanitation Operator</div>
-        <div class="plant-highlight">
-          <span class="plant-label">PLANTS</span>
-          <span class="plant-names">Regional Bottling Partners, Beverage Processors (Sri City SEZ)</span>
-        </div>
-        <div class="details-box">
-          <div>🏭 <strong>Manufacturing:</strong> Packaged Beverages, Ready-to-drink Flavored Coolers, Mineral Water</div>
-          <div>🎓 <strong>Eligibility:</strong> 10th / 12th / ITI Mechanical / B.Sc Chemistry</div>
-          <div>💰 <strong>Indicative Salary:</strong> ₹13,500 – ₹35,000/month + Free Canteen Meals</div>
-        </div>
-        <div class="card-actions">
-          <a href="https://www.google.com/maps/search/?api=1&query=Sri+City+Food+and+Beverage+Zone" target="_blank" class="btn btn-green-map">📍 Company Map</a>
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: Beverage & Bottling Operations" class="btn btn-black-apply">Apply</a>
-        </div>
-      </div>
-
-      <!-- 7. Maintenance Department -->
-      <div class="item-card search-target" data-tags="all iti diploma btech maintena
+          <div>🎓 <strong>Eligibility:</strong> 8t
