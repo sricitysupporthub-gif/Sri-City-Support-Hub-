@@ -3,281 +3,563 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri City Support Hub | Verified Industrial Openings</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23065f46'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+  <title>Sri City Support Hub | Verified Industrial Directory & Careers</title>
   <style>
     :root {
-      --bg: #ffffff;
-      --charcoal: #111827;
-      --charcoal-hover: #1f2937;
-      --slate-muted: #64748b;
-      --slate-light: #f8fafc;
-      --border: #e2e8f0;
-      --card-shadow: 0 4px 12px -2px rgba(17, 24, 39, 0.05);
-      --badge-green: #059669;
-      --badge-green-bg: #ecfdf5;
-      --badge-blue: #2563eb;
-      --badge-blue-bg: #eff6ff;
+      --primary: #0a2540;
+      --accent-green: #059669;
+      --accent-hover: #047857;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
     }
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.6; }
-    header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
-    .nav-container { max-width: 980px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; }
-    .brand { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: #065f46; border-radius: 2px; }
-    .nav-menu { display: flex; gap: 1rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.6rem; border-radius: 4px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--charcoal); background: var(--slate-light); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); }
 
-    .main-container { max-width: 980px; margin: auto; padding: 2rem 1.2rem; }
-    .page-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.3rem; }
-    .page-subtitle { color: var(--slate-muted); font-size: 0.95rem; margin-bottom: 1.8rem; }
-    
-    .filter-notice { background: var(--slate-light); border: 1px solid var(--border); padding: 0.8rem 1rem; border-radius: 6px; font-size: 0.85rem; color: var(--charcoal); margin-bottom: 1.5rem; }
-    
-    .job-list { display: flex; flex-direction: column; gap: 1.2rem; }
-    .job-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; box-shadow: var(--card-shadow); background: #fff; }
-    .job-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.6rem; }
-    .job-title { font-size: 1.15rem; font-weight: 700; color: var(--charcoal); }
-    .company-name { font-size: 0.85rem; font-weight: 600; color: var(--slate-muted); margin-top: 2px; }
-    .badge { font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 20px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px; }
-    .badge-green { background: var(--badge-green-bg); color: var(--badge-green); }
-    .badge-blue { background: var(--badge-blue-bg); color: var(--badge-blue); }
-    
-    .job-meta { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin: 0.8rem 0; font-size: 0.85rem; color: #334155; font-weight: 500; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); padding: 0.6rem 0; }
-    .job-desc { font-size: 0.88rem; color: #475569; margin-bottom: 1rem; }
-    .job-highlights { font-size: 0.82rem; color: var(--slate-muted); margin-bottom: 1.2rem; line-height: 1.5; }
-    
-    .card-action { display: flex; justify-content: flex-start; align-items: center; }
-    .btn-action { 
-      background: var(--charcoal); 
-      color: #fff; 
-      text-decoration: none; 
-      padding: 0.45rem 1.15rem; 
-      font-size: 0.82rem; 
-      font-weight: 700; 
-      border-radius: 6px; 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      background-color: var(--accent-green);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .brand-title h1 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-title p {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* SIDE DRAWER */
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      right: -280px;
+      width: 260px;
+      height: 100%;
+      background: #0f172a;
+      transition: right 0.3s ease;
+      z-index: 200;
+      padding: 24px 20px;
+      box-shadow: -4px 0 16px rgba(0,0,0,0.3);
+    }
+
+    .side-drawer.open {
+      right: 0;
+    }
+
+    .close-btn {
+      color: #fff;
+      font-size: 22px;
+      text-align: right;
+      cursor: pointer;
+      margin-bottom: 24px;
+    }
+
+    .side-drawer a {
+      display: block;
+      color: #cbd5e1;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid #1e293b;
+      font-size: 14px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(180deg, var(--primary) 0%, #162a45 100%);
+      color: #ffffff;
+      padding: 24px 16px 32px 16px;
+      text-align: center;
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      color: #cbd5e1;
+      max-width: 580px;
+      margin: 0 auto 16px auto;
+    }
+
+    .quick-categories {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      justify-content: flex-start;
+      scrollbar-width: none;
+    }
+    .quick-categories::-webkit-scrollbar { display: none; }
+
+    .cat-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    /* SEARCH BAR */
+    .search-container {
+      display: flex;
+      margin: 18px auto 0 auto;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    }
+
+    .search-container input {
+      flex: 1;
+      border: none;
+      padding: 13px 16px;
+      font-size: 14px;
+      outline: none;
+      color: #1e293b;
+    }
+
+    .search-container button {
+      background: var(--accent-green);
+      color: #fff;
+      border: none;
+      padding: 0 22px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-green);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 4px 0 12px 0;
+    }
+
+    /* FILTER PILLS */
+    .pill-group {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 8px 0 16px 0;
+      scrollbar-width: none;
+    }
+    .pill-group::-webkit-scrollbar { display: none; }
+
+    .pill-btn {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      color: #475569;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* CARDS */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .item-badge {
       display: inline-block;
-      transition: background 0.15s ease;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
     }
-    .btn-action:hover, .btn-action:active { background: var(--charcoal-hover); }
 
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--slate-muted); margin-top: 3rem; background: #fff; }
-    footer a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
+    .shift-tag {
+      font-size: 11.5px;
+      color: #16a34a;
+      font-weight: 700;
+    }
 
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); }
-      .nav-menu.active { display: flex; }
-      .job-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .details-box {
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      flex: 1;
+      text-align: center;
+    }
+
+    .btn-dark { background: var(--primary); color: #fff; }
+    .btn-green { background: var(--accent-green); color: #fff; }
+
+    /* FOOTER */
+    .footer {
+      background: #0b1522;
+      color: #94a3b8;
+      padding: 32px 16px;
+      border-top: 1px solid #1e293b;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .warning-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 16px;
+      border-radius: 6px;
+      color: #92400e;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .founder-heading {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .contact-item {
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+
+    .email-label {
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 2px;
+    }
+
+    .non-clickable {
+      display: inline-block;
+      color: #38bdf8;
+      background: #1e293b;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      user-select: text;
+      pointer-events: none; /* Disables click */
+      margin-top: 4px;
+    }
+
+    .clickable-link {
+      display: inline-block;
+      color: #4ade80;
+      text-decoration: underline;
+      font-weight: 600;
+      margin-top: 4px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle">☰</button>
-      <ul class="nav-menu" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="jobs.html" class="active">Openings</a></li>
-        <li><a href="sricityhub.html">Directory</a></li>
-        <li><a href="about.html">About & Team</a></li>
-      </ul>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand-wrap">
+      <div class="brand-logo">S</div>
+      <div class="brand-title">
+        <h1>Sri City Support Hub</h1>
+        <p>Verified Industrial Directory • Employment Information</p>
+      </div>
     </div>
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
   </header>
 
-  <main class="main-container">
-    <h1 class="page-title">Verified Industrial Openings</h1>
-    <p class="page-subtitle">Zero-commission manufacturing, technical, logistics & facility profiles across Sri City SEZ & Tada corridor.</p>
+  <!-- NAVIGATION DRAWER -->
+  <nav id="sideNav" class="side-drawer">
+    <div class="close-btn" onclick="toggleNav()">✕</div>
+    <a href="#industrialJobs" onclick="toggleNav()">Manufacturing Directory</a>
+    <a href="#engineeringDepts" onclick="toggleNav()">Quality, Maintenance & R&D</a>
+    <a href="#civilSupport" onclick="toggleNav()">Civil, Transport & Support</a>
+    <a href="#footer-section" onclick="toggleNav()">Help Desk & Grievances</a>
+  </nav>
 
-    <div class="filter-notice">
-      ℹ️ <strong>Zero-Brokerage Desk:</strong> Direct onboarding facilitation. No charges or fees at any stage.
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <p class="hero-desc">Independent industrial knowledge base for job seekers, technical staff, and local workers across Sri City Special Economic Zone (SEZ).</p>
+    
+    <div class="quick-categories">
+      <button class="cat-btn" onclick="filterByText('AC')">❄️ HVAC / AC</button>
+      <button class="cat-btn" onclick="filterByText('Train')">🚆 Rail (Alstom)</button>
+      <button class="cat-btn" onclick="filterByText('Electronics')">📱 Electronics & Mobile</button>
+      <button class="cat-btn" onclick="filterByText('Auto')">🏍️ Auto & Bikes</button>
+      <button class="cat-btn" onclick="filterByText('Maintenance')">🔧 Maintenance</button>
+      <button class="cat-btn" onclick="filterByText('Quality')">🔍 QA / QC</button>
+      <button class="cat-btn" onclick="filterByText('R&D')">🔬 R&D</button>
     </div>
 
-    <div class="job-list">
-
-      <!-- Job 1 -->
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Production Operator (IDU & ODU Assembly)</div>
-            <div class="company-name">HVAC / Air Conditioner Manufacturing Unit — Sri City</div>
-          </div>
-          <span class="badge badge-green">Immediate 100+ Hiring</span>
-        </div>
-        <div class="job-meta">
-          <span>📍 Sri City Industrial Campus</span>
-          <span>💼 ₹18,368/mo (Gross)</span>
-          <span>🎓 10th / Inter / ITI / Any Degree</span>
-          <span>👥 Age: 19 - 35 Yrs (Male & Female)</span>
-        </div>
-        <div class="job-desc">
-          Assembly line operations for Indoor (IDU) & Outdoor (ODU) air conditioning units, wiring harness, testing, and carton packaging.
-        </div>
-        <div class="job-highlights">
-          <strong>Perks & Transport:</strong> Basic ₹16,418 + Attendance Bonus + ESI/PF. Free bus routes: Naidupeta, BN Kandiga, Poola Thota, Sathyavedu, Ponneri, Srikalahasti, and Mallam.
-        </div>
-        <div class="card-action">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20AC%20Production%20Operator" class="btn-action">Apply Now</a>
-        </div>
-      </div>
-
-      <!-- Job 2 -->
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Copper Brazing Specialist & Line Welder</div>
-            <div class="company-name">AC & Heat Exchanger Cluster — Sri City Zone</div>
-          </div>
-          <span class="badge badge-blue">Technical Skill Profile</span>
-        </div>
-        <div class="job-meta">
-          <span>📍 Tada - Sri City Corridor</span>
-          <span>💼 ₹19,000 - ₹24,000/mo</span>
-          <span>🎓 ITI (Welder / Fitter / RAC)</span>
-          <span>🕒 Rotational Shifts + OT</span>
-        </div>
-        <div class="job-desc">
-          Copper brazing, tube bending joints, suction line welding, and nitrogen leak pressure verification for AC lines.
-        </div>
-        <div class="job-highlights">
-          <strong>Required:</strong> Minimum 6 months brazing experience in AC/refrigeration manufacturing.
-        </div>
-        <div class="card-action">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Copper%20Brazing%20Specialist" class="btn-action">Apply Now</a>
-        </div>
-      </div>
-
-      <!-- Job 3 -->
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Quality Inspector (QA / QC) & Leak Testing</div>
-            <div class="company-name">Consumer Electronics & HVAC Sector</div>
-          </div>
-          <span class="badge badge-green">Direct Screening</span>
-        </div>
-        <div class="job-meta">
-          <span>📍 Sri City Industrial Area</span>
-          <span>💼 ₹17,500 - ₹22,000/mo</span>
-          <span>🎓 Diploma / B.Sc / ITI Mechanical</span>
-          <span>🕒 8-Hour General/Rotational Shift</span>
-        </div>
-        <div class="job-desc">
-          Online quality inspection, helium leak testing checks, and maintaining daily production logs.
-        </div>
-        <div class="job-highlights">
-          <strong>Required:</strong> Vernier calipers, standard gauges, and basic quality documentation knowledge.
-        </div>
-        <div class="card-action">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Quality%20Inspector%20QC" class="btn-action">Apply Now</a>
-        </div>
-      </div>
-
-      <!-- Job 4 -->
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Injection Moulding Operator & Utility Technician</div>
-            <div class="company-name">Plastic Components & Industrial Moulding Units</div>
-          </div>
-          <span class="badge badge-blue">Plant Verified</span>
-        </div>
-        <div class="job-meta">
-          <span>📍 Tada Vicinity</span>
-          <span>💼 ₹16,500 - ₹21,500/mo</span>
-          <span>🎓 ITI / Diploma (Plastic / Mechanical)</span>
-          <span>🕒 Rotational Shifts</span>
-        </div>
-        <div class="job-desc">
-          Plastic panel moulding machine operations, hopper raw material monitoring, and utility plant maintenance.
-        </div>
-        <div class="job-highlights">
-          <strong>Experience:</strong> Freshers with CIPET / ITI or 1+ year plant experience welcome.
-        </div>
-        <div class="card-action">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Moulding%20Utility%20Operator" class="btn-action">Apply Now</a>
-        </div>
-      </div>
-
-      <!-- Job 5 -->
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Logistics Coordinator, Heavy Driver & Material Handlers</div>
-            <div class="company-name">Industrial Dispatch & Supply Chain Hub</div>
-          </div>
-          <span class="badge badge-green">Multiple Openings</span>
-        </div>
-        <div class="job-meta">
-          <span>📍 Sri City Warehouse Cluster</span>
-          <span>💼 ₹15,000 - ₹23,000/mo</span>
-          <span>🎓 8th / 10th / 12th + Valid License</span>
-          <span>🕒 Day / Night Shifts</span>
-        </div>
-        <div class="job-desc">
-          Finished goods dispatching, plant bus/van drivers (commercial batch), and warehouse inventory loading teams.
-        </div>
-        <div class="job-highlights">
-          <strong>Roles:</strong> Material dispatchers, internal tow-motor drivers, and loading staff.
-        </div>
-        <div class="card-action">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Logistics%20and%20Drivers" class="btn-action">Apply Now</a>
-        </div>
-      </div>
-
-      <!-- Job 6 -->
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Computer Operator, Canteen & Facility Helpdesk</div>
-            <div class="company-name">Plant Administration & Facility Desk</div>
-          </div>
-          <span class="badge badge-blue">Admin Support</span>
-        </div>
-        <div class="job-meta">
-          <span>📍 Tada / Sri City Support Zone</span>
-          <span>💼 ₹14,000 - ₹19,000/mo</span>
-          <span>🎓 10th / 12th / Any Graduate</span>
-          <span>🕒 General Office Hours</span>
-        </div>
-        <div class="job-desc">
-          Daily attendance punch records, gate pass generation, Excel data entry, and plant housekeeping coordination.
-        </div>
-        <div class="job-highlights">
-          <strong>Key Skills:</strong> Basic MS Excel knowledge for Computer Operators.
-        </div>
-        <div class="card-action">
-          <a href="mailto:sricitysupporthub@gmail.com?subject=Application%3A%20Plant%20Support%20Admin" class="btn-action">Apply Now</a>
-        </div>
-      </div>
-
+    <div class="search-container">
+      <input type="text" id="mainSearchInput" placeholder="Search company (Voltas, Alstom, Hero), qualification, role..." onkeyup="executeSearch()">
+      <button onclick="executeSearch()">Search</button>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <p><strong>Sri City Support Hub</strong> — Official Regional Information Desk</p>
-    <div style="margin-top: 0.6rem; font-size: 0.85rem;">
-      Official Desk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
+  <!-- MAIN BODY -->
+  <main class="container">
+
+    <div class="section-tag">Directory Overview</div>
+    <h2 class="section-title">Verified Industrial Units & Openings</h2>
+
+    <!-- FILTER PILLS -->
+    <div class="pill-group">
+      <button class="pill-btn active" onclick="filterByTag('all', this)">All Sectors</button>
+      <button class="pill-btn" onclick="filterByTag('10th', this)">10th / 12th</button>
+      <button class="pill-btn" onclick="filterByTag('ITI', this)">ITI Trades</button>
+      <button class="pill-btn" onclick="filterByTag('Diploma', this)">Diploma</button>
+      <button class="pill-btn" onclick="filterByTag('B.Tech', this)">B.Tech / Staff</button>
+      <button class="pill-btn" onclick="filterByTag('Helper', this)">Helper / Unskilled</button>
+      <button class="pill-btn" onclick="filterByTag('Technical', this)">QA / Maint / R&D</button>
     </div>
-  </footer>
 
-  <script>
-    const menuBtn = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
+    <div class="card-list" id="industrialJobs">
 
-</body>
-</html>
+      <!-- 1. AC & HVAC (Voltas, Amber, EPACK, Daikin) -->
+      <div class="item-card search-target" data-tags="all ITI Diploma B.Tech AC Voltas Amber EPACK Daikin operator technician">
+        <div class="badge-row">
+          <span class="item-badge" style="background:#e0f2fe; color:#0369a1;">AC & HVAC Appliances</span>
+          <span class="shift-tag">8 Hrs Shift + Overtime Available</span>
+        </div>
+        <h3 class="card-title">HVAC Assembly Operator / Brazing Tech / Staff Engineer</h3>
+        <p class="card-subtitle"><strong>Plants:</strong> Voltas Limited, Amber Enterprises, EPACK Durable, Daikin</p>
+        <div class="details-box">
+          <div>🏭 <strong>Manufacturing:</strong> Inverter Split ACs, Condensers, Heat Exchangers, Sheet Metal Stamping</div>
+          <div>🎓 <strong>Eligibility:</strong> 10th / 12th / ITI (RAC/Fitter/Welder) / Diploma & B.Tech (Mech/EEE)</div>
+          <div>💼 <strong>Experience:</strong> Freshers (1-month appraisal review) & Experienced line staff</div>
+          <div>💰 <strong>Indicative Salary:</strong> ₹14,500 – ₹52,000/month (Based on trade & experience)</div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Voltas+Limited+Sri+City" target="_blank" class="btn btn-dark">📍 Company Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: HVAC Sector (Voltas/Amber/EPACK)" class="btn btn-green">📩 Apply via Hub</a>
+        </div>
+      </div>
+
+      <!-- 2. Rail Transport / Train Making (Alstom) -->
+      <div class="item-card search-target" data-tags="all ITI Diploma B.Tech Train Alstom Welder Fitter Rolling Stock engineer">
+        <div class="badge-row">
+          <span class="item-badge" style="background:#fef3c7; color:#b45309;">Rolling Stock / Train Manufacturing</span>
+          <span class="shift-tag">High Safety Protocol • Shift Rotations</span>
+        </div>
+        <h3 class="card-title">Rolling Stock Assembler / TIG-MIG Welder / Testing Technician</h3>
+        <p class="card-subtitle"><strong>Plant:</strong> Alstom Transport India (Rolling Stock Facility)</p>
+        <div class="details-box">
+          <div>🏭 <strong>Manufacturing:</strong> Metro Rail Coaches (Chennai, Mumbai, Kochi), High-Speed Train Sets</div>
+          <div>🎓 <strong>Eligibility:</strong> ITI (Welder, Fitter) / Diploma (Mech, Electrical) / B.Tech (Mechatronics)</div>
+          <div>💼 <strong>Experience:</strong> 1+ Years preferred for welding; Apprentice freshers eligible</div>
+          <div>💰 <strong>Indicative Salary:</strong> ₹16,000 – ₹58,000/month + Heavy Technical Training</div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Alstom+Transport+India+Sri+City" target="_blank" class="btn btn-dark">📍 Company Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: Train Manufacturing (Alstom)" class="btn btn-green">📩 Apply via Hub</a>
+        </div>
+      </div>
+
+      <!-- 3. Two-Wheeler & Automobile (Hero Motors, Isuzu, Kobelco) -->
+      <div class="item-card search-target" data-tags="all ITI Diploma B.Tech Auto Bike Hero Isuzu Kobelco CNC operator">
+        <div class="badge-row">
+          <span class="item-badge" style="background:#fee2e2; color:#b91c1c;">Two-Wheeler & Auto Manufacturing</span>
+          <span class="shift-tag">8 Hrs + Daily 2-4 Hrs OT</span>
+        </div>
+        <h3 class="card-title">Bike Assembly / CNC Machinist / Production Shift Engineer</h3>
+        <p class="card-subtitle"><strong>Plants:</strong> Hero Motors, Isuzu Motors India, Kobelco Construction</p>
+        <div class="details-box">
+          <div>🏭 <strong>Manufacturing:</strong> Two-Wheeler Transmissions, Commercial Vehicles, Heavy Excavators</div>
+          <div>🎓 <strong>Eligibility:</strong> 10th / ITI (Machinist, Turner, Fitter) / Diploma & B.Tech (Mechanical)</div>
+          <div>💼 <strong>Experience:</strong> Freshers welcome for line operations; CNC setters require exp</div>
+          <div>💰 <strong>Indicative Salary:</strong> ₹15,000 – ₹48,000/month + Subsidized Canteen & Transport</div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Hero+Motors+Sri+City" target="_blank" class="btn btn-dark">📍 Company Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: Two-Wheeler / Auto Sector" class="btn btn-green">📩 Apply via Hub</a>
+        </div>
+      </div>
+
+      <!-- 4. Mobile & Camera Optics (Bharat FIH / Salcomp / Foxconn) -->
+      <div class="item-card search-target" data-tags="all 10th ITI Diploma Mobile Camera Electronics Foxconn SMT operator">
+        <div class="badge-row">
+          <span class="item-badge" style="background:#f3e8ff; color:#7e22ce;">Mobile & Optical Components</span>
+          <span class="shift-tag">Climate Controlled Cleanroom</span>
+        </div>
+        <h3 class="card-title">SMT Line Operator / Camera Module Assembly / Inspection Staff</h3>
+        <p class="card-subtitle"><strong>Plants:</strong> Bharat FIH (Foxconn Group), Salcomp, Dixon Technologies</p>
+        <div class="details-box">
+          <div>🏭 <strong>Manufacturing:</strong> Smartphones, Compact Camera Modules, Adapters, PCB Surface Mounts</div>
+          <div>🎓 <strong>Eligibility:</strong> 10th / 12th Pass / ITI / Diploma (ECE, Electrical)</div>
+          <div>💼 <strong>Experience:</strong> Open for Freshers (Both Male & Female candidate batches)</div>
+          <div>💰 <strong>Indicative Salary:</strong> ₹14,000 – ₹45,000/month + Attendance Allowance & Free Uniform</div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Bharat+FIH+Sri+City" target="_blank" class="btn btn-dark">📍 Company Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: Mobile & Camera Module Assembly" class="btn btn-green">📩 Apply via Hub</a>
+        </div>
+      </div>
+
+      <!-- 5. Pipe Manufacturing & Industrial Plastics -->
+      <div class="item-card search-target" data-tags="all 10th ITI Pipe Plastic Prince Astral operator Helper">
+        <div class="badge-row">
+          <span class="item-badge" style="background:#e0e7ff; color:#3730a3;">Pipes & Industrial Plastics</span>
+          <span class="shift-tag">Continuous Rotating Shifts</span>
+        </div>
+        <h3 class="card-title">Extrusion Plant Operator / Pipe Moulding Staff / Plant Helper</h3>
+        <p class="card-subtitle"><strong>Plants:</strong> Prince Pipes & Fittings, Astral Pipes, Alpla Packaging</p>
+        <div class="details-box">
+          <div>🏭 <strong>Manufacturing:</strong> CPVC, UPVC Plumbing Pipes, Industrial Fittings, PET Preforms</div>
+          <div>🎓 <strong>Eligibility:</strong> 8th / 10th (Helpers) / ITI (Plastics Processing / CIPET / Mechanical)</div>
+          <div>💼 <strong>Experience:</strong> Freshers welcome; Fast-track machine training provided</div>
+          <div>💰 <strong>Indicative Salary:</strong> ₹13,500 – ₹36,000/month + Overtime Allowance</div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Prince+Pipes+Sri+City" target="_blank" class="btn btn-dark">📍 Company Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: Pipe & Plastic Manufacturing" class="btn btn-green">📩 Apply via Hub</a>
+        </div>
+      </div>
+
+      <!-- 6. Ready-to-Drink / Breezer / Beverage Bottling -->
+      <div class="item-card search-target" data-tags="all 10th 12th Beverage Drink Breezer Bottling operator">
+        <div class="badge-row">
+          <span class="item-badge" style="background:#ffedd5; color:#c2410c;">Beverages & Bottling Units</span>
+          <span class="shift-tag">Food Hygiene Standards</span>
+        </div>
+        <h3 class="card-title">Bottling Line Technician / Packaging Staff / Sanitation Operator</h3>
+        <p class="card-subtitle"><strong>Plants:</strong> Regional Bottling Partners, Beverage Processors (Sri City SEZ)</p>
+        <div class="details-box">
+          <div>🏭 <strong>Manufacturing:</strong> Packaged Beverages, Ready-to-drink Flavored Coolers, Mineral Water</div>
+          <div>🎓 <strong>Eligibility:</strong> 10th / 12th / ITI Mechanical / B.Sc Chemistry</div>
+          <div>💼 <strong>Experience:</strong> Freshers accepted for packaging; 1+ yr exp for lab/bottling line</div>
+          <div>💰 <strong>Indicative Salary:</strong> ₹13,500 – ₹35,000/month + Free Canteen Meals</div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Sri+City+Food+and+Beverage+Zone" target="_blank" class="btn btn-dark">📍 Company Map</a>
+          <a href="mailto:sricitysupporthub@gmail.com?subject=Application: Beverage & Bottling Operations" class="btn btn-green">📩 Apply via Hub</a>
+        </div>
+      </div>
+
+      <!-- 7. Maintenance Department -->
+      <div class="item-card search-target" data-tags="all ITI Diploma B.Tech Maintenance Technical electrical mechanical">
+        <div class="badge-row">
+          <span class="item-badge" style="background:#ccfbf1; color:#0f7
