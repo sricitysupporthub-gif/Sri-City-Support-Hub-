@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Sri City Support Hub | Industrial Directory</title>
   <style>
     :root {
@@ -19,23 +19,24 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* PREVENT ANY ACCIDENTAL TEXT SELECTION ON BUTTONS */
+    button, .btn, .pill, .chip-btn, .menu-toggle, a {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      -webkit-touch-callout: none !important;
+      touch-action: manipulation !important;
+      cursor: pointer;
     }
 
     body {
       background-color: var(--bg);
       color: #0f172a;
       line-height: 1.4;
-    }
-
-    /* VERSION BAR (To verify update) */
-    .status-bar {
-      background: #059669;
-      color: #ffffff;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      letter-spacing: 0.5px;
     }
 
     /* HEADER */
@@ -48,8 +49,8 @@
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .brand {
@@ -70,34 +71,40 @@
       font-size: 18px;
     }
 
-    .brand-text h1 { font-size: 16px; font-weight: 700; }
+    .brand-text h1 { font-size: 15px; font-weight: 700; line-height: 1.1; }
     .brand-text p { font-size: 10px; color: #94a3b8; }
 
     .menu-toggle {
       background: #1e293b;
       border: 1px solid #334155;
       color: #ffffff;
-      font-size: 20px;
-      padding: 5px 12px;
+      font-size: 22px;
+      padding: 4px 14px;
       border-radius: 6px;
-      cursor: pointer;
+      line-height: 1;
     }
 
-    /* TOGGLE MENU */
-    #navMenuDropdown {
+    /* FIXED DROPDOWN MENU */
+    #navDropdown {
       display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
       background: #0f172a;
       border-bottom: 2px solid var(--accent-green);
-      padding: 12px 16px;
+      padding: 16px 20px;
+      z-index: 9999;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
 
-    #navMenuDropdown a {
+    #navDropdown a {
       display: block;
       color: #cbd5e1;
       text-decoration: none;
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px solid #1e293b;
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 600;
     }
 
@@ -105,7 +112,7 @@
     .hero {
       background: linear-gradient(180deg, var(--primary) 0%, #1e293b 100%);
       color: #ffffff;
-      padding: 16px 14px 22px 14px;
+      padding: 16px 14px 20px 14px;
       text-align: center;
     }
 
@@ -128,11 +135,10 @@
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.25);
       color: #f1f5f9;
-      padding: 6px 12px;
-      border-radius: 16px;
-      font-size: 11.5px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 12px;
       white-space: nowrap;
-      cursor: pointer;
       font-weight: 600;
     }
 
@@ -162,10 +168,9 @@
       background: var(--accent-green);
       color: #ffffff;
       border: none;
-      padding: 0 18px;
+      padding: 0 20px;
       font-weight: 700;
-      font-size: 13.5px;
-      cursor: pointer;
+      font-size: 14px;
     }
 
     /* CONTAINER */
@@ -180,7 +185,7 @@
       display: flex;
       gap: 6px;
       overflow-x: auto;
-      padding: 8px 0;
+      padding: 6px 0 10px 0;
       scrollbar-width: none;
     }
     .pill-group::-webkit-scrollbar { display: none; }
@@ -188,13 +193,13 @@
     .pill {
       background: #ffffff;
       border: 1.5px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 22px;
+      font-size: 12.5px;
       color: #334155;
-      cursor: pointer;
       white-space: nowrap;
       font-weight: 700;
+      min-height: 38px;
     }
 
     .pill.active {
@@ -212,7 +217,7 @@
       font-weight: 700;
       padding: 4px 12px;
       border-radius: 12px;
-      margin: 10px 0;
+      margin: 8px 0 14px 0;
     }
 
     /* CARDS */
@@ -253,7 +258,7 @@
       font-weight: 700;
     }
 
-    /* FORMAL SLATE PLANT HIGHLIGHT */
+    /* PLANT HIGHLIGHT */
     .plant-box {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
@@ -308,14 +313,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 12px;
+      padding: 9px 12px;
       border-radius: 5px;
       font-size: 12px;
       font-weight: 700;
       text-decoration: none;
-      cursor: pointer;
       flex: 1;
       text-align: center;
+      min-height: 38px;
     }
 
     .btn-map { background: var(--accent-green); color: #ffffff; }
@@ -336,11 +341,12 @@
       display: inline-block;
       color: #cbd5e1;
       background: #1e293b;
-      padding: 3px 8px;
+      padding: 4px 8px;
       border-radius: 4px;
       font-family: monospace;
       font-size: 12px;
-      user-select: text;
+      user-select: text !important;
+      -webkit-user-select: text !important;
       pointer-events: none;
       margin-top: 2px;
       border: 1px solid #334155;
@@ -356,10 +362,7 @@
     }
   </style>
 </head>
-<body>
-
-  <!-- STATUS VERIFICATION -->
-  <div class="status-bar">● Live Portal Active (Updated)</div>
+<body oncontextmenu="return false;">
 
   <!-- HEADER -->
   <header class="header">
@@ -373,8 +376,8 @@
     <button type="button" class="menu-toggle" onclick="toggleMenu()">☰</button>
   </header>
 
-  <!-- MENU DROPDOWN -->
-  <div id="navMenuDropdown">
+  <!-- POPUP DROPDOWN MENU -->
+  <div id="navDropdown">
     <a href="#cardSection" onclick="toggleMenu()">🏭 All Manufacturing Plants</a>
     <a href="#footerSection" onclick="toggleMenu()">ℹ️ About Platform & Grievances</a>
     <a href="sricityhub.html" style="color:#34d399;">🏠 Return to Main Hub</a>
@@ -390,15 +393,15 @@
       <button type="button" class="chip-btn" onclick="quickSearch('Voltas')">❄️ Voltas</button>
       <button type="button" class="chip-btn" onclick="quickSearch('Alstom')">🚆 Alstom (Train)</button>
       <button type="button" class="chip-btn" onclick="quickSearch('Hero')">🏍️ Hero Motors</button>
-      <button type="button" class="chip-btn" onclick="quickSearch('Bharat FIH')">📱 Foxconn / Mobile</button>
+      <button type="button" class="chip-btn" onclick="quickSearch('Foxconn')">📱 Foxconn / Mobile</button>
       <button type="button" class="chip-btn" onclick="quickSearch('Prince')">🚰 Prince Pipes</button>
       <button type="button" class="chip-btn" onclick="quickSearch('Maintenance')">🔧 Maintenance</button>
     </div>
 
     <!-- SEARCH INPUT -->
     <div class="search-box">
-      <input type="text" id="filterInput" placeholder="Type company name (Blue Star, Alstom)..." oninput="executeSearch()">
-      <button type="button" onclick="executeSearch()">Search</button>
+      <input type="text" id="filterInput" placeholder="Type company name (Blue Star, Alstom)..." oninput="applyFilter()">
+      <button type="button" onclick="applyFilter()">Search</button>
     </div>
   </section>
 
@@ -410,12 +413,12 @@
 
     <!-- PILL FILTERS -->
     <div class="pill-group">
-      <button type="button" class="pill active" onclick="filterByCat(this, 'all')">All Sectors</button>
-      <button type="button" class="pill" onclick="filterByCat(this, '10th')">10th / 12th</button>
-      <button type="button" class="pill" onclick="filterByCat(this, 'iti')">ITI Trades</button>
-      <button type="button" class="pill" onclick="filterByCat(this, 'diploma')">Diploma</button>
-      <button type="button" class="pill" onclick="filterByCat(this, 'btech')">B.Tech / Staff</button>
-      <button type="button" class="pill" onclick="filterByCat(this, 'helper')">Helper / Beldar</button>
+      <button type="button" class="pill active" onclick="selectPill(this, 'all')">All Sectors</button>
+      <button type="button" class="pill" onclick="selectPill(this, '10th')">10th / 12th</button>
+      <button type="button" class="pill" onclick="selectPill(this, 'iti')">ITI Trades</button>
+      <button type="button" class="pill" onclick="selectPill(this, 'diploma')">Diploma</button>
+      <button type="button" class="pill" onclick="selectPill(this, 'btech')">B.Tech / Staff</button>
+      <button type="button" class="pill" onclick="selectPill(this, 'helper')">Helper / Beldar</button>
     </div>
 
     <!-- LIVE COUNTER -->
@@ -508,7 +511,7 @@
       </div>
 
       <!-- 5. BHARAT FIH (FOXCONN) -->
-      <div class="job-card" data-cat="10th mobile electronics foxconn bharat fih">
+      <div class="job-card" data-cat="10th mobile electronics foxconn">
         <div class="card-top">
           <span class="sector-tag">Smartphone & Electronics</span>
           <span class="shift-tag">AC Cleanroom Line</span>
@@ -591,11 +594,4 @@
         </div>
       </div>
 
-      <!-- 9. QA / QC & R&D -->
-      <div class="job-card" data-cat="diploma btech quality rd">
-        <div class="card-top">
-          <span class="sector-tag">Engineering Quality & Labs</span>
-          <span class="shift-tag">Day Shifts</span>
-        </div>
-        <div class="plant-box">
-          <span class="label">PLANT
+      <!-- 9. 
