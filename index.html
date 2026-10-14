@@ -1,347 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sri City Support Hub</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%' y='68%' font-size='18' font-weight='800' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --charcoal: #0f172a;
-      --charcoal-hover: #1e293b;
-      --emerald: #065f46;
-      --slate-muted: #64748b;
-      --border: #e2e8f0;
-      --card-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
-    }
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-    body { background-color: var(--bg); color: var(--charcoal); line-height: 1.5; }
-    header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 1020px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1.2rem; }
-    .brand { font-size: 1.1rem; font-weight: 800; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .brand-mark { width: 10px; height: 10px; background: var(--emerald); border-radius: 2px; }
-    .nav-menu { display: flex; gap: 0.8rem; list-style: none; }
-    .nav-menu a { text-decoration: none; color: var(--slate-muted); font-size: 0.88rem; font-weight: 600; padding: 0.4rem 0.65rem; border-radius: 6px; }
-    .nav-menu a.active, .nav-menu a:hover { color: var(--emerald); background: #ecfdf5; }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--charcoal); padding: 4px; }
-
-    .main-container { max-width: 1020px; margin: auto; padding: 1.5rem 1.2rem; }
-
-    .hero-banner {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.88) 100%), 
-                  url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: #fff;
-      border-radius: 12px;
-      padding: 2.5rem 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.2);
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(8px);
-      color: #a7f3d0;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      padding: 0.3rem 0.7rem;
-      border-radius: 20px;
-      margin-bottom: 0.8rem;
-    }
-    .hero-banner h1 { font-size: 1.75rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
-    .hero-banner p { font-size: 0.92rem; color: #f1f5f9; line-height: 1.5; max-width: 640px; margin-bottom: 1.4rem; }
-    .hero-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    
-    .btn-s-primary {
-      background: #ffffff;
-      color: var(--charcoal);
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 0.45rem 1rem;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .btn-s-secondary {
-      background: rgba(255, 255, 255, 0.14);
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.8rem;
-      padding: 0.45rem 1rem;
-      border-radius: 6px;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .zero-point-ticker {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--emerald);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: var(--card-shadow);
-    }
-    .ticker-live {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--emerald);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .pulse-dot { width: 7px; height: 7px; background: #10b981; border-radius: 50%; }
-    .ticker-items { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.76rem; color: var(--slate-muted); font-weight: 600; }
-    .ticker-item span { color: var(--charcoal); font-weight: 700; }
-
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.6rem;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.6rem;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-    }
-    .stat-box h4 { font-size: 1.3rem; font-weight: 800; color: var(--charcoal); }
-    .stat-box span { font-size: 0.7rem; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; }
-
-    .section-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.2rem; color: var(--charcoal); }
-    .section-desc { font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 1.2rem; }
-
-    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.6rem; }
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.2rem;
-      box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .feature-card h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .feature-card p { font-size: 0.82rem; color: #475569; margin-bottom: 0.8rem; line-height: 1.45; }
-    
-    .btn-short-card {
-      align-self: flex-start;
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: #1d4ed8;
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
-      padding: 0.35rem 0.75rem;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-
-    /* Short Clean Interactive Support Bar */
-    .support-bar {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.1rem 1.3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      box-shadow: var(--card-shadow);
-    }
-    .support-bar-text h4 { font-size: 0.96rem; font-weight: 700; color: var(--charcoal); }
-    .support-bar-text p { font-size: 0.8rem; color: var(--slate-muted); }
-    .btn-business-mail {
-      background: var(--charcoal);
-      color: #ffffff;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 0.45rem 1rem;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* Clean Footer with Active Business Mail + Plain Unclickable Personal Contact */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 1.2rem;
-      text-align: center;
-      margin-top: 3rem;
-      background: #ffffff;
-    }
-    .footer-brand { font-size: 0.86rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; }
-    .footer-business { font-size: 0.8rem; color: var(--slate-muted); margin-bottom: 0.8rem; }
-    .footer-business a { color: var(--emerald); font-weight: 700; text-decoration: none; }
-    
-    .footer-personal-block {
-      border-top: 1px dashed var(--border);
-      display: inline-block;
-      padding-top: 0.8rem;
-      margin-top: 0.2rem;
-      pointer-events: none;
-      user-select: text;
-      -webkit-user-select: text;
-    }
-    .footer-curator { font-size: 0.76rem; color: var(--slate-muted); }
-    .footer-curator strong { color: var(--charcoal); font-weight: 700; }
-    .footer-personal-id { font-size: 0.74rem; color: #475569; font-family: monospace; margin-top: 0.2rem; }
-
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); }
-      .nav-menu.active { display: flex; }
-      .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-      .hero-banner { padding: 1.8rem 1.2rem; }
-      .hero-banner h1 { font-size: 1.4rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sri City Support Hub | Jobs, Local Services & Community Information</title>
+<meta name="description" content="Sri City Support Hub — jobs, company information, local services, food, transport, health, stay, property and business support for Sri City, Tada and Sullurpeta.">
+<style>
+:root{--navy:#092334;--navy2:#10364b;--green:#176b4b;--green2:#0e563b;--gold:#c77a18;--bg:#f5f7f9;--card:#fff;--text:#10202b;--muted:#60717c;--line:#dce4e9;--soft:#eef7f2;--blue:#1769aa;--red:#b42318;--shadow:0 8px 25px rgba(9,35,52,.08);--r:14px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0 18px}.header{position:sticky;top:0;z-index:1000;background:rgba(9,35,52,.97);backdrop-filter:blur(10px);color:#fff;border-bottom:1px solid #ffffff18}.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:11px;align-items:center}.logo{width:43px;height:43px;border-radius:11px;background:linear-gradient(145deg,#21805b,#0d4935);display:grid;place-items:center;font-size:22px;font-weight:900;border:1px solid #ffffff35;box-shadow:0 5px 15px #0002}.brand b{display:block;font-size:17px}.brand small{color:#a9bbc5;font-size:11px}.navlinks{display:flex;gap:4px;align-items:center}.navlinks a{padding:9px 11px;border-radius:8px;color:#dbe5ea;font-size:13px;font-weight:700}.navlinks a:hover{background:#ffffff12;color:#fff}.menu{display:none;background:none;border:0;color:#fff;font-size:25px}.hero{background:linear-gradient(135deg,var(--navy),var(--navy2) 62%,#174b39);color:#fff;padding:54px 0 68px}.heroInner{max-width:900px;margin:auto;text-align:center}.pill{display:inline-block;padding:6px 13px;border:1px solid #ffffff30;background:#ffffff10;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:.4px}.hero h1{font-size:clamp(31px,5vw,54px);line-height:1.08;margin:17px 0 14px;letter-spacing:-1px}.hero p{max-width:750px;margin:0 auto 25px;color:#d6e1e6;font-size:16px}.search{display:flex;max-width:720px;margin:auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 15px 35px #0004}.search input{flex:1;border:0;padding:16px 18px;outline:0;color:var(--text);min-width:0}.search button{border:0;background:var(--green);color:#fff;padding:0 23px;font-weight:800;cursor:pointer}.heroActions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:17px}.heroActions a{background:#fff;color:var(--navy);padding:10px 14px;border-radius:9px;font-size:13px;font-weight:800}.heroActions a:hover{transform:translateY(-1px)}.quick{margin-top:-25px;position:relative;z-index:5}.quickGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.quick a{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;box-shadow:var(--shadow);font-weight:800}.quick span{display:block;font-size:25px;margin-bottom:4px}.quick small{display:block;color:var(--muted);font-weight:600;font-size:11px}.section{padding:55px 0}.section.alt{background:#fff}.head{margin-bottom:22px}.eyebrow{color:var(--green);font-weight:900;font-size:11px;letter-spacing:1px;text-transform:uppercase}.head h2{font-size:30px;line-height:1.2;margin:5px 0}.head p{margin:0;color:var(--muted)}.catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.cat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;transition:.2s;box-shadow:0 2px 7px #09233408}.cat:hover{border-color:#9fcdb9;transform:translateY(-2px);box-shadow:var(--shadow)}.cat .ico{font-size:28px}.cat b{display:block;margin-top:8px}.cat small{display:block;color:var(--muted);margin-top:3px}.filters{display:flex;gap:7px;overflow:auto;padding-bottom:8px;margin-bottom:17px}.filters button{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 14px;font-weight:800;color:var(--muted);cursor:pointer}.filters button.active,.filters button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:19px;box-shadow:0 2px 7px #09233407}.card h3{margin:0 0 5px;font-size:18px}.meta{color:var(--muted);font-size:13px}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.tag{font-size:11px;font-weight:800;padding:4px 7px;border-radius:6px;background:var(--soft);color:var(--green2)}.salary{font-size:18px;font-weight:900;color:var(--green2)}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:8px;padding:9px 12px;font-size:12px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff}.btn.green{background:var(--green)}.btn.light{background:#eef4f7;color:var(--navy)}.btn.gold{background:#fff5e7;color:#8a4d08;border:1px solid #f2d6aa}.btn.whatsapp{background:#e9f8ef;color:#11633f;border:1px solid #b9e4ca}.btn.email{background:#edf4ff;color:#155da0;border:1px solid #c8def5}.notice{padding:13px 15px;background:#fff7e8;border-left:4px solid var(--gold);border-radius:8px;color:#75430b;font-size:13px;margin-bottom:18px}.companyLogo{width:48px;height:48px;border-radius:11px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px;float:left;margin-right:12px}.detail{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}.detail.open{display:block}.infoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.serviceIcon{font-size:29px}.serviceCard{cursor:pointer}.serviceCard:hover{border-color:#9fcdb9}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}.num{width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:900;margin-bottom:9px}.team{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.team .card{min-height:205px}.role{color:var(--green2);font-weight:900;font-size:12px}.contactNote{font-size:12px;color:var(--muted);margin-top:8px}.footer{background:var(--navy);color:#aebdc5;padding:45px 0 25px}.footerGrid{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:30px}.footer h3{color:#fff;margin-top:0}.footer a{display:block;margin:7px 0;font-size:13px}.footerBottom{border-top:1px solid #ffffff16;margin-top:25px;padding-top:17px;text-align:center;font-size:11px}.mobileDock{display:none}.modal{position:fixed;inset:0;background:#071923b8;display:none;z-index:2000;padding:20px;align-items:center;justify-content:center}.modal.show{display:flex}.modalBox{max-width:720px;width:100%;max-height:90vh;overflow:auto;background:#fff;border-radius:16px;padding:24px;position:relative}.close{position:absolute;right:14px;top:12px;border:0;background:#eef2f4;border-radius:50%;width:34px;height:34px;cursor:pointer;font-weight:900}.searchResult{display:none;margin-top:12px;color:#fbd27b;font-size:13px}.empty{display:none;padding:25px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:12px}.card.highlight{outline:2px solid #21805b;box-shadow:0 0 0 4px #21805b18}.serviceCard h3{font-size:16px}.serviceCard .actions{margin-top:12px}.miniNote{font-size:12px;color:var(--muted);margin:10px 0 0}.team .card{border-top:4px solid var(--green)}.jobReport{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}.serviceTools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.serviceTools input,.serviceTools select{padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;min-width:0}.serviceTools input{flex:1;min-width:180px}.teamPremium{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.teamPremium .teamProCard{position:relative;background:linear-gradient(180deg,#fff,#f8fcfa);border:1px solid #c9ded3;border-radius:16px;padding:22px;box-shadow:0 8px 24px rgba(9,35,52,.07);min-height:245px;overflow:hidden}.teamProCard:before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#176b4b,#c7a35a)}.teamTop{display:flex;align-items:center;gap:13px;margin:7px 0 14px}.teamAvatarPro{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#e4f3eb,#d7e9df);border:1px solid #b7d8c6;color:#14563d;font-weight:900;font-size:17px;flex-shrink:0}.teamProCard h3{margin:0 0 4px}.teamBadge{font-size:10px;letter-spacing:.7px;font-weight:900;color:#176b4b;text-transform:uppercase}.advisorSection{background:linear-gradient(135deg,#102d3d,#174b39);color:white;border-radius:18px;padding:24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;box-shadow:0 14px 32px rgba(9,35,52,.16);border:1px solid #c7a35a}.advisorSection .teamAvatarPro{width:72px;height:72px;border-radius:20px;background:linear-gradient(145deg,#fff1c9,#e3c578);color:#49340b;border:1px solid #fff1c9;font-size:22px}.advisorSection h3{color:#fff;margin:4px 0}.advisorSection p{color:#d9e6e0;margin:5px 0}.advisorSection .teamBadge{color:#f0d48c}.serviceRequestGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.serviceRequestGrid .card{border-top:4px solid var(--green)}.pricePolicy{padding:15px 17px;border:1px solid #e7d6ac;background:#fffaf0;border-radius:10px;color:#654b1d;font-size:13px;margin:18px 0}.serviceRequestSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.serviceRequestSteps>div{background:#f2f8f4;border:1px solid #d6e8dd;border-radius:10px;padding:13px;font-size:13px}@media(max-width:800px){.teamPremium,.serviceRequestGrid{grid-template-columns:repeat(2,1fr)}.advisorSection{grid-template-columns:auto 1fr}.advisorSection .actions{grid-column:1/-1}.serviceRequestSteps{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.teamPremium,.serviceRequestGrid{grid-template-columns:1fr}.advisorSection{grid-template-columns:1fr;text-align:center;justify-items:center}.advisorSection .actions{justify-content:center}.serviceRequestSteps{grid-template-columns:1fr 1fr}}
+.communityStrip{background:#eaf7ef;border-bottom:1px solid #c8e7d3;color:#154b34}.communityStrip .communityInner{min-height:44px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px;font-size:13px}.communityStrip strong{font-weight:900}.communityStrip .communitySub{color:#4e6b5b;font-size:12px}.communityStrip .communityJoin{display:inline-flex;align-items:center;justify-content:center;background:#16834a;color:#fff;padding:6px 12px;border-radius:20px;font-weight:900;font-size:12px;box-shadow:0 2px 7px #176b4b20}.communityStrip .communityJoin:hover{background:#0e563b}.jobWaStatus{display:none;margin-top:8px;font-size:12px;color:#176b4b}.jobWaStatus.show{display:block}
+@media(max-width:900px){.navlinks{display:none}.menu{display:block}.quickGrid,.catgrid{grid-template-columns:repeat(2,1fr)}.grid,.infoGrid,.team{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.footerGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){body{padding-bottom:62px}.wrap{padding:0 14px}.hero{padding:38px 0 52px}.hero h1{font-size:33px}.hero p{font-size:14px}.search button{padding:0 15px}.quickGrid,.catgrid,.grid,.infoGrid,.team,.steps{grid-template-columns:1fr}.section{padding:40px 0}.head h2{font-size:25px}.footerGrid{grid-template-columns:1fr}.mobileDock{display:flex;position:fixed;bottom:0;left:0;right:0;height:62px;background:#fff;border-top:1px solid var(--line);z-index:1500;box-shadow:0 -5px 18px #09233412}.mobileDock a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--muted)}.mobileDock span{font-size:20px;line-height:1.1}.mobileDock a.active{color:var(--green)}}
+</style>
 </head>
 <body>
-
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="brand"><div class="brand-mark"></div>Sri City Support Hub</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
-      <ul class="nav-menu" id="navLinks">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="jobs.html">Openings</a></li>
-        <li><a href="sricityhub.html">Directory</a></li>
-        <li><a href="about.html">Operations</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <main class="main-container">
-    
-    <div class="hero-banner">
-      <span class="hero-badge">Industrial Manufacturing Hub</span>
-      <h1>Sri City Industrial Corridor Directory</h1>
-      <p>Direct plant listings, verified routes, and interview schedule verification across Tada – Sri City corridor.</p>
-      <div class="hero-actions">
-        <a href="sricityhub.html" class="btn-s-primary">50+ Plants</a>
-        <a href="jobs.html" class="btn-s-secondary">Openings</a>
-      </div>
-    </div>
-
-    <div class="zero-point-ticker">
-      <div class="ticker-live">
-        <div class="pulse-dot"></div>
-        Zero Point Junction
-      </div>
-      <div class="ticker-items">
-        <div class="ticker-item">Highway: <span>NH16 Tada Flow Clear</span></div>
-        <div class="ticker-item">Policy: <span>100% Zero-Brokerage</span></div>
-      </div>
-    </div>
-
-    <div class="stats-strip">
-      <div class="stat-box">
-        <h4>50+</h4>
-        <span>Listed Units</span>
-      </div>
-      <div class="stat-box">
-        <h4>250+</h4>
-        <span>Corridor Plants</span>
-      </div>
-      <div class="stat-box">
-        <h4>15+</h4>
-        <span>Bus Routes</span>
-      </div>
-      <div class="stat-box">
-        <h4>₹0</h4>
-        <span>Charge</span>
-      </div>
-    </div>
-
-    <div class="section-title">Corridor Sectors</div>
-    <div class="section-desc">Direct shortcuts into verified plant clusters.</div>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div>
-          <h3>❄️ HVAC & Cooling</h3>
-          <p>Blue Star, Daikin, Havells Lloyd, and EPACK Durable units.</p>
-        </div>
-        <a href="sricityhub.html" class="btn-short-card">View Directory →</a>
-      </div>
-
-      <div class="feature-card">
-        <div>
-          <h3>🚗 Automotive & Rail</h3>
-          <p>Isuzu Motors, Kobelco Cranes, and Alstom Metro manufacturing.</p>
-        </div>
-        <a href="sricityhub.html" class="btn-short-card">View Directory →</a>
-      </div>
-
-      <div class="feature-card">
-        <div>
-          <h3>🍫 FMCG & Consumer</h3>
-          <p>Mondelēz Cadbury, Kellogg's, PepsiCo, and Colgate plants.</p>
-        </div>
-        <a href="sricityhub.html" class="btn-short-card">View Directory →</a>
-      </div>
-    </div>
-
-    <!-- Active Business Support Desk -->
-    <div class="support-bar">
-      <div class="support-bar-text">
-        <h4>Direct Candidate & Plant Facilitation</h4>
-        <p>Zero-brokerage verification and official interview assistance.</p>
-      </div>
-      <a href="mailto:sricitysupporthub@gmail.com" class="btn-business-mail">✉ Contact Official Desk</a>
-    </div>
-
-  </main>
-
-  <footer>
-    <div class="footer-brand">Sri City Support Hub</div>
-    <div class="footer-business">
-      Official Helpdesk: <a href="mailto:sricitysupporthub@gmail.com">sricitysupporthub@gmail.com</a>
-    </div>
-    
-    <!-- Personal Unclickable Details -->
-    <div class="footer-personal-block">
-      <div class="footer-curator">Curated & Managed by <strong>Vishnu Yadav</strong></div>
-      <div class="footer-personal-id">Direct Contact: vishnuyadav712000@gmail.com</div>
-    </div>
-  </footer>
-
-  <script>
-    const menuBtn = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (menuBtn && navLinks) {
-      menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navLinks.classList.toggle('active');
-      });
-      document.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    }
-  </script>
-
+<header class="header"><div class="wrap nav"><a class="brand" href="#home"><span class="logo">S</span><span><b>Sri City Support Hub</b><small>Jobs • Local Services • Community Information</small></span></a><nav class="navlinks"><a href="#jobs">Jobs</a><a href="#companies">Companies</a><a href="#services">Local Services</a><a href="#business">Business</a><a href="#team">Team</a><a href="#jobReport">Report a Job</a></nav><button class="menu" onclick="document.getElementById('mobileMenu').showModal()">☰</button></div></header>
+<div class="communityStrip"><div class="wrap communityInner"><span aria-hidden="true">🟢</span><strong>Join Our WhatsApp Community</strong><span class="communitySub">Jobs • Career Updates • Local Information</span><a class="communityJoin" href="https://chat.whatsapp.com/Kbx6aEhOqU3AC1m9an5Fd7" target="_blank" rel="noopener">Join Community ↗</a></div></div>
+<dialog id="mobileMenu" style="border:0;border-radius:15px;padding:0;width:min(360px,92vw)"><div style="padding:20px"><button class="btn light" onclick="mobileMenu.close()" style="float:right">✕</button><h3>Explore Sri City Support Hub</h3><p class="meta">Information first. Direct assistance when required.</p><hr><a class="btn light" href="#jobs" onclick="mobileMenu.close()">💼 Jobs & Career</a> <a class="btn light" href="#companies" onclick="mobileMenu.close()">🏭 Companies</a> <a class="btn light" href="#services" onclick="mobileMenu.close()">📍 Local Services</a> <a class="btn light" href="#business" onclick="mobileMenu.close()">🏢 Business</a> <a class="btn light" href="#team" onclick="mobileMenu.close()">👥 Team</a> <a class="btn light" href="#jobReport" onclick="mobileMenu.close()">🚩 Report a Job</a></div></dialog>
+<main id="home">
+<section class="hero"><div class="wrap heroInner"><span class="pill">SRI CITY • TADA • SULLURPETA</span><h1>Jobs, Industry & Local Services — In One Place</h1><p>Search across jobs, industries, shops and local services. Check available details and map results before you travel. Listings are informational; confirm vacancies and details directly.</p><div class="search"><input id="siteSearch" placeholder="Search jobs, industry, shop, mobile repair, Xerox, grocery, driver..." onkeydown="if(event.key==='Enter')searchSite()"><button onclick="searchSite()">Search</button></div><div id="searchResult" class="searchResult"></div><div class="heroActions"><a href="#jobs">💼 Find Jobs</a><a href="#companies">🏭 Explore Companies</a><a href="#services">📍 Local Services</a><a href="#business">🏢 Business Enquiry</a></div></div></section>
+<div class="wrap quick"><div class="quickGrid"><a href="#jobs"><span>💼</span>Jobs & Apply<small>Vacancies, qualification & application guide</small></a><a href="#companies"><span>🏭</span>Company Information<small>Details, departments, location & route</small></a><a href="#services"><span>📍</span>Daily Local Needs<small>Food, transport, health, stay & shops</small></a><a href="#business"><span>📣</span>Business Services<small>Promotion, listing & manpower</small></a></div></div>
+<section class="section"><div class="wrap"><div class="head"><span class="eyebrow">Explore by need</span><h2>One place for work and everyday life</h2><p>Open any category to see available information. Direct contact is an additional support option, not the only way to use the Hub.</p></div><div class="catgrid"><a class="cat" href="#jobs"><span class="ico">💼</span><b>Jobs & Career</b><small>Vacancies, salary, qualification and apply steps</small></a><a class="cat" href="#companies"><span class="ico">🏭</span><b>Companies</b><small>Industry, departments, roles and location</small></a><a class="cat" href="#services"><span class="ico">🏠</span><b>Stay & Property</b><small>Rooms, PG, property and nearby needs</small></a><a class="cat" href="#services"><span class="ico">🍲</span><b>Food & Shops</b><small>Food, cafes, markets and daily shopping</small></a><a class="cat" href="#services"><span class="ico">🚌</span><b>Transport</b><small>Travel guidance and local movement</small></a><a class="cat" href="#services"><span class="ico">🏥</span><b>Health & Emergency</b><small>Hospitals, clinics and urgent information</small></a><a class="cat" href="#services"><span class="ico">🛠️</span><b>Local Services</b><small>Repair, utility and practical services</small></a><a class="cat" href="#business"><span class="ico">📣</span><b>Business Promotion</b><small>Promote shops, cafes, property and services</small></a></div></div></section>
+<section id="jobs" class="section alt"><div class="wrap"><div class="head"><span class="eyebrow">01 • Employment</span><h2>Private Industrial & Facility Jobs</h2><p>Role examples help you search by industry. They are not confirmed live vacancies unless a listing clearly says so. Confirm salary, shift, age limit and hiring status with the employer.</p></div><div class="notice"><b>Important:</b> Salary figures are indicative examples, not offers or guaranteed take-home pay. Many roles may ask for 18–45 years; some employers accept candidates up to 50–55 based on work, fitness and policy. Age and gender eligibility are employer-specific. Some roles may accept women and candidates up to 45–55 years depending on work type, fitness and company policy; this is not guaranteed for every role. Check the actual age limit, shift, OT and in-hand salary with the employer. Never pay an unofficial job fee.</div><div class="filters"><button class="active" onclick="filterJobs('all',this)">All</button><button onclick="filterJobs('10th',this)">10th</button><button onclick="filterJobs('ITI',this)">ITI</button><button onclick="filterJobs('Diploma',this)">Diploma</button><button onclick="filterJobs('B.Tech',this)">B.Tech / B.E.</button><button onclick="filterJobs('Operator',this)">Operator</button><button onclick="filterJobs('Housekeeping',this)">Housekeeping</button><button onclick="filterJobs('Security',this)">Security</button><button onclick="filterJobs('Driver',this)">Driver / Logistics</button><button onclick="filterJobs('Engineer',this)">Engineer</button></div><div id="jobGrid" class="grid"></div><div id="jobEmpty" class="empty">No matching vacancy in the current information set. Try another qualification or search.</div></div></section>
+<section id="companies" class="section"><div class="wrap"><div class="head"><span class="eyebrow">02 • Company Directory</span><h2>Company & Industry Directory</h2><p>Explore sectors and company-name map searches. Map results are search suggestions, not confirmation of an exact gate or current vacancy.</p></div><div class="notice"><b>Directory note:</b> Some cards are industry search categories, not verified individual company profiles. Google Maps will search the specific company or industry phrase; verify the exact location and employer independently.</div><div id="companyGrid" class="grid"></div></div></section>
+<section id="services" class="section alt"><div class="wrap"><div class="head"><span class="eyebrow">03 • Daily Local Needs</span><h2>Local Services & Practical Information</h2><p>Choose the exact service you need. Map buttons open a category-specific search for Sri City, Tada and nearby areas.</p></div><div class="serviceTools"><input id="serviceSearch" placeholder="Search a local service..." oninput="filterServices()" aria-label="Search local services"><select id="serviceCategory" onchange="filterServices()" aria-label="Choose service category"><option value="all">All local services</option><option value="shop">Shops & daily needs</option><option value="repair">Repair & technical</option><option value="travel">Transport</option><option value="stay">Stay & property</option><option value="health">Health</option></select></div><div id="serviceGrid" class="infoGrid">
+<div class="card serviceCard" data-category="shop" data-search="mobile shop phone repair accessories sim recharge smartphone"><div class="serviceIcon">📱</div><h3>Mobile Shops & Phone Repair</h3><p class="meta">Mobile sales, accessories, SIM/recharge and phone repair.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=mobile+shop+phone+repair+near+Sri+City+Tada">📍 Find Mobile Shops</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20please%20help%20me%20find%20a%20mobile%20shop%20or%20phone%20repair%20near%20Sri%20City%2FTada.">💬 Ask for Help</a></div></div>
+<div class="card serviceCard" data-category="shop" data-search="xerox photocopy printout printing scan lamination internet cafe"><div class="serviceIcon">🖨️</div><h3>Xerox, Printing & Online Services</h3><p class="meta">Photocopy, printouts, scanning, lamination and online form support.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=xerox+photocopy+printing+near+Sri+City+Tada">📍 Find Xerox Shops</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20please%20help%20me%20find%20Xerox%2Fprinting%20services%20near%20Sri%20City%2FTada.">💬 Ask for Help</a></div></div>
+<div class="card serviceCard" data-category="repair" data-search="bike motorcycle scooter mechanic service puncture tyre battery"><div class="serviceIcon">🛵</div><h3>Bike & Scooter Service</h3><p class="meta">Two-wheeler mechanic, puncture, tyres, battery and general service.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=bike+scooter+service+mechanic+near+Sri+City+Tada">📍 Find Bike Service</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20please%20help%20me%20find%20a%20bike%20or%20scooter%20mechanic%20near%20Sri%20City%2FTada.">💬 Ask for Help</a></div></div>
+<div class="card serviceCard" data-category="shop" data-search="grocery kirana general store supermarket daily needs vegetables milk"><div class="serviceIcon">🛒</div><h3>Grocery & Supermarkets</h3><p class="meta">Kirana shops, supermarkets, vegetables, milk and everyday essentials.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=grocery+supermarket+near+Sri+City+Tada">📍 Find Grocery Shops</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20please%20help%20me%20find%20grocery%20or%20supermarket%20near%20Sri%20City%2FTada.">💬 Ask for Help</a></div></div>
+<div class="card serviceCard" data-category="shop" data-search="food tiffin meals mess hotel restaurant fast food tea coffee cool drinks juice"><div class="serviceIcon">🥤</div><h3>Food, Mess & Cool Drinks</h3><p class="meta">Tiffin, meals, mess, tea/coffee, fast food, juice and cool-drink shops.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=food+mess+fast+food+cool+drinks+near+Sri+City+Tada">📍 Find Food & Drinks</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20please%20help%20me%20find%20food%2Fmess%2Fcool%20drinks%20near%20Sri%20City%2FTada.">💬 Ask for Help</a></div></div>
+<div class="card serviceCard" data-category="repair" data-search="electrician electrical repair plumber ac refrigerator appliance service welding"><div class="serviceIcon">🔧</div><h3>Electrician, Plumber & Repairs</h3><p class="meta">Electrical, plumbing, AC/appliance repair and other home/room maintenance.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=electrician+plumber+appliance+repair+near+Sri+City+Tada">📍 Find Repair Services</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20please%20help%20me%20find%20an%20electrician%2Fplumber%2Frepair%20service.">💬 Ask for Help</a></div></div>
+<div class="card serviceCard" data-category="travel" data-search="auto taxi cab bus transport logistics parcel courier"><div class="serviceIcon">🚌</div><h3>Auto, Taxi & Transport</h3><p class="meta">Local autos, taxi, bus information, courier and parcel services.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=auto+taxi+transport+courier+near+Sri+City+Tada">📍 Find Transport</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20I%20need%20transport%20or%20courier%20information%20near%20Sri%20City%2FTada.">💬 Ask for Help</a></div></div>
+<div class="card serviceCard" data-category="stay" data-search="room pg hostel rent house property accommodation family room"><div class="serviceIcon">🏠</div><h3>Rooms, PG & Property</h3><p class="meta">Room/PG searches, family accommodation and property information.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=PG+rooms+rent+near+Sri+City+Tada">📍 Find Rooms & PG</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/919628821697?text=Hello%20Vishnu%2C%20I%20need%20room%2FPG%20information%20near%20Sri%20City%2FTada.">💬 WhatsApp Support</a></div></div>
+<div class="card serviceCard" data-category="health" data-search="hospital clinic pharmacy medical emergency doctor"><div class="serviceIcon">🏥</div><h3>Health & Emergency</h3><p class="meta">Hospital, clinic, pharmacy and medical-store searches. For emergencies call official emergency services.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=hospital+clinic+pharmacy+near+Sri+City+Tada">📍 Find Health Services</a><a class="btn gold" href="tel:112">☎ Emergency 112</a></div></div>
+<div class="card serviceCard" data-category="shop" data-search="tailor laundry salon barber beauty parlour clothing shoe shop"><div class="serviceIcon">🧵</div><h3>Tailor, Laundry & Personal Care</h3><p class="meta">Tailoring, laundry, barber/salon and daily personal-care services.</p><div class="actions"><a class="btn light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=tailor+laundry+salon+near+Sri+City+Tada">📍 Find Nearby Services</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20please%20help%20me%20find%20a%20tailor%2Flaundry%2Fsalon.">💬 Ask for Help</a></div></div>
+</div><p class="miniNote">Map results are provided by Google Maps and may include places outside the immediate area. Confirm opening hours, rates and availability directly.</p></div></section>
+<section class="section"><div class="wrap"><div class="head"><span class="eyebrow">04 • How the Hub works</span><h2>Check information yourself first</h2><p>The website is designed so visitors can spend time exploring details instead of having to contact the team for every basic question.</p></div><div class="steps"><div class="step"><div class="num">1</div><b>Search</b><p class="meta">Search the company, role, service or local category you need.</p></div><div class="step"><div class="num">2</div><b>Open Details</b><p class="meta">Read qualification, salary range, role, documents and available information.</p></div><div class="step"><div class="num">3</div><b>Check Location</b><p class="meta">Use the map and route buttons to independently understand the area and visit location.</p></div><div class="step"><div class="num">4</div><b>Take Action</b><p class="meta">Apply, email, WhatsApp the relevant person, or use the final support option if needed.</p></div></div></div></section>
+<section id="homeServices" class="section"><div class="wrap"><div class="head"><span class="eyebrow">05 • Convenience & Local Assistance</span><h2>Home & Personal Assistance Services</h2><p>Busy staff and residents can request practical help for everyday tasks around Sri City and Tada, without needing to leave work or their room for every small job.</p></div><div class="serviceRequestGrid"><article class="card"><div class="serviceIcon">🛵</div><h3>Bike Service Coordination</h3><p class="meta">Help finding a mechanic, arranging a service visit or coordinating a pickup/drop-off where available.</p></article><article class="card"><div class="serviceIcon">📦</div><h3>Room Shifting & Errands</h3><p class="meta">Moving assistance, carrying/packing coordination, local shopping, document pickup or other agreed errands.</p></article><article class="card"><div class="serviceIcon">🔌</div><h3>Electrical & Water Works</h3><p class="meta">Connect with an appropriate electrician, plumber or other service professional for room/home repairs.</p></article><article class="card"><div class="serviceIcon">🧹</div><h3>Room & Daily Help</h3><p class="meta">Cleaning, setup, small household tasks and other reasonable requests depending on team availability.</p></article><article class="card"><div class="serviceIcon">🛒</div><h3>Market & Personal Errands</h3><p class="meta">Local shopping, essentials, pickup/drop-off and practical errands for busy shift workers.</p></article><article class="card"><div class="serviceIcon">🤝</div><h3>Other Custom Requests</h3><p class="meta">Tell us the task, location and preferred time. We will check whether a suitable team member or professional is available.</p></article></div><div class="pricePolicy"><b>Transparent charges:</b> Charges depend on the task, time required, distance, materials and whether a qualified professional is needed. We will share the estimated service fee and any professional/material charges before confirming the work. No work should begin until the customer agrees. Professional repair fees are paid to the service provider as agreed; Hub coordination fees, if any, will be clearly disclosed separately.</div><div class="serviceRequestSteps"><div><b>1. Send request</b><br>Describe the task, location and suitable time.</div><div><b>2. Get estimate</b><br>We check availability and share expected charges first.</div><div><b>3. Confirm</b><br>You approve the work, timing and price before we proceed.</div><div><b>4. Complete & review</b><br>Pay the agreed amount and share feedback.</div></div><div class="actions" style="margin-top:18px"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/919628821697?text=Hello%20Sri%20City%20Support%20Hub%2C%20I%20would%20like%20to%20request%20a%20home%2Fpersonal%20assistance%20service.%0ATask%3A%20%0ALocation%3A%20%0APreferred%20time%3A%20%0APlease%20share%20availability%20and%20estimated%20charges%20before%20confirming.">💬 Request Home / Personal Help</a></div><p class="miniNote">Service availability may vary. Electrical, plumbing and repair work will be assigned only when a suitable person is available. No emergency, medical, hazardous or licensed work is guaranteed.</p></div></section><section id="business" class="section alt"><div class="wrap"><div class="head"><span class="eyebrow">06 • Employers & Businesses</span><h2>Business, Promotion & Manpower Services</h2><p>Local businesses and companies can contact the Hub for listings and requirements.</p></div><div class="infoGrid"><div class="card"><h3>📋 Post a Vacancy</h3><p class="meta">Share role, qualification, salary, location and application method.</p><a class="btn email" href="mailto:sricitysupporthub@gmail.com?subject=Sri%20City%20Support%20Hub%20-%20Post%20a%20Vacancy">📧 Business Enquiry</a></div><div class="card"><h3>👷 Manpower Requirement</h3><p class="meta">Operators, helpers, technicians, security, housekeeping and technical staff.</p><a class="btn email" href="mailto:sricitysupporthub@gmail.com?subject=Sri%20City%20Support%20Hub%20-%20Manpower%20Requirement">📧 Business Enquiry</a></div><div class="card"><h3>🎓 ITI / Diploma / Graduate Placement</h3><p class="meta">Technical and graduate hiring requirements for companies.</p><a class="btn email" href="mailto:sricitysupporthub@gmail.com?subject=Sri%20City%20Support%20Hub%20-%20ITI%20Diploma%20Graduate%20Placement">📧 Business Enquiry</a></div><div class="card"><h3>📣 Business Promotion</h3><p class="meta">Promote food, shops, cafes, property, transport and useful local services.</p><a class="btn email" href="mailto:sricitysupporthub@gmail.com?subject=Sri%20City%20Support%20Hub%20-%20Business%20Promotion">📧 Promotion Enquiry</a></div><div class="card"><h3>🏪 Business Listing</h3><p class="meta">Add useful location, timing, service and contact information for local visitors.</p><a class="btn email" href="mailto:sricitysupporthub@gmail.com?subject=Sri%20City%20Support%20Hub%20-%20Business%20Listing">📧 Listing Enquiry</a></div><div class="card"><h3>🤝 Employer / Company Partnership</h3><p class="meta">Discuss regular vacancy updates, recruitment support or local visibility.</p><a class="btn email" href="mailto:sricitysupporthub@gmail.com?subject=Sri%20City%20Support%20Hub%20-%20Company%20Partnership">📧 Official Email</a></div></div></div></section>
+<section id="jobReport" class="section alt"><div class="wrap"><div class="jobReport"><span class="eyebrow">Job safety & reporting</span><h2 style="margin:5px 0 8px">Report an Incorrect or Suspicious Job Listing</h2><p class="meta">If a vacancy has incorrect salary, fake interview details, demands money, or uses a misleading company name, please share the listing and available proof. The Hub will review the information; do not send passwords, OTPs or sensitive identity documents.</p><div class="actions"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/919628821697?text=Hello%20Sri%20City%20Support%20Hub%2C%20I%20want%20to%20report%20a%20job%20listing.%0ACompany%2Fagency%3A%20%0ARole%3A%20%0AListing%20link%20or%20source%3A%20%0AWhat%20looks%20incorrect%3A%20">Report Job via WhatsApp</a><a class="btn email" href="mailto:sricitysupporthub@gmail.com?subject=Job%20Listing%20Report">Report by Official Email</a></div><p class="miniNote">Professional note: “Please verify all vacancy details directly with the employer. Sri City Support Hub does not guarantee recruitment, salary or selection. Report suspicious requests for money before proceeding.”</p></div></div></section>
+<section id="team" class="section"><div class="wrap"><div class="head"><span class="eyebrow">07 • Our People</span><h2>Meet the Sri City Support Hub Team</h2><p>A coordinated six-member core team for local information, career support, technology and community development.</p></div><div class="teamPremium">
+<article class="teamProCard"><div class="teamTop"><div class="teamAvatarPro">VY</div><div><div class="teamBadge">Founder</div><h3>Vishnu Yadav</h3><div class="role">Founder & Community Lead</div></div></div><p class="meta">Project leadership, company information, partnerships and community coordination.</p><div class="actions"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/919628821697?text=Hello%20Vishnu%2C%20I%20am%20contacting%20you%20through%20Sri%20City%20Support%20Hub.%20My%20requirement%20is%3A%20">💬 WhatsApp Vishnu</a></div></article>
+<article class="teamProCard"><div class="teamTop"><div class="teamAvatarPro">SY</div><div><div class="teamBadge">Co-Founder</div><h3>Sawan Yadav</h3><div class="role">Co-Founder & Community Development</div></div></div><p class="meta">Community development, coordination and helping people connect with useful local information.</p><div class="actions"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/916393524343?text=Hello%20Sawan%2C%20I%20am%20contacting%20you%20through%20Sri%20City%20Support%20Hub.%20My%20requirement%20is%3A%20">💬 WhatsApp Sawan</a></div></article>
+<article class="teamProCard"><div class="teamTop"><div class="teamAvatarPro">AS</div><div><div class="teamBadge">Core Team</div><h3>Amrit Samal</h3><div class="role">Community Support & Coordination</div></div></div><p class="meta">Local service information, food and transport guidance, and everyday support coordination.</p><div class="actions"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918249953363?text=Hello%20Amrit%2C%20I%20am%20contacting%20you%20through%20Sri%20City%20Support%20Hub.%20My%20requirement%20is%3A%20">💬 WhatsApp Amrit</a></div></article>
+<article class="teamProCard"><div class="teamTop"><div class="teamAvatarPro">BK</div><div><div class="teamBadge">Core Team</div><h3>Bhargav Kumar</h3><div class="role">Job & Career Support</div></div></div><p class="meta">Career guidance, candidate questions and job-search support.</p><div class="actions"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918210801463?text=Hello%20Bhargav%2C%20I%20am%20contacting%20you%20through%20Sri%20City%20Support%20Hub%20for%20job%20and%20career%20support.%20My%20query%20is%3A%20">💬 WhatsApp Bhargav</a></div></article>
+<article class="teamProCard"><div class="teamTop"><div class="teamAvatarPro">BR</div><div><div class="teamBadge">Core Team</div><h3>Bhargava Reddy</h3><div class="role">Technology & Community Development</div></div></div><p class="meta">Website technology, digital improvements and community development.</p><div class="actions"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/916309642907?text=Hello%20Bhargava%2C%20I%20am%20contacting%20you%20through%20Sri%20City%20Support%20Hub.%20My%20query%20is%3A%20">💬 WhatsApp Bhargava</a></div></article>
+<article class="teamProCard"><div class="teamTop"><div class="teamAvatarPro">LY</div><div><div class="teamBadge">Core Team</div><h3>Lokesh Yadav</h3><div class="role">Local Issues & Community Support</div></div></div><p class="meta">Local concerns, community coordination and helping people connect with the right support.</p><div class="actions"><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/918790560247?text=Hello%20Lokesh%2C%20I%20am%20contacting%20you%20through%20Sri%20City%20Support%20Hub%20regarding%20a%20local%20issue.%20Details%3A%20">💬 WhatsApp Lokesh</a></div></article>
+</div><div style="height:22px"></div><div class="advisorSection"><div class="teamAvatarPro">YP</div><div><div class="teamBadge">Senior Professional Guidance</div><h3>Yogendra Yadav</h3><p><b>Senior Industry & Professional Relations Advisor</b></p><p>Industry insight, professional guidance and relationship-building.</p></div><div class="actions"><a class="btn gold" target="_blank" rel="noopener" href="https://wa.me/919728682150?text=Hello%2C%20I%E2%80%99m%20contacting%20you%20through%20Sri%20City%20Support%20Hub.%20I%20would%20like%20to%20discuss%20a%20professional%20matter%20with%20you.">💬 Contact Advisor</a></div></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footerGrid"><div><h3>Sri City Support Hub</h3><p>Jobs, company information, local services, business visibility and practical community support for the Sri City–Tada–Sullurpeta corridor.</p></div><div><h3>Explore</h3><a href="#jobs">Jobs & Career</a><a href="#companies">Companies</a><a href="#services">Local Services</a><a href="#homeServices">Home Services</a><a href="#business">Business Services</a><a href="#jobReport">Report a Job</a></div><div><h3>Official Business</h3><a href="mailto:sricitysupporthub@gmail.com">📧 sricitysupporthub@gmail.com</a><p style="font-size:11px">For business, promotion, listing, employer and manpower enquiries.</p></div></div><div class="footerBottom">Founder: Vishnu Yadav • vishnuyadav712000@gmail.com<br>© 2026 Sri City Support Hub • Verify vacancy, salary, shift and employer details before travel or payment.</div></div></footer>
+<div class="mobileDock"><a class="active" href="#home"><span>⌂</span>Home</a><a href="#jobs"><span>💼</span>Jobs</a><a href="#services"><span>📍</span>Local</a><a href="#homeServices"><span>🧰</span>Home Help</a><a href="#companies"><span>🏭</span>Companies</a><a href="#team"><span>🤝</span>Help</a></div>
+<div id="modal" class="modal"><div class="modalBox"><button class="close" onclick="closeModal()">✕</button><div id="modalContent"></div></div></div>
+<script>
+const VISHNU='919628821697', AMRIT='918249953363', OFFICIAL='sricitysupporthub@gmail.com';
+function waVishnu(text){window.location.href='https://wa.me/'+VISHNU+'?text='+encodeURIComponent(text)}
+function waAmrit(text){window.location.href='https://wa.me/'+AMRIT+'?text='+encodeURIComponent(text)}
+function waJob(jobName){const message='Hello Sri City Support Hub, I would like to know more about the '+jobName+' role and its salary details. Please guide me with the available information.';window.open('https://wa.me/'+VISHNU+'?text='+encodeURIComponent(message),'_blank','noopener');}
+function businessEmail(subject){window.location.href='mailto:'+OFFICIAL+'?subject='+encodeURIComponent('Sri City Support Hub - '+subject)}
+const jobs=[
+{name:'R&D Operator',company:'AC / HVAC Manufacturing',q:['ITI','Diploma'],salary:'₹15,000–₹25,000',type:'Operator',details:'R&D testing/operator work. Technical understanding and practical AC/HVAC exposure are useful. Apply only through the currently authorized method shown by the vacancy source.',map:'Sri City Andhra Pradesh'},
+{name:'Moulding Operator',company:'AC / Component Manufacturing',q:['10th','ITI'],salary:'₹15,000–₹25,000',type:'Operator',details:'Production/moulding operations. Minimum qualification may vary by employer and shift.',map:'Sri City Andhra Pradesh'},
+{name:'Maintenance Technician / Electrician',company:'Industrial Manufacturing',q:['ITI','Diploma'],salary:'₹18,000–₹35,000',type:'Technician',details:'Electrical/maintenance roles. Experience and trade certification can affect salary and role level.',map:'Sri City Andhra Pradesh'},
+{name:'Breazer / Brazing Operator',company:'AC Manufacturing',q:['10th','ITI'],salary:'₹15,000–₹25,000',type:'Operator',details:'Brazing/assembly line work in AC manufacturing. Safety and practical skill requirements depend on the company.',map:'Sri City Andhra Pradesh'},
+{name:'Production Line Operator',company:'Manufacturing',q:['10th','ITI'],salary:'₹15,000–₹25,000',type:'Operator',details:'Production line roles across industrial manufacturing. Shift and OT depend on employer.',map:'Sri City Andhra Pradesh'},
+{name:'Quality – OQC / Line Quality',company:'AC / Manufacturing',q:['ITI','Diploma','B.Tech'],salary:'₹18,000–₹35,000',type:'Quality',details:'Quality roles can include OQC, line quality and inspection. Experience and department responsibility affect salary.',map:'Sri City Andhra Pradesh'},
+{name:'Junior Engineer / Technician',company:'Industrial Manufacturing',q:['Diploma'],salary:'₹18,000–₹35,000',type:'Engineer',details:'Diploma candidates may qualify for junior technical, production, quality, maintenance or process roles depending on the company.',map:'Sri City Andhra Pradesh'},
+{name:'Graduate Engineer Trainee / Engineer',company:'Industrial Manufacturing',q:['B.Tech'],salary:'₹20,000–₹40,000+',type:'Engineer',details:'Possible areas include production, quality, maintenance, process, R&D, testing/design and engineering support. Actual role and salary depend on employer.',map:'Sri City Andhra Pradesh'},
+{name:'Automotive Manufacturing Operator',company:'Automotive Manufacturing',q:['10th','ITI','Diploma'],salary:'₹15,000–₹35,000',type:'Operator',details:'Automotive production roles. Role, shift, skill and experience determine final salary.',map:'Sri City Andhra Pradesh'},
+{name:'Forklift Driver',company:'Automotive / Industrial',q:['8th'],salary:'₹20,000–₹30,000',type:'Driver',details:'Forklift operation generally requires relevant authorization/training and employer-specific eligibility.',map:'Sri City Andhra Pradesh'},
+{name:'Bus Driver',company:'Industrial / Facility Transport',q:['8th'],salary:'₹22,000–₹40,000',type:'Driver',details:'Heavy vehicle licence and employer-specific driving requirements apply.',map:'Sri City Andhra Pradesh'},
+{name:'Chocolate Manufacturing Role',company:'Food Manufacturing',q:['10th','ITI'],salary:'₹15,000–₹25,000',type:'Production',details:'Food manufacturing/production roles. Exact department and shift depend on employer.',map:'Sri City Andhra Pradesh'},
+{name:'Pharma Technical Role',company:'Pharmaceutical Manufacturing',q:['ITI','Diploma'],salary:'₹25,000–₹35,000',type:'Technician',details:'Technical pharma roles may require ITI or higher depending on department. Employer requirements must be checked before applying.',map:'Sri City Andhra Pradesh'} ,
+{name:'Pharma Production / Packing Operator',company:'Pharma & Medical Products',q:['10th','12th','ITI'],salary:'Indicative ₹15,000–₹30,000',type:'Operator',details:'Illustrative role category, not a confirmed vacancy. Pharma roles may require specific education, training, shift eligibility and safety/quality practices.',map:'pharma manufacturing companies Sri City Andhra Pradesh'},
+{name:'Automobile Assembly / Component Operator',company:'Automobile & Auto Components',q:['10th','ITI','Diploma'],salary:'Indicative ₹15,000–₹35,000',type:'Operator',details:'Possible automotive assembly, component, inspection and production roles. Confirm the actual employer and vacancy before applying.',map:'automobile companies Sri City Andhra Pradesh'},
+{name:'Mobile / Electronics Assembly Operator',company:'Mobile & Consumer Electronics',q:['10th','12th','ITI'],salary:'Indicative ₹15,000–₹30,000',type:'Operator',details:'Possible assembly, testing, packing and line roles; actual qualification and salary depend on employer.',map:'electronics manufacturing companies Sri City Andhra Pradesh'},
+{name:'Electrical Technician / Panel Operator',company:'Electrical Equipment & Cables',q:['ITI','Diploma'],salary:'Indicative ₹18,000–₹40,000',type:'Technician',details:'Electrical assembly, testing, maintenance or panel work depending on employer and skill level.',map:'electrical equipment companies Sri City Andhra Pradesh'},
+{name:'Steel / Fabrication / Welding Operator',company:'Steel, Metal & Fabrication',q:['10th','ITI'],salary:'Indicative ₹18,000–₹40,000',type:'Operator',details:'Fabrication, welding, cutting or metal-processing roles. Trade skill and safety requirements vary.',map:'steel fabrication plants near Sri City Tada Andhra Pradesh'},
+{name:'Heavy Engineering / Rail Assembly Technician',company:'Railway / Train Manufacturing & Heavy Engineering',q:['ITI','Diploma'],salary:'Indicative ₹20,000–₹45,000',type:'Technician',details:'Heavy engineering or rail-related assembly and quality roles; this is a role category, not a verified opening.',map:'railway heavy engineering companies near Sri City Andhra Pradesh'},
+{name:'Housekeeping Staff / Supervisor',company:'Facility Management & Services',q:['8th','10th','12th'],salary:'Indicative ₹15,000–₹25,000',type:'Housekeeping',details:'Housekeeping, cleaning, pantry and supervisory work. Duties, shift, gender eligibility and take-home salary must be confirmed with employer.',map:'housekeeping facility management Sri City Andhra Pradesh'},
+{name:'Security Guard / Security Supervisor',company:'Facility Management & Services',q:['8th','10th','12th'],salary:'Indicative ₹15,000–₹28,000',type:'Security',details:'Security roles may require background checks, physical eligibility, training or licence as applicable. Confirm shift and overtime.',map:'security services companies Sri City Andhra Pradesh'},
+{name:'Driver / Forklift / Logistics Staff',company:'Logistics, Warehouse & Distribution',q:['8th','10th','12th','ITI'],salary:'Indicative ₹15,000–₹40,000',type:'Driver',details:'Driver and forklift positions require the relevant licence/authorization. Warehouse roles may include loading, packing and inventory.',map:'logistics warehouse companies Sri City Tada Andhra Pradesh'},
+{name:'Food / Beverage Production & Packing',company:'Food, Beverage & FMCG',q:['10th','12th','ITI'],salary:'Indicative ₹15,000–₹30,000',type:'Production',details:'Production, packing, line support and warehouse roles at food/beverage manufacturers. Confirm current opening and shift.',map:'food beverage manufacturers Sri City Andhra Pradesh'},
+{name:'Experienced Technician / Quality Inspector',company:'Multi-industry Manufacturing',q:['ITI','Diploma','B.Tech'],salary:'Indicative ₹20,000–₹55,000+',type:'Quality',details:'Experienced technicians, inspectors and skilled workers may receive higher pay depending on trade, years of experience and employer. Salary is not guaranteed.',map:'manufacturing companies Sri City Andhra Pradesh'}
+];
+const companies=[
+['Voltas Limited','Air Conditioning / HVAC','R&D • Testing • Quality • Production • Maintenance','Voltas Limited, Sri City, Andhra Pradesh'],
+['Blue Star','Air Conditioning / HVAC','Quality • Production • Technical • Service','Blue Star, Sri City, Andhra Pradesh'],
+['LG Electronics','Consumer Electronics / Appliances','Production • Quality • Assembly • Testing','LG Electronics, Sri City, Andhra Pradesh'],
+['Havells / Lloyd','Electrical / Consumer Appliances','Assembly • Quality • Production • Technical','Havells Lloyd, Sri City, Andhra Pradesh'],
+['Amber Enterprises','AC / HVAC Components','Moulding • Assembly • Quality • Production','Amber Enterprises, Sri City, Andhra Pradesh'],
+['Epack Durable','Appliances / Components','Production • Quality • R&D • Technical','Epack Durable, Sri City, Andhra Pradesh'],
+['Automobile & Auto Components','Automotive / Vehicle Components','Assembly • Welding • Paint • Quality • Stores • Logistics','automobile and auto component companies in Sri City Tada Andhra Pradesh'],
+['Mobile & Consumer Electronics','Mobile Phones / Electronics','Assembly • SMT • Testing • Quality • Packing • Stores','mobile phone electronics manufacturing companies in Sri City Andhra Pradesh'],
+['Small Components & Electronics Parts','Components / Precision Manufacturing','Moulding • CNC • Assembly • Inspection • Packing','component manufacturing companies in Sri City Tada Andhra Pradesh'],
+['Electrical Equipment & Cables','Electrical / Power Products','Wiring • Assembly • Testing • Maintenance • Quality','electrical equipment manufacturing companies in Sri City Andhra Pradesh'],
+['Steel, Metal & Fabrication','Metal / Steel / Fabrication','Fabrication • Welding • Cutting • CNC • Maintenance • Safety','steel metal fabrication plants near Sri City Tada Andhra Pradesh'],
+['Railway / Train Manufacturing & Heavy Engineering','Rail / Heavy Engineering','Fabrication • Assembly • Quality • Stores • Logistics','railway train manufacturing and heavy engineering companies near Sri City Andhra Pradesh'],
+['Kobelco / Heavy Equipment','Heavy Engineering / Equipment','Assembly • Welding • Quality • Maintenance • Logistics','Kobelco Sri City Andhra Pradesh'],
+['Pharma & Medical Products','Pharmaceutical / Medical Manufacturing','Production • Packing • QC • Warehouse • Maintenance','pharmaceutical manufacturing companies in Sri City Andhra Pradesh'],
+['Food, Beverage & FMCG','Food / Beverage / Consumer Goods','Production • Packing • Quality • Warehouse • Utility','food beverage FMCG manufacturing companies in Sri City Andhra Pradesh'],
+['Logistics, Warehouse & Distribution','Logistics / Supply Chain','Picker • Packer • Loader • Forklift • Inventory • Driver','logistics warehouse companies in Sri City Tada Andhra Pradesh'],
+['Facility Management & Services','Housekeeping / Security / Facility','Housekeeping • Security • Pantry • Office support • Supervisor','facility management housekeeping security companies in Sri City Andhra Pradesh']
+]
+function renderJobs(list=jobs){const grid=document.getElementById('jobGrid');grid.innerHTML=list.map((j,i)=>{const companyMatch=companies.find(c=>j.company.toLowerCase().includes(c[0].split(' / ')[0].toLowerCase())||c[0].toLowerCase().includes(j.company.toLowerCase().split(' / ')[0]));const jobMap=companyMatch?companyMatch[3]:(j.company+', Sri City, Andhra Pradesh');return `<article class="card job" data-search="${(j.name+' '+j.company+' '+j.q.join(' ')+' '+j.type+' '+j.details).toLowerCase()}"><h3>${j.name}</h3><div class="meta">${j.company}</div><div class="tags">${j.q.map(x=>`<span class="tag">${x}</span>`).join('')}<span class="tag">${j.type}</span></div><div class="salary">${j.salary}</div><p class="meta">Qualification: ${j.q.join(' / ')}</p><div class="actions"><button class="btn" onclick="toggleDetail(${i})">View Details</button><a class="btn light" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(jobMap)}">📍 Company Location</a><button class="btn whatsapp" type="button" onclick='waJob(${JSON.stringify(j.name)})'>💬 WhatsApp</button><a class="btn email" href="mailto:${OFFICIAL}?subject=${encodeURIComponent('Job enquiry - '+j.name)}">✉️ Email</a></div><div id="detail${i}" class="detail"><b>Role:</b> ${j.details}<br><br><b>Apply guide:</b> 1) Check qualification and salary. 2) Open the authorized vacancy source/application method. 3) Keep ID, qualification, experience and photos ready. 4) Confirm interview/joining location before travelling. 5) Never pay an unofficial job fee.<br><br><a class="btn light" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(jobMap)}">Open company route / map</a></div></article>`}).join('')}
+function toggleDetail(i){document.getElementById('detail'+i).classList.toggle('open')}
+function filterJobs(term,btn){document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const list=term==='all'?jobs:jobs.filter(j=>j.q.includes(term)||j.type===term);renderJobs(list);document.getElementById('jobEmpty').style.display=list.length?'none':'block'}
+function renderCompanies(){document.getElementById('companyGrid').innerHTML=companies.map((c,i)=>`<article class="card company" data-search="${c.join(' ').toLowerCase()}"><span class="companyLogo">${c[0][0]}</span><h3>${c[0]}</h3><div class="meta">${c[1]}</div><p class="meta" style="margin-top:10px"><b>Possible areas:</b> ${c[2]}</p><div class="actions"><button class="btn" onclick="openCompany(${i})">View Company</button><a class="btn light" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c[3])}">📍 Search Company / Location</a><a class="btn email" href="mailto:${OFFICIAL}?subject=${encodeURIComponent('Company information - '+c[0])}">✉️ Enquiry</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/919628821697?text=${encodeURIComponent('Hello Sri City Support Hub, I would like information about '+c[0]+'. Please guide me regarding the company details and available information.')}">💬 WhatsApp Enquiry</a></div></article>`).join('')}
+function openCompany(i){const c=companies[i];const companyName=JSON.stringify(c[0]);const mapQuery=encodeURIComponent(c[3]);const emailSubject=encodeURIComponent('Company enquiry - '+c[0]);document.getElementById('modalContent').innerHTML=`<h2>${c[0]}</h2><p class="role">${c[1]}</p><p><b>Company / area:</b> ${c[3]}</p><p>${c[2]}</p><h3>What you can check</h3><ul><li>Current vacancy information available in the Jobs section.</li><li>Qualification-wise roles: 10th, ITI, Diploma and B.Tech/B.E. where applicable.</li><li>Department, salary range and application guidance when supplied.</li><li>Company-specific map search and route before visiting.</li></ul><div class="actions"><a class="btn light" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">📍 Open Company Location</a><a class="btn email" href="mailto:${OFFICIAL}?subject=${emailSubject}">✉️ Official Enquiry</a><a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/919628821697?text=${encodeURIComponent('Hello Sri City Support Hub, I would like information about '+c[0]+' company. Please guide me.')}">💬 WhatsApp Enquiry</a></div>`;document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function searchSite(){const q=document.getElementById('siteSearch').value.trim().toLowerCase();const result=document.getElementById('searchResult');document.querySelectorAll('.highlight').forEach(el=>el.classList.remove('highlight'));if(!q){result.style.display='none';return}const all=[...document.querySelectorAll('.job,.company,.serviceCard')];const matches=all.filter(el=>(el.dataset.search||el.innerText).toLowerCase().includes(q));matches.forEach(el=>el.classList.add('highlight'));result.style.display='block';result.textContent=matches.length?`${matches.length} matching result(s) found across jobs, industries and local services. Scroll to the highlighted cards.`:'No match found. Try a shorter word such as mobile, Xerox, operator, pharma, steel, driver or grocery.';if(matches.length){const target=matches[0];target.scrollIntoView({behavior:'smooth',block:'center'});}}
+function filterServices(){const q=(document.getElementById('serviceSearch')?.value||'').trim().toLowerCase();const cat=document.getElementById('serviceCategory')?.value||'all';document.querySelectorAll('.serviceCard').forEach(el=>{const ok=(cat==='all'||el.dataset.category===cat)&&(!q||(el.dataset.search+' '+el.innerText).toLowerCase().includes(q));el.style.display=ok?'block':'none'});}
+renderJobs();renderCompanies();
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+</script>
 </body>
 </html>
